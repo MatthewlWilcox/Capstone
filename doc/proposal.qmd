@@ -23,7 +23,7 @@ data was obtained by the data owner/curator, as best as you can. List the
 variables that you plan to use in your analysis, for example:
 
 * weight: The patient's weight (kg)
-* sex: The patient's sex, male or female
+* sex: The patient's sex, male or femalet
 * age: The patient's age (months)
 
 ]
@@ -155,3 +155,7 @@ Here's an example of citing a source [see @phil99, pp. 33-35]. Be sure the sourc
 [The bibliography will automatically get generated. Any sources you
 cite in the document will be included. Other entries in the `.bib` file
 will not be included.]
+
+
+
+test 1 2 3 4 5 6 
