@@ -20,6 +20,11 @@ The goals of this report is to evaluate multiple different attributes that poten
 
 # Dataset
 
+Two data sets were used. the first was from Football-data.co.uk and that contained the betting data for individual games. The second was scraped from Worldfootball.net and involves the individual match data
+
+
+* attendance: the number of fans attending games 
+
 [In this section, desribe the dataset(s). This includes things like where you
 obtained the dataset. Include a full citation, as specified 
 [here](https://guides.lib.umich.edu/c.php?g=282964&p=3285995). Describe how the
@@ -65,10 +70,7 @@ do not have diabetes.
 have around 7 hours worth of work each week. Writing work counts. Several tasks
 have already been filled in for you.]
 
-**Week 4 (2/6 - 2/12):** [Just an example: 
-
-* Data tidying and recoding (4 hours)
-* Question 2 (4 hours).]
+**Week 4 (2/6 - 2/12):** 
 
 **Week 5 (2/13 - 2/19):**
 
@@ -76,7 +78,7 @@ have already been filled in for you.]
 
 **Week 7 (2/27 - 3/5):**
 
-* Presentation prep and practice (4 hours)
+* Presentation prep and practice (3 hours)
 
 **Week 8 (3/6 - 3/12):** *Presentations in class on Thurs 3/9.*
 
@@ -89,7 +91,7 @@ have already been filled in for you.]
 **Week 10 (3/27 - 4/2):** *Poster Draft 1 due Monday 3/27*.
 *Peer feedback due Thursday 3/30*.
 
-* Peer feedback (2.5 hours)
+* Peer feedback (2 hours)
 
 * Poster revisions (2 hours)
 
