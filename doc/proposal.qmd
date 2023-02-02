@@ -1,7 +1,7 @@
 ---
-title: "Proposal: [Your project name]"
+title: "Demand of Football in European Leagues"
 subtitle: "DATA 450 Capstone"
-author: "[Your Name]"
+author: "Matthew Wilcox"
 date: today
 bibliography: references.bib
 number-sections: true
@@ -12,7 +12,11 @@ jupyter: python3
 
 # Introduction
 
-[This section should contain background and introduction to your general topic.]
+Football is the most popular sport in the world. And no I am not talking about American football; Im refering to the sport that in America is refered to as soccer. Something that is incredibly important with football is the economics of it. There is two economical sides of football, first being the market of buying and selling players and buying and selling the sport itself to the fans. This report will follow the later econimical side of football. More specifically the demand for football in reference to attendance. 
+
+Attendance is a importnat KPI for these football teams. First they show setiment within the supporters of the club. If attendance is consistently lower for a club it usually shows disatifaction from the supporters of the teams performance. Second it is a key metric used for football clubs to sell sponsorships. For instance a company wants to sell advertising space in the stadium, based upon their attendance metrics, they may be able to charge more or less for these sponsowrships and advertisments. The third reason it is important is its a revenue stream. For the larger leagues such as the English Premier league, the revenue that comes from attendance pales in comparison to tv revenue and other revenue streams. However for many smaller clubs the revenue from attendance is key and critical for the success and longevity of the club. 
+
+The goals of this report is to evaluate multiple different attributes that potentially impact attendance for a given match. The three primary attributes that wil be evaluated to determine their affect on attendance will be time/day of match, postion in the table(ie are the winning conistantly, are the fighting for promotion or relegation), and the sports odds for a individual game. At the end the goal is to have a model that will predict attendance for any given match based upon these attributes. 
 
 # Dataset
 
@@ -30,11 +34,9 @@ variables that you plan to use in your analysis, for example:
 
 # Data Acquisition and Processing
 
-[In this section, if applicable, describe how you will obtain the data (if it's
-anything more complicated than a simple download). Discuss what data 
-processing steps will be needed, such as recoding variables, data cleaning,
-data tidying, imputing missing values, etc. See sections 1c, 1d, 1e in the 
-"Good Enough Practices" paper.]
+The data acquistion varied. The betting data was already tabulated in csv files and were just downloaded from Football-data.co.uk. The remaining data was scraped from Worldfootball.net. Using the beautifulsoup package, the data for match results, attendance, and stadium size were aquired.
+
+The data processing is large. First all the betting data is divided into individual files for each year and league. These csv's will have to be combined together into one singular data set. Secondly once the data set is combined into one singular data set it will have to be merged with the match dataset. The teams data will have to be matched together to create one large dataset. Once there is a singular data set, some variables will have to created using the data. These variables are home and away team current postion and the related cumulative data for that season to determine the relative postion. 
 
 # Research Questions and Methodology
 
@@ -119,43 +121,5 @@ results.]
 **Final Exam Week (5/8):** *Final Presentations during final exam slot,
 Monday May 9th 3:20-6:40pm.* [Do not schedule any other tasks for this week.]
 
-## Some cool Quarto stuff
-
-[You can delete this section from your proposal.]
-
-For your reference, here's an example of a Python code cell in Quarto,
-along with a figure that gets generated, along with a caption and a label
-so that it can be referred to automatically as "Figure 1" (or whatever)
-in the writeup.
-
-For a demonstration of a line plot on a polar axis, see @fig-polar.
-
-```{python}
-#| label: fig-polar
-#| fig-cap: "A line plot on a polar axis"
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-r = np.arange(0, 2, 0.01)
-theta = 2 * np.pi * r
-fig, ax = plt.subplots(
-  subplot_kw = {'projection': 'polar'} 
-)
-ax.plot(theta, r)
-ax.set_rticks([0.5, 1, 1.5, 2])
-ax.grid(True)
-plt.show()
-```
-
-Here's an example of citing a source [see @phil99, pp. 33-35]. Be sure the source information is entered in "BibTeX" form in the `references.bib` file.
-
-# References
-
-[The bibliography will automatically get generated. Any sources you
-cite in the document will be included. Other entries in the `.bib` file
-will not be included.]
 
 
-
-test 1 2 3 4 5 6 
