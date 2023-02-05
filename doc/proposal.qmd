@@ -12,106 +12,180 @@ jupyter: python3
 
 # Introduction
 
-Football is the most popular sport in the world. And no I am not talking about American football; Im refering to the sport that in America is refered to as soccer. Something that is incredibly important with football is the economics of it. There is two economical sides of football, first being the market of buying and selling players and buying and selling the sport itself to the fans. This report will follow the later econimical side of football. More specifically the demand for football in reference to attendance. 
+Football is the most popular sport in the world. And no, I am not talking about American Football; Im referring to the sport in America called Soccer. Something that is incredibly important about Football is its economics. There are two economic sides of Football, the market of buying and selling players and selling the sport to the fans. This report will follow the later economic side of Football. More specifically, the demand for Football in reference to attendance. 
 
-Attendance is a importnat KPI for these football teams. First they show setiment within the supporters of the club. If attendance is consistently lower for a club it usually shows disatifaction from the supporters of the teams performance. Second it is a key metric used for football clubs to sell sponsorships. For instance a company wants to sell advertising space in the stadium, based upon their attendance metrics, they may be able to charge more or less for these sponsowrships and advertisments. The third reason it is important is its a revenue stream. For the larger leagues such as the English Premier league, the revenue that comes from attendance pales in comparison to tv revenue and other revenue streams. However for many smaller clubs the revenue from attendance is key and critical for the success and longevity of the club. 
+Attendance is an important KPI for these football teams. First, they show sentiment among the supporters of the club. If attendance is consistently lower for a club, it usually indicates dissatisfaction from the supporters of the team's performance. Second, it is a key metric used for football clubs to sell sponsorships. For instance, if a company wants to sell advertising space in the stadium based on its attendance metrics, it may be able to charge more or less for these sponsorships and advertisements. The third reason it is essential is its revenue stream. For the more prominent leagues, such as the English Premier League, the revenue that comes from attendance pales to tv and other revenue streams. However, for many smaller clubs, the revenue from attendance is crucial for the success and longevity of the club. 
 
-The goals of this report is to evaluate multiple different attributes that potentially impact attendance for a given match. The three primary attributes that wil be evaluated to determine their affect on attendance will be time/day of match, postion in the table(ie are the winning conistantly, are the fighting for promotion or relegation), and the sports odds for a individual game. At the end the goal is to have a model that will predict attendance for any given match based upon these attributes. 
+This report aims to evaluate multiple different attributes that potentially impact attendance for a given match. The three primary attributes that will be assessed to determine their effect on attendance will be the time/day of the match, position in the table(i.e., are they winning consistently, are they fighting for promotion or relegation), and the sports odds for an individual game. Ultimately, the goal is to have a model that will predict attendance for any given match based on these attributes. 
 
 # Dataset
 
-Two data sets were used. the first was from Football-data.co.uk and that contained the betting data for individual games. The second was scraped from Worldfootball.net and involves the individual match data
+Two data sets were used. The first was from Football-data.co.uk[see @Football_Betting_dataset], which contained the betting data for individual games. The second was scraped from Worldfootball.net[see @Football_match_data] and involved the individual match data. These will later be combined. Right now, as I am still scraping and combining the data sets, the dimensions of the data are unavailable. However, the variables that will be used are stated below:
+
+* Home team: the home team for an individual match
+
+* Away team: the away team for an individual match
+
+* Stadium: the stadium where the match took place
+
+* Attendance: Attendance will be measured as a measurement of capacity. It will be a percentage. (i.e., 93% attendance)
+
+* League: What league was the match took place in
+
+* Betting odds: This is grouped. Currently, the data set has betting odds from multiple sources for each game. Once data has been cleaned and prepped, a better understanding of which betting odds to use will be more clear. The smaller the number for all the stats, the greater chance for that team to be the winner. For example, Home 147, Tie 250, Away 340. The home team has the highest chance of winning and then is more likely to be a tie than an away team win. For all of them, it is broken down into three different variables
+  + Home team odds
+  + Tie odds
+  + Away team odds
+  
+* Time: This is the time that the match started
+
+* Date: The date the match took place
+
+* Day of the week: The day of the week a match took place. (ie. Monday or Saturday)\
+
+* Odds Goals under 2.5: the betting odds for total goals scored in a match to be under 2.5. The lower the number better the odds
+
+* Odds goals over 2.5: the betting odds for total goals scored in a match to be over 2.5. The lower the number, the better the odds.
+
+* Position: The numerical position in the standings a team is in.
+
+* Secured Promotion: A true/false variable of whether a team is secured promotion from their league
+
+* Secured Relegation: A true/false variable of whether a team is secured relegation from their league
 
 
-* attendance: the number of fans attending games 
 
-[In this section, desribe the dataset(s). This includes things like where you
-obtained the dataset. Include a full citation, as specified 
-[here](https://guides.lib.umich.edu/c.php?g=282964&p=3285995). Describe how the
-data was obtained by the data owner/curator, as best as you can. List the 
-variables that you plan to use in your analysis, for example:
 
-* weight: The patient's weight (kg)
-* sex: The patient's sex, male or femalet
-* age: The patient's age (months)
-
-]
 
 # Data Acquisition and Processing
 
-The data acquistion varied. The betting data was already tabulated in csv files and were just downloaded from Football-data.co.uk. The remaining data was scraped from Worldfootball.net. Using the beautifulsoup package, the data for match results, attendance, and stadium size were aquired.
+The data acquisition varied. The betting data was already tabulated in CSV files and were just downloaded from Football-data.co.uk. The remaining data was scraped from Worldfootball.net. Using the beautifulsoup package, the data for match results, attendance, and stadium size were acquired.
 
-The data processing is large. First all the betting data is divided into individual files for each year and league. These csv's will have to be combined together into one singular data set. Secondly once the data set is combined into one singular data set it will have to be merged with the match dataset. The teams data will have to be matched together to create one large dataset. Once there is a singular data set, some variables will have to created using the data. These variables are home and away team current postion and the related cumulative data for that season to determine the relative postion. 
+The data processing is large. First, all the betting data is divided into individual files for each year and league. These CSVs will have to be combined together into one singular data set. Secondly, once the data set is combined into one singular data set, it will have to be merged with the match dataset. The team's data will have to be matched together to create one large dataset. Once there is a singular data set, some variables will have to be created using the data. These variables are the home and away team's current position and the related cumulative data for that season to determine the relative position. 
 
 # Research Questions and Methodology
 
-[In this section, list each of the questions you will explore. Following each
-question, provide a detailed and specific plan for how you plan to answer the 
-question. Include the specific steps you will take, what form the answer will 
-take (a number? table? visualization? model? Give all the specifics), and 
-estimate how many hours each question will take to complete.]
 
-1. Is smoking correlated with diabetes? To answer this, I will create a filled
-bar plot, with the left bar representing non-smokers, the middle bar
-representing people who smoke moderately, and the right bar representing heavy
-smokers. The bars will be the same height, and each bar will be
-colored two colors based on the proportion of patients in the group who do or
-do not have diabetes.
+Time:
 
-2. Question 2? Plan for question 2.
+1. How does the day of the week affect attendance for a match? This will be viewed in a bar graph output, with attendance being the vertical axis and the average attendance for each week being the individual bars. 
 
-3. Question 3? Plan for question 3.
+2. How does the start time of a match affect the attendance of that match? This will be viewed in either a histogram or scatter plot of the data, with the x-axis being the time of the game and the y-axis being the attendance level. Most likely will be a histogram. 
 
-4. etc.
+3. How does the month affect the attendance of a match? Either will be a bar plot with all 12 months being the bars or a heat map of all the individual months. The data will be from all of the years, just the months, all grouped together and averaged out. 
+
+4. How do attendance for matches change over an entire year? Similarly to the previous question, this will be viewed as a heat map of the entire calendar year, including all of the dates however.
+
+5. How does attendance change over the season, averaging per league? This one compares the different leagues we are studying over time. This will be done with a time series line graph to see if all the leagues follow the same trends of average attendance over the entire season or if some leagues have different patterns.
+
+**Position:**
+
+6. How does the position in the table affect the attendance of a match? This one will be a bar graph where each bar is the position within the league, showing the average attendance for each position
+
+7. How do promotion and relegation battles affect the attendance of a match? Here either it will just be a number or a bar graph of average attendance for teams in the promotion and relegation battles compared to not being in the battle.
+
+8. How does the position in the table affect the attendance of the match over a season? This will be a time series graph of the entire season. Here the teams will be grouped into thirds to show teams that are on the top and bottom of the table and how that changes over the course of a season.
+
+9. How does securing promotion or the league and securing relegation affect attendance compared to before securing their position? This will be a grouped bar graph with one group being promotion and the other being relegation. They will have two bars, one being the average attendance before securing, and the second would be the average attendance after securing their position.
+
+10. How does the difference between positions affect the attendance of a match? This will be done in a histogram where the x-axis is the difference in league positions, and the y-axis is attendance. 
+
+**Betting:**
+
+11. How does attendance change when there is a heavy favorite vs. a closely betting team? 
+
+12. How do the predicted goals being greater than 2.5 vs. lower than 2.5 have an on the attendance of a game? This will be two bars. One will be for games where the odds being over 2.5 is greater, and the other is for games where lower than 2.5 is higher. These bars will be the average attendance for these two games. Also may go and break this up by leagues to see if the different cultures and fanbases may be more accepting of lower vs. higher-scoring games. 
+
+13. How do the odds of the home team winning vs. tieing vs. losing impact attendance? This will be three scatter plots, all with the same axis scaling. The first will be the home team's odds of winning compared to attendance. The second will be tieing, and the third will be losing. The goal is to see if a team is expected to lose a game if its attendance is lower vs. a team that is supposed to win the attendance is higher. 
+
+**Final Model:**
+
+14. How can all these factors be used to predict the attendance outcome of these games? Here I will build a model that uses factors of day/time, position in the table, and betting odds to predict what the attendance will be. 
+
+15. Does attendance data and trends have changed after the covid 19 pandemic? Using the model seeing if it is still applicable with new data after being trained on pre-covid data. 
 
 # Work plan
 
-[Fill in the list below with a plan for what you will do each week. You should
-have around 7 hours worth of work each week. Writing work counts. Several tasks
-have already been filled in for you.]
-
 **Week 4 (2/6 - 2/12):** 
+
+* Data cleaning and prepreation (5 hours)
+
+* Question 1 (1 hr)
+
+* Question 2 (1 hr)
 
 **Week 5 (2/13 - 2/19):**
 
+* Question 3 (1 hr)
+
+* Question 4 (1 hr)
+
+* Question 5 (2 hrs)
+
+* Questjion 6 (2 hrs)
+
 **Week 6 (2/20 - 2/26):**
+
+* Question 7 (2.5 hrs)
+
+* Question 8 (2 hrs)
+
+* Question 9 (2.5 hrs)
 
 **Week 7 (2/27 - 3/5):**
 
-* Presentation prep and practice (3 hours)
+* Presentation prep and practice (3 hrs)
+
+* Question 10 (1 hr)
+
+* Question 11 (1.5 hrs)
+
+* Question 12 (1.5 hrs)
 
 **Week 8 (3/6 - 3/12):** *Presentations in class on Thurs 3/9.*
 
-* Presentation peer review (1.5 hours)
+* Question 13 (1.5 hrs)
+
+* Question 14 (4 hrs)
+
+* Presentation peer review (1.5 hrs)
 
 **Week 9 (3/20 - 3/26):**
 
-* Poster prep (4 hours)
+* Question 15 (2 hrs)
+
+* Poster prep (4 hrs)
 
 **Week 10 (3/27 - 4/2):** *Poster Draft 1 due Monday 3/27*.
 *Peer feedback due Thursday 3/30*.
 
-* Peer feedback (2 hours)
+* Peer feedback (2 hrs)
 
-* Poster revisions (2 hours)
+* Poster revisions (2 hrs)
+
+* Revision of graphs (3 hrs)
 
 **Week 11 (4/3 - 4/9):** *Poster Draft 2 due Monday 4/3*.
 *Final Poster due Saturday 4/8*.
 
-* Poster revisions (1 hour).
+* Exploratory map/scatter of all games for blog post (4 hrs)
+
+* Poster revisions (1 hr)
 
 **Week 12 (4/10 - 4/16):**
+
+* Draft Blog post (5 hrs)
 
 **Week 13 (4/17 - 4/23):** [All project work should be done by the end of this 
 week. The remaining time will be used for writing up and presenting your 
 results.]
 
-* Draft blog post (5 hours).
+* Draft blog post (5 hrs)
 
 **Week 14 (4/24 - 4/30):** *Blog post draft 1 due Monday 4/24. Peer feedback due Thursday 4/27. Blog post draft 2 due Sunday 4/30*. 
 
-* Peer feedback (2.5 hours)
-* Blog post revisions (2 hours)
+* Peer feedback (2.5 hrs)
+* Blog post revisions (2 hrs)
 * [Do not schedule any other tasks for this week.]
 
 **Week 15 (5/1 - 5/7):**  *Final blog post due Tuesday 5/2*.
@@ -123,5 +197,13 @@ results.]
 **Final Exam Week (5/8):** *Final Presentations during final exam slot,
 Monday May 9th 3:20-6:40pm.* [Do not schedule any other tasks for this week.]
 
+
+
+
+
+
+
+
+# References 
 
 
