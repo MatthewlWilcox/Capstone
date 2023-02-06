@@ -1,10 +1,7 @@
-import pandas as pd
+from time import sleep
+from progress.bar import Bar
 
-# Example list
-lst = [1,2,3,4]
-
-# Convert the list to a DataFrame
-df = pd.DataFrame(lst)
-
-# Write the DataFrame to a .csv file
-df.to_csv("list.csv", index=False)
+with Bar('Loading', fill='#', suffix='%(percent).1f%% - %(eta)ds') as bar:
+    for i in range(100):
+        sleep(0.02)
+        bar.next()
