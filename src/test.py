@@ -1,7 +1,5 @@
-from time import sleep
-from progress.bar import Bar
+import pandas as pd
+import pickle
 
-with Bar('Loading', fill='#', suffix='%(percent).1f%% - %(eta)ds') as bar:
-    for i in range(100):
-        sleep(0.02)
-        bar.next()
+df = pd.read_pickle('src/scrape_games/error_list.pkl')
+print(df)

@@ -3,6 +3,9 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import time
 import progressbar
+import pickle
+
+
 # =============================================================================
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 # =============================================================================
@@ -121,13 +124,10 @@ def scrape_match(link, link2):
 
 
 
-
-#    for a_href in td.find_all("a", href =True):
-
-        # a_href = str(a_href["href"])
-        # if a_href.startswith("/report/"):
-        #     url = link2 + a_href
-        #     a_href_list.append(url)
+Url_list_file_location = input('Urls list file path:')
+error_list_folder = input("folder for errorlist:")
+data_output_folder = input("File path for where data goes:")
+stadium_list_folder = input("Where the stadium list will go:")
 
 
 
@@ -138,7 +138,7 @@ def scrape_match(link, link2):
 
 
 
-url_list = pd.read_csv("src\scrape_games\individual_match_summary_list.csv", index_col = 0)
+url_list = pd.read_csv(Url_list_file_location, index_col = 0)
 url_list = url_list[url_list.columns[0]].values.tolist()
 # url_list = pd.read_csv("src\scrape_games\dummy_match_list.csv", index_col = 0)
 # url_list = url_list[url_list.columns[0]].values.tolist()
@@ -152,13 +152,15 @@ match_data_df = pd.DataFrame(columns=['home_team', 'home_score', 'away_team', 'a
 widgets = [' [',
          progressbar.Timer(format= 'elapsed time: %(elapsed)s'),
          '] ',
-           progressbar.Bar('*'),' (',
-           progressbar.ETA(), ') ',
+           progressbar.Bar('#'),' (',
+           progressbar.ETA(), ') ',progressbar.Percentage(), 
           ]
  
 bar = progressbar.ProgressBar(max_value=79677,
                               widgets=widgets).start()
 x = 1
+pick_path = error_list_folder + 'error_list.pkl'
+pick_path_data = data_output_folder + 'betting_data.pkl'
 for url in url_list:
     try:
         match_data=scrape_match(url, url2)
@@ -176,11 +178,16 @@ for url in url_list:
     match_data_df = pd.concat([match_data_df, temp_df], axis = 0)
     x +=1
     if x % 25 == 0:
-        match_data_df.to_csv('data/RAWDATA/individual_match_data.csv')
+        match_data_df.to_csv(error_list_folder + 'individual_match_data.csv')
+        with open (pick_path, 'wb') as pick:
+            pickle.dump(error_links, pick)
+        match_data_df.to_pickle(pick_path_data)
+        with open (stadium_list_folder + "stadium_url_list.pkl", 'wb') as pick:
+            pickle.dump(stadium_list, pick)
     time.sleep(0.1)
     bar.update(x)
 
-match_data_df.to_csv('data/RAWDATA/individual_match_data.csv')
+match_data_df.to_csv(data_output_folder+ 'individual_match_data.csv')
 df = pd.DataFrame(stadium_list)
-df.to_csv('src/scrape_games/stadium_url_list.csv')
+df.to_csv(stadium_list_folder +'stadium_url_list.csv')
 
