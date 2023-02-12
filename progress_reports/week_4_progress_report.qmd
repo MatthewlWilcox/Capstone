@@ -1,7 +1,7 @@
 ---
-title: "Week [X] Progress Report"
+title: "Week 4 Progress Report"
 subtitle: "DATA 450 Capstone"
-author: "[Your Name]"
+author: "Matthew Wilcox"
 date: 2/13/23
 date-format: "[Week ending: ] M/D/YY"
 number-sections: false
@@ -13,10 +13,10 @@ format:
 
 | Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
 |------|-------|----------|---------|--------|
-| Mon.  | [4-6pm; 8-9pm]   | [3] | [Recode variables; Work on Q2] | [Link 1](https://github.com/debbieyuster/capstone/commit/394c14b7aa1abba5ef3b00f023e321dea9649e92) |
-| Tue.  |  |  |  |  |
+| Mon.  | 4-6pm   | 2 | PreProcessing | [Link 1](https://github.com/debbieyuster/capstone/commit/394c14b7aa1abba5ef3b00f023e321dea9649e92) |
+|  |  |  |  |  |
 | Wed.  |  |  |  |  |
-| Thu.  |  |  |  |  |
+| Thu.  | 3-5.5 | 2.5 | Proposal Review, set up PostgreSQL database |  |
 | Fri.  |  |  |  |  |
 | Sat.  |  |  |  |  |
 | Sun.  |  |  |  |  |

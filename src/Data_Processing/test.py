@@ -1,5 +1,9 @@
-import pandas as pd
-from sklearn.datasets import load_iris
-data = load_iris()
-df = pd.read_csv(r'data/RAWDATA/Football-dataBettingData\11-12\B1.csv')
-print(df.to_string())
+list1 = [1, 2, 3, 4]
+list2 = [3, 4, 5, 6]
+
+set1 = set(list1)
+set2 = set(list2)
+
+result = list(set1.symmetric_difference(set2))
+
+print(result)
