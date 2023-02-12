@@ -13,8 +13,8 @@ format:
 
 | Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
 |------|-------|----------|---------|--------|
-| Mon.  | 4-6pm   | 2 | PreProcessing | [Link 1](https://github.com/debbieyuster/capstone/commit/394c14b7aa1abba5ef3b00f023e321dea9649e92) |
-|  |  |  |  |  |
+| Mon.  | 4-6pm  | 2 | Preprocessing Betting Data | [Link 1](https://github.com/MatthewlWilcox/Capstone/commit/c691fd74a609f587c489f62eb52c2883b59896e9) |
+| Tue.  | 12-1am | 1 | Finish Scrapeing of data |  [Link 2](https://github.com/MatthewlWilcox/Capstone/commit/91ec8c8529c048c71128cec0f425f8be7ac82c3b)|
 | Wed.  |  |  |  |  |
 | Thu.  | 3-5.5 | 2.5 | Proposal Review, set up PostgreSQL database |  |
 | Fri.  |  |  |  |  |
