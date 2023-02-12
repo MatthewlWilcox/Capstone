@@ -1,9 +1,7 @@
-list1 = [1, 2, 3, 4]
-list2 = [3, 4, 5, 6]
-
-set1 = set(list1)
-set2 = set(list2)
-
-result = list(set1.symmetric_difference(set2))
-
-print(result)
+import pickle
+with open('src/Data_Processing/not_in_both.pkl', 'rb') as pick:
+    print(len(pickle.load(pick)))
+with open('src/Data_Processing/key.pkl', 'rb') as pick:
+    print(len(pickle.load(pick)))
+with open('src/Data_Processing/list_2_not_found.pkl', 'rb') as pick:
+    print(pickle.load(pick))
