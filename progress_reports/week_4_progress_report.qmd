@@ -27,16 +27,21 @@ format:
 
 ## What you accomplished (or attempted) this week:
 
-[Text here]
+* Combined all of the betting data csvs
+* Create a key to make teams name in the same format
+  + Build a script that looks through a list for all similar team names to find matching team name
+
 
 ## Any setbacks/roadblocks you experienced:
 
-[Text here]
+* Was unawhere that over 500 team names did not match and would need a key to make a uniform team names
 
 ## What you plan to work on next:
 
-[Text here]
+* Finish Processing the data to make a singular data set.
+* Scrape Stadium capacities
 
 ## Are you on track? If not, how will you get back on track?
 
-[Text here]
+No I am behind. The setback of having to match the team names to make them uniform was unexpected and took significant amount of time. This significantlly set me back. There is still processing of the data sets to do next week. I do feel like I overestimated several other tasks so that will be useful in making up time. Additionally I have a full week at the end where I can push stuff back if needed. I will try to just finish the processing early next week and then start the question and finish the first 4 or 5 by the end of next weekend.
+
