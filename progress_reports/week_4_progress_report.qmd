@@ -16,7 +16,7 @@ format:
 | Mon.  | 4-6pm  | 2 | Preprocessing Betting Data | [Link 1](https://github.com/MatthewlWilcox/Capstone/commit/c691fd74a609f587c489f62eb52c2883b59896e9) |
 | Tue.  | 12-1am | 1 | Finish Scrapeing of data |  [Link 2](https://github.com/MatthewlWilcox/Capstone/commit/91ec8c8529c048c71128cec0f425f8be7ac82c3b)|
 | Wed.  |  |  |  |  |
-| Thu.  | 3-5.5 | 2.5 | Proposal Review, Pre Processing | [Link 3](https://github.com/MatthewlWilcox/Capstone/commit/420ba08421ef29cef89f1ce35ed8f1e54c88c2b8) |
+| Thu.  | 3-5:30 pm | 2.5 | Proposal Review, Pre Processing | [Link 3](https://github.com/MatthewlWilcox/Capstone/commit/420ba08421ef29cef89f1ce35ed8f1e54c88c2b8) |
 | Fri.  |  |  |  |  |
 | Sat.  | 9:30pm-4am | 6.5  | Processing Data. Making team names the same  | [Link 4](https://github.com/MatthewlWilcox/Capstone/commit/4a46357f20edee96ea12091416bc9f63a4d6874e) |
 | Sun.  |  |  |  |  |
