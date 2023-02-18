@@ -30,6 +30,8 @@ Two data sets were used. The first was from Football-data.co.uk[see @Football_Be
 
 * Attendance: Attendance will be measured as a measurement of capacity. It will be a percentage. (i.e., 93% attendance)
 
+* Raw Attendance: The actual number of individuals attending a individual match. 
+
 * League: What league was the match took place in
 
 * Betting odds: This is grouped. Currently, the data set has betting odds from multiple sources for each game. Once data has been cleaned and prepped, a better understanding of which betting odds to use will be more clear. The smaller the number for all the stats, the greater chance for that team to be the winner. For example, Home 147, Tie 250, Away 340. The home team has the highest chance of winning and then is more likely to be a tie than an away team win. For all of them, it is broken down into three different variables
@@ -79,19 +81,19 @@ The data processing is large. First, all the betting data is divided into indivi
 
 **Position:**
 
-6. How does the position in the table affect the attendance of a match? This one will be a bar graph where each bar is the position within the league, showing the average attendance for each position. With this visualization analysis will also be done comparing teams in relegation to the rest of the league. For this the teams within relegation and promotion to be in different colors in comparison to the rest of the leagues. 
+6. How does the position in the table affect the attendance of a match? This one will be a bar graph where each bar is the position within the league, showing the average attendance for each position. With this visualization, an analysis will also be done comparing teams in relegation to the rest of the league. For this, the teams within relegation and promotion are in different colors in comparison to the rest of the leagues. 
 
-7. How does the position in the table affect the attendance of the match over a season? This will be a time series graph of the entire season. Here the teams will be grouped into thirds to show teams that are on the top and bottom of the table and how that changes over the course of a season.
+7. How does the position in the table affect the attendance of the match over a season? This will be a time series line graph of the entire season. Here the teams will be grouped into thirds to show teams that are on the top and bottom of the table and how that changes over the course of a season.
 
-8. How does securing promotion or the league and securing relegation affect attendance compared to before securing their position? This will be a grouped bar graph with one group being promotion and the other being relegation. They will have two bars, one being the average attendance before securing, and the second would be the average attendance after securing their position.
+8. How does securing a promotion or the league and securing relegation affect attendance compared to before securing their position? This will be a grouped bar graph with one group being promotion and the other being relegation. They will have two bars, one being the average attendance before securing, and the second would be the average attendance after securing their position.
 
-9. How does =betting odds relate to the individual teams positions? This will be a scatterplot with the difference between position and the difference between bettign odds for a team. 
+9. How do betting odds relate to the individual team's positions? This will be a scatterplot with the difference between position and the difference in betting odds for a team. 
 
 **Betting:**
 
-10. How does attendance change when there is a heavy favorite vs. a closely betting team? This will be viewed in a histogram with the attendance being measured by the betting odds for a game. 
+10. How does attendance change when there is a heavy favorite vs. a closely betting team? This will be viewed in a histogram, with the attendance being measured by the betting odds for a game. 
 
-11. How do the betting odds realte to the actural result of a match? The focus of this question is to compare to see how often the betting odds successfully predicted the outcome of a game. This will be viewed with a scatterplot where the x axis will consist of the hometeams odds of winning and the y axis be the away team odds of winning. Each individual data point will be colored if the match predicted whom would win correctly or not. Will most likely use just 2 team moneylines for this information as it will be more difficult to visualize the 3 dimension space that would occur when introducing ties. 
+11. How do the betting odds relate to the actual result of a match? The focus of this question is to compare to see how often the betting odds successfully predicted the outcome of a game. This will be viewed in a confusion matrix. On one side will be the prediction and the other sid will be the result.
 
 12. How do the predicted goals being greater than 2.5 vs. lower than 2.5 have an on the attendance of a game? This will be two bars. One will be for games where the odds being over 2.5 is greater, and the other is for games where lower than 2.5 is higher. These bars will be the average attendance for these two games. Also may go and break this up by leagues to see if the different cultures and fanbases may be more accepting of lower vs. higher-scoring games. 
 
@@ -99,7 +101,7 @@ The data processing is large. First, all the betting data is divided into indivi
 
 **Final Model:**
 
-14. How can all these factors be used to predict the attendance outcome of these games? Here I will be making models with two different outcomes one being the exact attendance figure and the other focusing on percentage of the stadium capicity filled. Three different modeling methodolgoy will be used. The first attempted will be a linear model, the second will be a polnomial regressiojn mode and the third will be a decision tree regression model. The variables looking to be used are the league, the home team, the away team, the postions(difference between the postion of the home team and away team as well as the position of just the home team), the betting odds for that individual game, odds for number of goals scored, and the time/date of the match.
+14. How can all these factors be used to predict the attendance outcome of these games? Here I will be making models with two different outcomes, one being the raw attendance and the other being attendace(percentage of the stadium filled). Three different modeling methodologies will be used. The first attempt will be a linear model, the second will be a polynomial regression model, and the third will be a decision tree regression model. The variables looking to be used are the league, the home team, the away team, the positions (difference between the position of the home team and away team as well as the position of just the home team), the betting odds for that individual game, odds for the number of goals scored, and the time/date of the match.
 
 # Work plan
 
