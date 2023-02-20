@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+data/Data_to_change/betting_data_updated_date.pkl
+data/Data_to_change/betting_data_updated_names.pkl
+data/Data_to_change/match_data_updated_date.pkl
+data/Data_to_change/match_data_updated_names.pkl
+data/RAWDATA/stadium_data.pkl
+data/RAWDATA/stadium_data_pkl.zip
