@@ -15,7 +15,7 @@ def yes_or_no(question):
 
 
 
-with open('src/Data_Processing/betting_error-team.pkl', 'rb') as pick:
+with open('src/Data_Processing/not_in_both.pkl', 'rb') as pick:
     betting_error_teams = pickle.load(pick)
 with open('src/Data_Processing/match_error_teams.pkl', 'rb') as pick:
     match_error_teams = pickle.load(pick)
@@ -137,11 +137,11 @@ x = find_pair_in_list(betting_error_teams, match_error_teams)
 # print(x[0])
 # print(x[1])
 # print(x[2])
-# with open('src/Data_Processing/key.pkl', 'wb') as pick:
-#     pickle.dump(x[0],  pick)
-# with open('src/Data_Processing/not_in_both.pkl', 'wb') as pick:
-#     pickle.dump(x[1], pick)
-# with open('1src/Data_Processing/list_2_not_found.pkl', 'wb') as pick:
-#     pickle.dump(x[2], pick)
+with open('src/Data_Processing/key2.pkl', 'wb') as pick:
+    pickle.dump(x[0],  pick)
+with open('src/Data_Processing/not_in_both2.pkl', 'wb') as pick:
+    pickle.dump(x[1], pick)
+with open('1src/Data_Processing/list_2_not_found2.pkl', 'wb') as pick:
+    pickle.dump(x[2], pick)
 
 

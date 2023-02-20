@@ -1,9 +1,7 @@
 import pandas as pd
 import pickle
 
-df = pd.read_pickle('src/scrape_games/error_list.pkl')
-print(df)
-file = open('src\error_links.txt','w')
-for i in df:
-    file.write(i +'\n')
-file.close()
+x = pd.read_pickle('data/Data_to_change/betting_data_updated_names.pkl')
+y= pd.read_pickle('src/Data_Processing/Key_dictionary.pkl')
+print(x)
+# print(y)
