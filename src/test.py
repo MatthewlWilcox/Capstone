@@ -1,7 +1,8 @@
 import pandas as pd
 import pickle
+import numpy as np
+data = pd.read_pickle('data/Data_to_change/complete_data.pkl')
 
-x = pd.read_pickle('data/Data_to_change/betting_data_updated_names.pkl')
-y= pd.read_pickle('src/Data_Processing/Key_dictionary.pkl')
-print(x)
-# print(y)
+
+data2 = data[pd.isnull(data['B365H'])]
+print(data2)
