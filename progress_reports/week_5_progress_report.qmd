@@ -1,7 +1,7 @@
 ---
-title: "Week [X] Progress Report"
+title: "Week 5 Progress Report"
 subtitle: "DATA 450 Capstone"
-author: "[Your Name]"
+author: "Matthew Wilcox"
 date: 2/13/23
 date-format: "[Week ending: ] M/D/YY"
 number-sections: false
@@ -18,25 +18,25 @@ format:
 | Wed.  |  |  |  |  |
 | Thu.  | 3:30-5:50 pm | 2 | PreProcessing | [Link1](https://github.com/MatthewlWilcox/Capstone/commit/e7311b7ee3e950478e981398b745bc11e3d3d6de) |
 | Fri.  |  |  |  |  |
-| Sat.  | 5pm-9pm | 4 |  |  |
-| Sun.  |  |  |  |  |
+| Sat.  | 5pm-9pm | 4 | Merge Datasets | [Link2](https://github.com/MatthewlWilcox/Capstone/commit/9def24b68506c2048431911de9cba0ff752be0b6) |
+| Sun.  | 3:30pm-5:30pm, 8:30pm-12am |  5.5 |  Merge dfs fully and begin to address nas and process what data will be used | [Link3](https://github.com/MatthewlWilcox/Capstone/commit/0c40f030cbe3c50706e6c3a31f8ca251e2007dc4)  |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}
 
-**Total \# of hours worked this week: [X]**
+**Total \# of hours worked this week: 11.5**
 
 ## What you accomplished (or attempted) this week:
 
-[Text here]
+All of my data is now merged into one dataframe
 
 ## Any setbacks/roadblocks you experienced:
 
-[Text here]
+Just slow had some issues with using the proper joins so figuring out which joins to use without loosing data took time.
 
 ## What you plan to work on next:
 
-[Text here]
+Dealing with nas, figuring out what leagues i will work with and begin to start questions
 
 ## Are you on track? If not, how will you get back on track?
 
-[Text here]
+A little behind but with this weekend finsihing up dealing with merging the data so i have one dataset I am back on track somewhat. Just need to focus on the research questions. 
