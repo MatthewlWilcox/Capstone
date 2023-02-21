@@ -4,7 +4,9 @@ Years
  Max Year: nan 
  Min Year nan
 ##############################
-b'Empty DataFrame\nColumns: [Unnamed: 0_x, home_team, home_score, away_team, away_score, day_of_week, month, day_of_month, year, time, attendance, stadium_x, a_href, Hohome_teammeTeam, date, Unnamed: 0_y, Div, Date, HomeTeam, AwayTeam, FTHG, FTAG, FTR, HTHG, HTAG, HTR, B365H, B365D, B365A, BWH, BWD, BWA, GBH, GBD, GBA, IWH, IWD, IWA, LBH, LBD, LBA, SBH, SBD, SBA, WHH, WHD, WHA, SJH, SJD, SJA, VCH, VCD, VCA, BSH, BSD, BSA, Bb1X2, BbMxH, BbAvH, BbMxD, BbAvD, BbMxA, BbAvA, BbOU, BbMx>2.5, BbAv>2.5, BbMx<2.5, BbAv<2.5, BbAH, BbAHh, BbMxAHH, BbAvAHH, BbMxAHA, BbAvAHA, Unnamed: 58, Unnamed: 59, Unnamed: 60, HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR, Unnamed: 70, Unnamed: 71, Unnamed: 72, Referee, PSH, PSD, PSA, PSCH, PSCD, PSCA, HFKC, ...]\nIndex: []'
+Empty DataFrame
+Columns: [Unnamed: 0_x, home_team, home_score, away_team, away_score, day_of_week, month, day_of_month, year, time, attendance, stadium_x, a_href, Hohome_teammeTeam, date, Unnamed: 0_y, Div, Date, HomeTeam, AwayTeam, FTHG, FTAG, FTR, HTHG, HTAG, HTR, B365H, B365D, B365A, BWH, BWD, BWA, GBH, GBD, GBA, IWH, IWD, IWA, LBH, LBD, LBA, SBH, SBD, SBA, WHH, WHD, WHA, SJH, SJD, SJA, VCH, VCD, VCA, BSH, BSD, BSA, Bb1X2, BbMxH, BbAvH, BbMxD, BbAvD, BbMxA, BbAvA, BbOU, BbMx>2.5, BbAv>2.5, BbMx<2.5, BbAv<2.5, BbAH, BbAHh, BbMxAHH, BbAvAHH, BbMxAHA, BbAvAHA, Unnamed: 58, Unnamed: 59, Unnamed: 60, HS, AS, HST, AST, HF, AF, HC, AC, HY, AY, HR, AR, Unnamed: 70, Unnamed: 71, Unnamed: 72, Referee, PSH, PSD, PSA, PSCH, PSCD, PSCA, HFKC, ...]
+Index: []
 ##############################
 Unnamed: 0_x 0
 home_team 0
