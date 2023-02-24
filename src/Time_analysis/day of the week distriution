@@ -1,0 +1,17 @@
+import pandas as pd
+import matplotlib as plt
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.read_pickle('data/final_datasets/time_shrink.pkl')
+
+day_categories = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+df['day_of_week'] = pd.Categorical(df['day_of_week'], categories= day_categories)
+df.sort_values(by = 'day_of_week', inplace = True)
+# df = pd.melt(df, id_vars =['day_of_week']value_vars=['raw_attendance','capacity_filled'])
+
+print(df)
+
+sns.catplot(data = df, y = 'day_of_week', x = 'raw_attendance', kind = "boxen")
+
+plt.savefig('results/Question 1/test.png')
