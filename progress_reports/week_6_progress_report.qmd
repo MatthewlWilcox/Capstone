@@ -15,8 +15,8 @@ format:
 |------|-------|----------|---------|--------|
 | Mon.  | 5-6pm, 11pm-1:30am |  3.5 | Deal with NA values | [Link1](https://github.com/MatthewlWilcox/Capstone/commit/585aa03563b44a17d82bf6da4e3e472f59781d8f) |
 | Tue.  |  |  |  |  |
-| Wed.  | 6-8pm 10:30-|  |  |  |
-| Thu.  |  |  |  |  |
+| Wed.  | 6-8pm 10-12| 4 | Shrink datasets and deal with adding capacity filled | [Link2](https://github.com/MatthewlWilcox/Capstone/commit/cc06e081c915f83b128dd63e273ea24d2fe998fd) [Link3](https://github.com/MatthewlWilcox/Capstone/commit/0c2a3ed35ca0800fad79b10258d449269aa18a86) |
+| Thu.  | 8am-9:30, 4pm-5 | 2.5 |  |  |
 | Fri.  |  |  |  |  |
 | Sat.  |  |  |  |  |
 | Sun.  |  |  |  |  |
