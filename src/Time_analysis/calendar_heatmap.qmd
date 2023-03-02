@@ -1,0 +1,16 @@
+---
+title: "test R calendar heat"
+subtitle: "DATA 450 Capstone"
+author: "Matthew Wilcox"
+date: today
+bibliography: references.bib
+number-sections: true
+format:
+  pdf: default
+jupyter: python3
+---
+
+```{r}
+library(calendR)
+library(tidyverse)
+```

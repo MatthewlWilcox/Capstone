@@ -24,7 +24,6 @@ fig, axs = plt.subplots(ncols=2, sharey=True,)
 fig.suptitle('Raw Attendance for Day of the Week')
 sns.barplot(ax =axs[0],data=df_grouped_mean, x = 'day_of_week', y = 'raw_attendance').set(title ='Mean')
 plt.xticks(rotation=90)
-
 sns.barplot(ax =axs[1],data=df_grouped_median, x = 'day_of_week', y = 'raw_attendance').set(title ='Median')
 plt.xticks(rotation=90)
 plt.savefig('results/Question 1/day_of_week_raw_attendance.png')
