@@ -7,7 +7,7 @@ print(df.columns)
 df = df[[
     'date', 'time', 'day_of_week', 'date_time', 'raw_attendance', 'capacity_filled', 'division'
 ]]
-df['month_year']= df['date'].dt.
+df['month_year']= df['date'].dt.month
 print(df)
 df_grouped = df.groupby(['date', 'division']).median().reset_index()
 print(df_grouped)

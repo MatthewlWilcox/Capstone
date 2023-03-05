@@ -1,0 +1,97 @@
+---
+title: "Demand of Football in European Leagues"
+author: "Matthew Wilcox"
+format: revealjs
+jupyter: python3
+---
+
+```{python}
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+```
+
+
+## Background
+
+## Dataset
+
+- Combined Data sets from Football-Data.co.uk and worldfootball.net
+- Shrunk data from 107 columns to 38
+- Data is from 2010-2019
+- Conisists of 53,238 rows
+
+```{python}
+total_data_set = pd.read_pickle('d:/Python Work/Capstone/data/final_datasets/total_data.pkl')
+print(total_data_set.columns)
+```
+
+## Progress
+
+## Day of the Week Capacity Filled
+```{python}
+time_df = pd.read_pickle('d:/Python Work/Capstone/data/final_datasets/time_shrink.pkl')
+
+df_grouped_mean = time_df.groupby('day_of_week')['raw_attendance', 'capacity_filled'].mean().reset_index()
+df_grouped_median = time_df.groupby('day_of_week')['raw_attendance', 'capacity_filled'].median().reset_index()
+
+day_categories = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+df_grouped_median['day_of_week'] = pd.Categorical(df_grouped_median['day_of_week'], categories= day_categories)
+df_grouped_median.sort_values(by = 'day_of_week', inplace = True)
+
+sns.barplot(data=df_grouped_median, x = 'day_of_week', y = 'capacity_filled').set(title ='Median Capacity Filled')
+plt.xticks(rotation=90)
+plt.xlabel('Day of the Week')
+plt.ylabel('Capacity Filled')
+plt.show()
+```
+
+## Day of the Week Attendance
+```{python}
+sns.barplot(data=df_grouped_median, x = 'day_of_week', y = 'raw_attendance').set(title ='Median Attendance')
+plt.xticks(rotation=90)
+plt.ylabel('Attendance')
+
+
+plt.show()
+```
+## Day of the Week total Count
+
+```{python}
+grouped_week_count = time_df.groupby('day_of_week').count().reset_index()
+
+grouped_week_count['day_of_week'] = pd.Categorical(grouped_week_count['day_of_week'], categories= day_categories)
+grouped_week_count.sort_values(by = 'day_of_week', inplace = True)
+
+
+sns.barplot(data = grouped_week_count, x = 'day_of_week', y = 'date')
+plt.xlabel('Day of the Week')
+plt.ylabel('Count')
+plt.title('Number of games per day of the Week')
+plt.show()
+```
+## Attendance Time of Day
+```{python}
+
+df_grouped_mean_tod= time_df.groupby(data['date_time'].dt.hour).mean()
+df_grouped_median_tod= time_df.groupby(data['date_time'].dt.hour).median()
+
+
+sns.lineplot(df_grouped_median_tod, x = 'date_time', y = 'raw_attendance', markers = True, marker = "o" )
+plt.xlabel('Hour of the Day')
+plt.ylabel('Attendance')
+plt.show()
+```
+
+
+## Away Teams Impact
+
+## Division Capacity
+
+## Standardized Away Teams Impact
+
+## Setbacks
+
+## Future Work
+
