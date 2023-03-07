@@ -1,7 +1,7 @@
 ---
-title: "Week [X] Progress Report"
+title: "Week 7 Progress Report"
 subtitle: "DATA 450 Capstone"
-author: "[Your Name]"
+author: "Matthew Wilcox"
 date: 2/13/23
 date-format: "[Week ending: ] M/D/YY"
 number-sections: false
@@ -13,30 +13,31 @@ format:
 
 | Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
 |------|-------|----------|---------|--------|
-| Mon.  | 3-5:30 |  |  |  |
+| Mon.  | 3-5:30 | 2.5 hrs | Question 4 | [Link1](https://github.com/MatthewlWilcox/Capstone/commit/13851ffb89e3b80812c8710b847fc6906d42ac78) |
 | Tue.  |  |  |  |  |
-| Wed.  |  |  |  |  |
-| Thu.  |  |  |  |  |
-| Fri.  |  |  |  |  |
+| Wed.  |  |  |  |  |*
+| Thu.  | 3-5:30 | 2.5 | question 5 | [Link2](https://github.com/MatthewlWilcox/Capstone/commit/77911a2ccac592fa1c94f0c3dd71f9705efe91b2)
+| Fri.  | n/a | 3 hrs | Presentation Question 5 | [Link3](https://github.com/MatthewlWilcox/Capstone/commit/970fdf100c3ca961ed38f850daaee7d6fb99a276)|
 | Sat.  |  |  |  |  |
 | Sun.  |  |  |  |  |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}
 
-**Total \# of hours worked this week: [X]**
+**Total \# of hours worked this week: 8**
 
 ## What you accomplished (or attempted) this week:
 
-[Text here]
+Started working on the presentation. Kept working on Questions 4 and begun Question 5. Reorganized the questions and Changed Question 5 to be more about teams names vs their postions. 
 
 ## Any setbacks/roadblocks you experienced:
 
-[Text here]
+I was traveling so the times are all messed up on friday so I am just not putting them there. Also had to learn how to do Quarto Presentations. 
 
 ## What you plan to work on next:
 
-[Text here]
+Continue working on the presentation and Finish the away team impact. Then move to the betting data.
 
 ## Are you on track? If not, how will you get back on track?
 
-[Text here]
+Yes I am on track. I feel pretty good about where I am at. 
+

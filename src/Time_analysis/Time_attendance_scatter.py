@@ -16,7 +16,7 @@ fig1.set(title = "Mean Raw Attendance by time of the day", xlabel ='Hour of the 
 
 
 # plt.show()
-fig1.figure.savefig('results/Question 2/mean_raw_attendance_time_day.png',dpi=1200)
+fig1.show()
 
 
 fig, ax = plt.subplots(figsize=(15, 10))
