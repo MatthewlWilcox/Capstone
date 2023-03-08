@@ -15,6 +15,13 @@ import matplotlib.pyplot as plt
 
 ## Background
 
+- Goal is to Analyze factors that impact European Football teams attendance
+- Analyzing 21 leagues from 11 countries
+- Looking at the effect of:
+  - Time/Date
+  - The Away Team
+  - Betting odds
+
 ## Dataset
 
 - Combined Data sets from Football-Data.co.uk and worldfootball.net
@@ -52,6 +59,7 @@ plt.show()
 sns.barplot(data=df_grouped_median, x = 'day_of_week', y = 'raw_attendance').set(title ='Median Attendance')
 plt.xticks(rotation=90)
 plt.ylabel('Attendance')
+plt.xlabel('Day of Week')
 
 
 plt.show()
@@ -85,6 +93,18 @@ plt.ylabel('Attendance')
 plt.show()
 ```
 
+## Number of Games Time of Day
+```{python}
+df_grouped_count = time_df.groupby(time_df['date_time'].dt.hour).count().reset_index
+# df_grouped_count= df_grouped_count.rename(columns = {'date':'count'})
+print(df_grouped_count)
+# sns.lineplot(data = df_grouped_median_tod, x = 'date_time', y = 'raw_attendance', markers = True, marker = "o" )
+# ax2 = plt.twinx()
+sns.lineplot(data = df_grouped_count, x = 'date_time', y = 'raw_attendance', markers = True, marker = "o" )
+
+
+plt.show()
+```
 
 ## Away Teams Impact Best Teams
 ```{python}
@@ -120,13 +140,15 @@ div_dict = {'D1':'Bundesliga', 'D2': '2. Bundesliga', 'E0':'Premier League', 'E1
               'SC0':'Scotish Premier League', 'SC1':'Scotish Division 1', 'T1':'Fubol Ligi 1'}
 away_top_30 = away_top_30.replace({'division':div_dict})
 # div_avg = div_avg.replace({'division':div_dict})
-print(away_top_30)
+# print(away_top_30)
 
 
-# sns.barplot(data = away_top_30, x = 'away_team_impact', y = 'away_team', hue = 'division', dodge = False)
-# plt.title('Away Teams Impact on Attendance: Top 30 Teams')
-# plt.xlabel('Mean Attendnace Increase')
-# plt.show()
+sns.barplot(data = away_top_30, x = 'away_team_impact', y = 'away_team', hue = 'division', dodge = False)
+plt.title('Away Teams Impact on Attendance: Top 30 Teams')
+plt.xlabel('Mean Attendnace Increase')
+plt.ylabel('Away Team')
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
+plt.show()
 
 ```
 
@@ -139,6 +161,9 @@ away_bottom_30 = away_bottom_30.replace({'division':div_dict})
 sns.barplot(data = away_bottom_30, x = 'away_team_impact', y = 'away_team', hue = 'division', dodge = False)
 plt.title('Away Teams Impact on Attendance: Bottom 30 Teams')
 plt.xlabel('Mean Attendnace Increase')
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
+plt.ylabel('Away Team')
+
 plt.show()
 
 
@@ -177,6 +202,9 @@ away_top_30_std = away_top_30_std.replace({'division':div_dict})
 sns.barplot(data = away_top_30_std, x = 'attendance_zscore', y = 'away_team', hue = 'division', dodge = False)
 plt.title('Away Teams Impact on Attendance Standardized: Top 30 Teams')
 plt.xlabel('Z Score of Mean Attendance Increase')
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
+plt.ylabel('Away Team')
+
 plt.show()
 
 
@@ -192,44 +220,53 @@ away_bottom_30_std = away_bottom_30_std.replace({'division':div_dict})
 sns.barplot(data = away_bottom_30_std, x = 'attendance_zscore', y = 'away_team', hue = 'division', dodge = False)
 plt.title('Away Teams Impact on Attendance Standardized: Bottom 30 Teams')
 plt.xlabel('Z Score of Mean Attendance Increase')
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
+plt.ylabel('Away Team')
+
 plt.show()
 
 
 ```
 
-## Test
 
 ```{python}
-import ipywidgets as widgets
-leagues_impact_away_team = away_team_impact
-# .sort_values('division').replace({'division':div_dict})
-divisions_list = list(set(leagues_impact_away_team.division.values.tolist()))
-# print(divisions_list)
-# print(sorted(divisions_list))
+# import ipywidgets as widgets
+# leagues_impact_away_team = away_team_impact
+# # .sort_values('division').replace({'division':div_dict})
+# divisions_list = list(set(leagues_impact_away_team.division.values.tolist()))
+# # print(divisions_list)
+# # print(sorted(divisions_list))
 
-divisions_list = [div_dict.get(item,item) for item in divisions_list]
-# print(divisions_list)
+# divisions_list = [div_dict.get(item,item) for item in divisions_list]
+# # print(divisions_list)
 
 
-# dd = widgets.Dropdown(
-#   options = divisions_list,
-#   value = divisions_list[0],
-#   description = 'Select a Division'
-# )
-def draw_plot(divisions_list):
+# # dd = widgets.Dropdown(
+# #   options = divisions_list,
+# #   value = divisions_list[0],
+# #   description = 'Select a Division'
+# # )
+# def draw_plot(divisions_list):
 
-  df = away_team_impact[away_team_impact['division']==divisions_list]
+#   df = away_team_impact[away_team_impact['division']==divisions_list]
 
-  p = sns.barplot(data = df,
-                    x = 'attendance_zscore', y = 'away_team', dodge = False)
-division = widgets.Dropdown(options = divisions_list, description = 'Division:')
+#   p = sns.barplot(data = df,
+#                     x = 'attendance_zscore', y = 'away_team', dodge = False)
+# division = widgets.Dropdown(options = divisions_list, description = 'Division:')
 
-gui = widgets.interactive(draw_plot, divisions_list = divisions_list)
-# display(x)
-gui
+# gui = widgets.interactive(draw_plot, divisions_list = divisions_list)
+# # display(x)
+# gui
 ```
 
 ## Setbacks
 
+- Data Scraping and Processing took significantly longer than expected
+- Once Scraping and Processing was complete. The questions refereing to a teams position in the league affect on attendance were unattainable
+  - The position would be columsn that need to be created and with missing data and not a consitent schedule of leagues start date
+- Calendar Mat plot have been a struggle to get to function properly. 
+
 ## Future Work
 
+- Betting Data Analysis
+- Model for Team Attendance
