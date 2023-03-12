@@ -1,5 +1,5 @@
 ---
-title: "Week [X] Progress Report"
+title: "Week 8 Progress Report"
 subtitle: "DATA 450 Capstone"
 author: "[Your Name]"
 date: 2/13/23
@@ -13,12 +13,12 @@ format:
 
 | Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
 |------|-------|----------|---------|--------|
-| Mon.  |  |  |  |  |
-| Tue.  |  |  |  |  |
-| Wed.  |  |  |  |  |
+| Mon.  | 5-8pm, 9-11pm | 5 | Presentation and Away team impact | [Link1](https://github.com/MatthewlWilcox/Capstone/commit/87bc2e111336e83606070b890e39dc72a3f7b7aa) |
+| Tue.  | 4-5:30 | 1.5 | Presentation | [Link2]() |
+| Wed.  | 6:30-8 | 1.5 | Presentation | [Link3]() |
 | Thu.  |  |  |  |  |
 | Fri.  |  |  |  |  |
-| Sat.  |  |  |  |  |
+| Sat.  | 2:30- |  |  |  |
 | Sun.  |  |  |  |  |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}

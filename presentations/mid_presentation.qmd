@@ -278,5 +278,6 @@ plt.show()
 
 ## Future Work
 
+- Calendar Plots
 - Betting Data Analysis
 - Model for Team Attendance
