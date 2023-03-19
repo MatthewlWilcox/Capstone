@@ -3,14 +3,84 @@ title: "test R calendar heat"
 subtitle: "DATA 450 Capstone"
 author: "Matthew Wilcox"
 date: today
-bibliography: references.bib
-number-sections: true
-format:
-  pdf: default
+format: html
 jupyter: python3
 ---
 
-```{r}
-library(calendR)
-library(tidyverse)
+```{python}
+import pandas as pd
+from datetime import datetime as dt
+
+from plotly_calplot import calplot
+
+data = pd.read_pickle('d:/Python Work/Capstone/data/final_datasets/Total_data.pkl')
+
+data['month_day'] = data['date_time'].dt.strftime('%Y-%m-%d')
+
+date_of_year = data.groupby('month_day').count()
+date_of_year['count'] = date_of_year['home_team']
+date_of_year = date_of_year['count'].sort_values().reset_index()
+```
+```{python}
+date_of_year_condensed = date_of_year
+date_of_year_condensed['month_day'] = '2024-' +date_of_year_condensed['month_day'] 
+# date_of_year_condensed['month_day'] = pd.to_datetime(date_of_year_condensed['month_day'], format = '%Y-%m-%d')
+```
+```{python}
+date_of_year['month_day'] = pd.to_datetime(date_of_year['month_day'], format="%Y-%m-%d")
+print(date_of_year)
+#
+
+# # date_of_year['month_day'] = date_of_year['month_day'].apply(lambda x: x.replace(year = 2024))
+# # print(date_of_year)
+```
+```{python}
+# fig = calplot(date_of_year_condensed, x = 'month_day', y = 'count', years_title=True)
+# fig.show()
+
+
+```
+
+
+
+```{python}
+
+fig = calplot(date_of_year[date_of_year['month_day'].dt.year==2010], x = 'month_day', y = 'count', years_title=True)
+fig.show()
+```
+```{python}
+fig = calplot(date_of_year[date_of_year['month_day'].dt.year==2011], x = 'month_day', y = 'count', years_title=True)
+fig.show()
+```
+```{python}
+fig = calplot(date_of_year[date_of_year['month_day'].dt.year==2012], x = 'month_day', y = 'count', years_title=True)
+fig.show()
+```
+```{python}
+fig = calplot(date_of_year[date_of_year['month_day'].dt.year==2013], x = 'month_day', y = 'count', years_title=True)
+fig.show()
+```
+```{python}
+fig = calplot(date_of_year[date_of_year['month_day'].dt.year==2014], x = 'month_day', y = 'count', years_title=True)
+fig.show()
+```
+```{python}
+fig = calplot(date_of_year[date_of_year['month_day'].dt.year==2015], x = 'month_day', y = 'count', years_title=True)
+fig.show()
+```
+```{python}
+fig = calplot(date_of_year[date_of_year['month_day'].dt.year==2016], x = 'month_day', y = 'count', years_title=True)
+fig.show()
+```
+```{python}
+fig = calplot(date_of_year[date_of_year['month_day'].dt.year==2017], x = 'month_day', y = 'count', years_title=True)
+fig.show()
+```
+```{python}
+fig = calplot(date_of_year[date_of_year['month_day'].dt.year==2018], x = 'month_day', y = 'count', years_title=True)
+fig.show()
+```
+```{python}
+fig = calplot(date_of_year[date_of_year['month_day'].dt.year==2019], x = 'month_day', y = 'count', years_title=True)
+fig.show()
 ```

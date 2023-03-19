@@ -41,14 +41,6 @@ print(bet_dataset[['B365H', 'B365D', 'B365A', 'B365_Result', 'BWH', 'BWA', 'BWD'
                    'BWH', 'BWA', 'BWD', 'BW_Result', 'WHH', 'WHA', 'WHD', 'WH_Result', 'VCH', 
                    'VCA', 'VCD', 'VC_Result'
                    ]])
-grouped_bet_dif_mean = bet_dataset.groupby(['division', 'home_team']).mean().reset_index()
-print(grouped_bet_dif_mean)
-grouped_bet_dif_mean = grouped_bet_dif_mean[['division', 'home_team', 'raw_attendance']].rename(columns = {'raw_attendance': 'avg_attendance'})
-grouped_bet_dif_std = bet_dataset.groupby(['division', 'home_team']).std().reset_index()
-print(grouped_bet_dif_mean)
-grouped_bet_dif_std = grouped_bet_dif_std[['division', 'home_team', 'raw_attendance']].rename(columns = {'raw_attendance': 'std_attendance'})
 
-bet_dif = pd.merge(bet_dataset, grouped_bet_dif_mean, on = ['division', 'home_team'])
-bet_dif = pd.merge(bet_dataset, grouped_bet_dif_std, on = ['division', 'home_team'])
 bet_dataset.to_pickle('data/final_datasets/bet_data.pkl')
 bet_dataset.to_csv('data/final_datasets/bet_data.csv')

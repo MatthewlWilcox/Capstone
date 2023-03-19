@@ -1,8 +1,8 @@
 ---
 title: "Week 8 Progress Report"
 subtitle: "DATA 450 Capstone"
-author: "[Your Name]"
-date: 2/13/23
+author: "Matthew Wilcox"
+date: 3/12/23
 date-format: "[Week ending: ] M/D/YY"
 number-sections: false
 format:
@@ -14,29 +14,29 @@ format:
 | Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
 |------|-------|----------|---------|--------|
 | Mon.  | 5-8pm, 9-11pm | 5 | Presentation and Away team impact | [Link1](https://github.com/MatthewlWilcox/Capstone/commit/87bc2e111336e83606070b890e39dc72a3f7b7aa) |
-| Tue.  | 4-5:30 | 1.5 | Presentation | [Link2]() |
-| Wed.  | 6:30-8 | 1.5 | Presentation | [Link3]() |
+| Tue.  | 4-5:30 | 1.5 | Presentation | [Link2](https://github.com/MatthewlWilcox/Capstone/commit/87bc2e111336e83606070b890e39dc72a3f7b7aa) |
+| Wed.  | 6:30-8 | 1.5 | Presentation | [Link3](https://github.com/MatthewlWilcox/Capstone/commit/e14696514ecc93b496bffa48af0c573b9a81e2ba) |
 | Thu.  |  |  |  |  |
 | Fri.  |  |  |  |  |
-| Sat.  | 2:30- |  |  |  |
-| Sun.  |  |  |  |  |
+| Sat.  | 2:30-5pm , 5:30-7:30, 9:30-10:30 | 5.5 | Betting data |  |
+| Sun.  | 6:30-7:30 | 1 | betting data | [Link5]3f35c9be880a5328cc80000eb25ee2d522ea6f4b) |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}
 
-**Total \# of hours worked this week: [X]**
+**Total \# of hours worked this week: 14.5**
 
 ## What you accomplished (or attempted) this week:
 
-[Text here]
+Fished the presentation. Started working on betting data.
 
 ## Any setbacks/roadblocks you experienced:
 
-[Text here]
+Error with stadium capacity. Some of the capacitys are just wrong. Looking at ways to either fix this issue or go about with analysis not using it. 
 
 ## What you plan to work on next:
 
-[Text here]
+Finish up betting data and move into the model.
 
 ## Are you on track? If not, how will you get back on track?
 
-[Text here]
+Yes I am on track.

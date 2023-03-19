@@ -17,4 +17,7 @@ for index, rows in bet_data.iterrows():
 bet_increase_bool = bet_data
 bet_increase_bool['home_favorite'] = h_fav
 
+
+
+
 print(bet_increase_bool)
