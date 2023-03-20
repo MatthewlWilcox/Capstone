@@ -7,6 +7,11 @@ format: html
 jupyter: python3
 ---
 
+```{r}
+data_r <- read.csv(file = 'data/final_datasets/data_standardized.csv')
+data_r
+```
+
 ```{python}
 import pandas as pd
 from datetime import datetime as dt
@@ -22,9 +27,9 @@ date_of_year['count'] = date_of_year['home_team']
 date_of_year = date_of_year['count'].sort_values().reset_index()
 ```
 ```{python}
-date_of_year_condensed = date_of_year
-date_of_year_condensed['month_day'] = '2024-' +date_of_year_condensed['month_day'] 
-# date_of_year_condensed['month_day'] = pd.to_datetime(date_of_year_condensed['month_day'], format = '%Y-%m-%d')
+# date_of_year_condensed = date_of_year
+# date_of_year_condensed['month_day'] = '2024-' +date_of_year_condensed['month_day'] 
+# # date_of_year_condensed['month_day'] = pd.to_datetime(date_of_year_condensed['month_day'], format = '%Y-%m-%d')
 ```
 ```{python}
 date_of_year['month_day'] = pd.to_datetime(date_of_year['month_day'], format="%Y-%m-%d")

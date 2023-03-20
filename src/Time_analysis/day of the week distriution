@@ -12,6 +12,6 @@ df.sort_values(by = 'day_of_week', inplace = True)
 
 print(df)
 
-sns.catplot(data = df, y = 'day_of_week', x = 'raw_attendance', kind = "boxen")
+sns.catplot(data = df, y = 'day_of_week', x = 'standard_attend', kind = "boxen")
 
-plt.savefig('results/Question 1/test.png')
+plt.savefig('results/Question 1/test_standard.png')

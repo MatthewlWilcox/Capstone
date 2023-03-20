@@ -30,7 +30,7 @@ import matplotlib.pyplot as plt
 - Conisists of 53,238 rows
 
 ```{python}
-total_data_set = pd.read_pickle('d:/Python Work/Capstone/data/final_datasets/total_data.pkl')
+total_data_set = pd.read_pickle('d:/Python Work/Capstone/data/final_datasets/data_standardized.pkl')
 print(total_data_set.columns)
 ```
 
@@ -39,17 +39,22 @@ print(total_data_set.columns)
 ```{python}
 time_df = pd.read_pickle('d:/Python Work/Capstone/data/final_datasets/time_shrink.pkl')
 
-df_grouped_mean = time_df.groupby('day_of_week')['raw_attendance', 'capacity_filled'].mean().reset_index()
-df_grouped_median = time_df.groupby('day_of_week')['raw_attendance', 'capacity_filled'].median().reset_index()
+df_grouped_mean = time_df.groupby('day_of_week')['raw_attendance', 'capacity_filled', 'standard_attend'].mean().reset_index()
+df_grouped_median = time_df.groupby('day_of_week')['raw_attendance', 'capacity_filled', 'standard_attend'].median().reset_index()
 
 day_categories = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 df_grouped_median['day_of_week'] = pd.Categorical(df_grouped_median['day_of_week'], categories= day_categories)
 df_grouped_median.sort_values(by = 'day_of_week', inplace = True)
 
-sns.barplot(data=df_grouped_median, x = 'day_of_week', y = 'capacity_filled').set(title ='Median Capacity Filled')
+sns.barplot(data=df_grouped_mean, x = 'day_of_week', y = 'standard_attend').set(title ='Median Capacity Filled')
 plt.xticks(rotation=90)
 plt.xlabel('Day of the Week')
 plt.ylabel('Capacity Filled')
+plt.show()
+```
+
+```{python}
+sns.catplot(data = total_data_set, x = 'day_of_week', y = 'standard_attend', kind = 'swarm',hue = 'division')
 plt.show()
 ```
 
