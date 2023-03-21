@@ -1,0 +1,32 @@
+---
+title: "test R calendar heat"
+subtitle: "DATA 450 Capstone"
+author: "Matthew Wilcox"
+date: today
+format: html
+
+
+---
+
+
+```{r}
+library(tidyverse)
+data_r <- read.csv(file = 'd:/Python Work/Capstone/data/final_datasets/data_standardized.csv')
+
+
+df <- subset(data_r, select= c('date','raw_attendance'))
+df$date <- as.Date(df$date,format="%Y-%m-%d") %>%
+filter(date,between(as.date('2013-01-01'), as.date('2013-12-31')))
+df <- df %>% group_by(date) %>% summarise(mean_attend = mean(raw_attendance), .groups = 'drop') 
+str(head(df))
+nrow(df)
+```
+
+```{r}
+library(calendR)
+calendR(year = 2013,
+        special.days = df,
+        gradient = TRUE,
+        low.col = "#FFFFED",
+        special.col = "#FF0000")
+```

@@ -3,13 +3,18 @@ title: "test R calendar heat"
 subtitle: "DATA 450 Capstone"
 author: "Matthew Wilcox"
 date: today
-format: html
-jupyter: python3
+eval: true
+engine: knitr
+
 ---
 
 ```{r}
-data_r <- read.csv(file = 'data/final_datasets/data_standardized.csv')
-data_r
+library(reticulate)
+```
+
+```{r}
+data_r <- read.csv(file = 'd:/Python Work/Capstone/data/final_datasets/data_standardized.csv')
+head(data_r)
 ```
 
 ```{python}
