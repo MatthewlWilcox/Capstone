@@ -13,8 +13,8 @@ format:
 
 | Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
 |------|-------|----------|---------|--------|
-| Mon.  |  |  |  |  |
-| Tue.  |  |  |  |  |
+| Mon.  | 5pm-7:30pm | 2.5 | Calendar map  |  |
+| Tue.  | 4pm- |  |  |  |
 | Wed.  |  |  |  |  |
 | Thu.  |  |  |  |  |
 | Fri.  |  |  |  |  |
