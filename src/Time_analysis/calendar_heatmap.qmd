@@ -8,9 +8,6 @@ engine: knitr
 
 ---
 
-```{r}
-library(reticulate)
-```
 
 ```{r}
 data_r <- read.csv(file = 'd:/Python Work/Capstone/data/final_datasets/data_standardized.csv')

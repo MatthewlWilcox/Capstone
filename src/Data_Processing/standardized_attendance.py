@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from datetime import datetime as dt
 data = pd.read_pickle('data/final_datasets/Total_data.pkl')
 season = []
@@ -18,18 +19,20 @@ for index, rows in data.iterrows():
     else:
         season = season + [year]
 
+# def stand_dev(x): return np.std(x)
 
 data['season'] = season
 
-data_std = data.groupby(['home_team', 'season']).std().reset_index()
-data_std = data_std[['home_team', 'season', 'raw_attendance']].rename(columns = {'raw_attendance':'std_attend'})
-data_mean = data.groupby(['home_team', 'season']).mean().reset_index()
-data_mean = data_mean[['home_team', 'season', 'raw_attendance']].rename(columns = {'raw_attendance': 'mean_attend'})
-data = pd.merge(data, data_mean, on = ['home_team', 'season'])
-data = pd.merge(data, data_std, on= ['home_team', 'season'])
-data['standard_attend'] = (data['raw_attendance']-data['mean_attend'])/ data['std_attend']
+data_std = data.groupby(['home_team', 'season'])['raw_attendance'].std().reset_index()
+print(data_std)
+data_std = data_std.rename(columns = {'raw_attendance':'std_attend'})
+print(data_std[data_std['std_attend'].isna()])
+# data_mean = data.groupby(['home_team', 'season']).mean().reset_index()
+# data_mean = data_mean[['home_team', 'season', 'raw_attendance']].rename(columns = {'raw_attendance': 'mean_attend'})
+# data = pd.merge(data, data_mean, on = ['home_team', 'season'])
+# data = pd.merge(data, data_std, on= ['home_team', 'season'])
+# data['standard_attend'] = (data['raw_attendance']-data['mean_attend'])/ data['std_attend']
 
-data.to_pickle('data/final_datasets/data_standardized.pkl')
-data.to_csv('data/final_datasets/data_standardized.csv')
+# data.to_pickle('data/final_datasets/data_standardized.pkl')
+# data.to_csv('data/final_datasets/data_standardized.csv')
 
-print(data)

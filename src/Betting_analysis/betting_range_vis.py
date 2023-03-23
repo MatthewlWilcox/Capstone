@@ -25,25 +25,25 @@ bet_dif['abs_dif'] = abs(bet_dif['B365H']-bet_dif['B365A'])
 bet_dif['zscore'] = (bet_dif['raw_attendance'] - bet_dif['avg_attendance'])/bet_dif['std_attendance']
 print(bet_dif)
 
-bet_dif = bet_dif[(bet_dif['zscore']<3) & (bet_dif['zscore'] > -3)]
-sns.lmplot(data = bet_dif, y = 'zscore', x ='dif')
-plt.show()
+# bet_dif = bet_dif[(bet_dif['zscore']<3) & (bet_dif['zscore'] > -3)]
+# sns.lmplot(data = bet_dif, y = 'zscore', x ='dif')
+# plt.show()
 
 
 
 
-sns.scatterplot(data = bet_dif, y = 'zscore', x ='abs_dif')
-plt.show()
-bet_dif=bet_dif[['capacity_filled', 'dif']]
-print(bet_dif)
+# sns.scatterplot(data = bet_dif, y = 'zscore', x ='abs_dif')
+# plt.show()
+# bet_dif=bet_dif[['capacity_filled', 'dif']]
+# print(bet_dif)
 
 
-bet_dif_pivot = bet_dif.pivot(columns = ['capacity_filled', 'dif'])
-print(bet_dif_pivot)
-sns.histplot(data = bet_dif, x = 'capacity_filled')
-plt.show()
-sns.scatterplot(data = bet_dif, x = 'dif', y = 'capacity_filled')
-plt.show()
+# bet_dif_pivot = bet_dif.pivot(columns = ['capacity_filled', 'dif'])
+# print(bet_dif_pivot)
+# sns.histplot(data = bet_dif, x = 'capacity_filled')
+# plt.show()
+# sns.scatterplot(data = bet_dif, x = 'dif', y = 'capacity_filled')
+# plt.show()
 
-sns.heatmap(data = bet_dif_pivot)
-plt.show()
+# sns.heatmap(data = bet_dif_pivot)
+# plt.show()

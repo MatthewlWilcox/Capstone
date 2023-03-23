@@ -54,8 +54,8 @@ plt.show()
 ```
 
 ```{python}
-sns.catplot(data = total_data_set, x = 'day_of_week', y = 'standard_attend', kind = 'swarm',hue = 'division')
-plt.show()
+# sns.catplot(data = total_data_set, x = 'day_of_week', y = 'standard_attend', kind = 'swarm',hue = 'division')
+# plt.show()
 ```
 
 ## Day of the Week Attendance
