@@ -20,7 +20,7 @@ def betting_accuracy_vis(name):
     b365_data['pct'] = b365_data['count']/b365_data['total'] *100
     # print(b365_data)
     b365_data = b365_data.pivot(index = 'FTR', columns = name, values = 'pct')
-    # print(b365_data)
+    print(b365_data)
 
     fig = sns.heatmap(data = b365_data, annot= True)
     plt.title(name + ' Accuracy in predicting Actual Result')
