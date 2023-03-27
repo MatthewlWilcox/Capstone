@@ -16,31 +16,29 @@ format:
 | Mon.  | 5-6pm, 11pm-1:30am |  3.5 | Deal with NA values | [Link1](https://github.com/MatthewlWilcox/Capstone/commit/585aa03563b44a17d82bf6da4e3e472f59781d8f) |
 | Tue.  |  |  |  |  |
 | Wed.  | 6-8pm 10-12| 4 | Shrink datasets and deal with adding capacity filled | [Link2](https://github.com/MatthewlWilcox/Capstone/commit/cc06e081c915f83b128dd63e273ea24d2fe998fd) [Link3](https://github.com/MatthewlWilcox/Capstone/commit/0c2a3ed35ca0800fad79b10258d449269aa18a86) |
-<<<<<<< Updated upstream
-| Thu.  | 8am-9:30, 4pm-5 | 2.5 |  |  |
-=======
-| Thu.  |  |  |  |  |
->>>>>>> Stashed changes
+| Thu.  | 8am-9:30, 4pm-5 | 2.5 | Question 1  | [Link4](https://github.com/MatthewlWilcox/Capstone/commit/faf3f023169d0c521825ae6557cfcd470ef33893) |
 | Fri.  |  |  |  |  |
 | Sat.  |  |  |  |  |
-| Sun.  |  |  |  |  |
+| Sun.  | 10pm-12 | 2 | Question 2 & 3 | [Link5](https://github.com/MatthewlWilcox/Capstone/commit/a14099a71399e61d93445e3e69a1d59621b210ef) |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}
 
-**Total \# of hours worked this week: [X]**
+**Total \# of hours worked this week: [12]**
 
 ## What you accomplished (or attempted) this week:
 
-[Text here]
+-Fineshed cleaning the dataset
+-Finished graphics for Question 1 and 2
+- Began work on question 3
 
 ## Any setbacks/roadblocks you experienced:
 
-[Text here]
+Had some issues with grouping of data but besides that this week went much smoother. After finishing cleaning it has been flying doing the questions. 
 
 ## What you plan to work on next:
 
-[Text here]
+I want to finish the timing questions and the question on teams. I also want to begin the betting questjions. 
 
 ## Are you on track? If not, how will you get back on track?
 
-[Text here]
+I am behind from my intitial plan because I severely underestimated how long it would take to scrape, clean, and process the data. But since I finsihed that I feel I have quickly begun to catch up.

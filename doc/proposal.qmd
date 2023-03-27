@@ -75,33 +75,29 @@ The data processing is large. First, all the betting data is divided into indivi
 2. How does the start time of a match affect the attendance of that match? This will be viewed in either a histogram or scatter plot of the data, with the x-axis being the time of the game and the y-axis being the attendance level. Most likely will be a histogram. 
 
 
-4. How do attendance for matches change over an entire year? Similarly to the previous question, this will be viewed as a heat map of the entire calendar year, including all of the dates however.
+3. How do attendance for matches change over an entire year? Similarly to the previous question, this will be viewed as a heat map of the entire calendar year, including all of the dates however.
 
-5. How does attendance change over the season, averaging per league? This one compares the different leagues we are studying over time. This will be done with a time series line graph to see if all the leagues follow the same trends of average attendance over the entire season or if some leagues have different patterns.
+4. How does attendance change over the season, averaging per league? This one compares the different leagues we are studying over time. This will be done with a time series line graph to see if all the leagues follow the same trends of average attendance over the entire season or if some leagues have different patterns.
 
-**Position:**
+**Teams:**
 
-6. How does the position in the table affect the attendance of a match? This one will be a bar graph where each bar is the position within the league, showing the average attendance for each position. With this visualization, an analysis will also be done comparing teams in relegation to the rest of the league. For this, the teams within relegation and promotion are in different colors in comparison to the rest of the leagues. 
-
-7. How does the position in the table affect the attendance of the match over a season? This will be a time series line graph of the entire season. Here the teams will be grouped into thirds to show teams that are on the top and bottom of the table and how that changes over the course of a season.
-
-8. How does securing a promotion or the league and securing relegation affect attendance compared to before securing their position? This will be a grouped bar graph with one group being promotion and the other being relegation. They will have two bars, one being the average attendance before securing, and the second would be the average attendance after securing their position.
-
-9. How do betting odds relate to the individual team's positions? This will be a scatterplot with the difference between position and the difference in betting odds for a team. 
+5. How does the away team impact the attendance of an individual match?
 
 **Betting:**
 
-10. How does attendance change when there is a heavy favorite vs. a closely betting team? This will be viewed in a histogram, with the attendance being measured by the betting odds for a game. 
+6. How does the betting Platform compare with one another
 
-11. How do the betting odds relate to the actual result of a match? The focus of this question is to compare to see how often the betting odds successfully predicted the outcome of a game. This will be viewed in a confusion matrix. On one side will be the prediction and the other sid will be the result.
+7. How does attendance change when there is a heavy favorite vs. a closely betting team? This will be viewed in a histogram, with the attendance being measured by the betting odds for a game. 
 
-12. How do the predicted goals being greater than 2.5 vs. lower than 2.5 have an on the attendance of a game? This will be two bars. One will be for games where the odds being over 2.5 is greater, and the other is for games where lower than 2.5 is higher. These bars will be the average attendance for these two games. Also may go and break this up by leagues to see if the different cultures and fanbases may be more accepting of lower vs. higher-scoring games. 
+8. How do the betting odds relate to the actual result of a match? The focus of this question is to compare to see how often the betting odds successfully predicted the outcome of a game. This will be viewed in a confusion matrix. On one side will be the prediction and the other sid will be the result.
 
-13. How do the odds of the home team winning vs. tieing vs. losing impact attendance? This will be three scatter plots, all with the same axis scaling. The first will be the home team's odds of winning compared to attendance. The second will be tieing, and the third will be losing. The goal is to see if a team is expected to lose a game if its attendance is lower vs. a team that is supposed to win the attendance is higher. 
+9. How do the predicted goals being greater than 2.5 vs. lower than 2.5 have an on the attendance of a game? This will be two bars. One will be for games where the odds being over 2.5 is greater, and the other is for games where lower than 2.5 is higher. These bars will be the average attendance for these two games. Also may go and break this up by leagues to see if the different cultures and fanbases may be more accepting of lower vs. higher-scoring games. 
+
+10. How do the odds of the home team winning vs. tieing vs. losing impact attendance? This will be three scatter plots, all with the same axis scaling. The first will be the home team's odds of winning compared to attendance. The second will be tieing, and the third will be losing. The goal is to see if a team is expected to lose a game if its attendance is lower vs. a team that is supposed to win the attendance is higher. 
 
 **Final Model:**
 
-14. How can all these factors be used to predict the attendance outcome of these games? Here I will be making models with two different outcomes, one being the raw attendance and the other being attendace(percentage of the stadium filled). Three different modeling methodologies will be used. The first attempt will be a linear model, the second will be a polynomial regression model, and the third will be a decision tree regression model. The variables looking to be used are the league, the home team, the away team, the positions (difference between the position of the home team and away team as well as the position of just the home team), the betting odds for that individual game, odds for the number of goals scored, and the time/date of the match.
+11. How can all these factors be used to predict the attendance outcome of these games? Here I will be making models with two different outcomes, one being the raw attendance and the other being attendace(percentage of the stadium filled). Three different modeling methodologies will be used. The first attempt will be a linear model, the second will be a polynomial regression model, and the third will be a decision tree regression model. The variables looking to be used are the league, the home team, the away team, the positions (difference between the position of the home team and away team as well as the position of just the home team), the betting odds for that individual game, odds for the number of goals scored, and the time/date of the match.
 
 # Work plan
 
@@ -109,13 +105,24 @@ The data processing is large. First, all the betting data is divided into indivi
 
 * Data cleaning and prepreation (5 hours)
 
+
+**Week 5 (2/13 - 2/19):**
+
+
+
+
+**Week 6 (2/20 - 2/26):**
+
 * Question 1 (1 hr)
 
 * Question 2 (1 hr)
 
-**Week 5 (2/13 - 2/19):**
-
 * Question 3 (1 hr)
+
+
+**Week 7 (2/27 - 3/5):**
+
+* Presentation prep and practice (3 hrs)
 
 * Question 4 (1 hr)
 
@@ -123,35 +130,34 @@ The data processing is large. First, all the betting data is divided into indivi
 
 * Questjion 6 (2 hrs)
 
-**Week 6 (2/20 - 2/26):**
+
+
+**Week 8 (3/6 - 3/12):** *Presentations in class on Thurs 3/9.*
 
 * Question 7 (2.5 hrs)
 
 * Question 8 (2 hrs)
 
-* Question 9 (2.5 hrs)
 
-**Week 7 (2/27 - 3/5):**
-
-* Presentation prep and practice (3 hrs)
-
-* Question 10 (1 hr)
-
-* Question 11 (1.5 hrs)
-
-* Question 12 (1.5 hrs)
-
-**Week 8 (3/6 - 3/12):** *Presentations in class on Thurs 3/9.*
-
-* Question 13 (1.5 hrs)
-
-* Question 14 (4 hrs)
 
 * Presentation peer review (1.5 hrs)
 
+**Spring Break**
+
+* Question 9 (2.5 hrs)
+
+* Question 10 (1 hr)
+
+
+* Question 11 (1.5 hrs)
+
+
+
 **Week 9 (3/20 - 3/26):**
 
-* Question 14 (2 hrs)
+* Question 11 (1.5 hrs)
+
+* Clean Charts
 
 * Poster prep (4 hrs)
 
