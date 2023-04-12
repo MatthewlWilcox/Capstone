@@ -1,8 +1,8 @@
 ---
 title: "Week 9 Progress Report"
 subtitle: "DATA 450 Capstone"
-author: "[Your Name]"
-date: 2/13/23
+author: "Matthew Wilcox"
+date: 3/26/23
 date-format: "[Week ending: ] M/D/YY"
 number-sections: false
 format:
@@ -13,30 +13,30 @@ format:
 
 | Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
 |------|-------|----------|---------|--------|
-| Mon.  | 5pm-7:30pm | 2.5 | Calendar map  |  |
-| Tue.  | 4pm- |  |  |  |
-| Wed.  |  |  |  |  |
-| Thu.  |  |  |  |  |
-| Fri.  |  |  |  |  |
+| Mon.  | 5pm-7:30pm | 2.5 | Calendar map  | [Link](https://github.com/MatthewlWilcox/Capstone/commit/ce8621ae7a0d136ed9814243d50a81b86c47dfea) |
+| Tue.  | 4pm-7:30 | 3.5 | Calendar heatmap, poster | [Link](https://github.com/MatthewlWilcox/Capstone/commit/70d1b52869efa3052ed588e3cf2c996a3fb5a79a) |
+| Wed.  | 3-4:30, 11pm-1am| 3.5 | Poster, model | [Link](https://github.com/MatthewlWilcox/Capstone/commit/1248be84c083b70901a3dbc85aa07ae13d8c82a1) |
+| Thu.  | 5:15pm-7:15pm | 2 | Poster, graphs, predicted goals | [Link](https://github.com/MatthewlWilcox/Capstone/commit/804b88629f7a5e4bc3fde4081556f561b0636e91) |
+| Fri.  | 9:30am-10:30 | 1 | Poster | [Link](https://github.com/MatthewlWilcox/Capstone/commit/97aa9c90d5d874d5d09b9604c653dc363c3150d1) |
 | Sat.  |  |  |  |  |
-| Sun.  |  |  |  |  |
+| Sun.  | 8:30pm-10:30 | 2 | Poster | [Link](https://github.com/MatthewlWilcox/Capstone/commit/dfb2a042f2a0bc2eeae1180bacd4c1ffd616b5c5) |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}
 
-**Total \# of hours worked this week: [X]**
+**Total \# of hours worked this week: 14**
 
 ## What you accomplished (or attempted) this week:
 
-[Text here]
+I finished the poster. Finally got the calendar plot to work after several weeks. I also begun to start the modeling. 
 
 ## Any setbacks/roadblocks you experienced:
 
-[Text here]
+Not really setbacks just htings took more time. 
 
 ## What you plan to work on next:
 
-[Text here]
+Revise the poster and finsih the model
 
 ## Are you on track? If not, how will you get back on track?
 
-[Text here]
+On track
