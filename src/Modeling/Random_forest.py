@@ -19,15 +19,17 @@ column_obj_name = obj_data.columns.values.tolist()
 print(column_obj_name)
 print(data.dtypes)
 
-for obj in column_obj_name:
+label_encoder = LabelEncoder()
 
-    data[obj] = data[obj].astype('category').cat.codes
+
+for obj in column_obj_name:
+    data[obj] = label_encoder.fit_transform(data[obj])
 data = data.astype(float)
 data = data.dropna()
 print(data.dtypes)
 
 print(data.isna().sum())
-
+print(data)
 
 
 x = data.drop(['raw_attendance', 'standard_attend', 'capacity_filled'], axis = 1)
@@ -47,6 +49,11 @@ lin_regressor.fit(x_train, y_train)
 linear_y_predict = lin_regressor.predict(x_test)
 print(metrics.r2_score(y_test, linear_y_predict))
 print(lin_regressor.score(x_test,y_test))
+
+# ------------------------------------------------------------------------------------------------------------------------------------------------
+# Polynomial Regression
+# ------------------------------------------------------------------------------------------------------------------------------------------------
+
 # ------------------------------------------------------------------------------------------------------------------------------------------------
 # Random Forest
 # ------------------------------------------------------------------------------------------------------------------------------------------------
