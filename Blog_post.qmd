@@ -22,7 +22,8 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from sklearn import metrics
 from sklearn.linear_model import LinearRegression
-
+import july
+from datetime import datetime as dt
 
 ```
 
@@ -126,3 +127,37 @@ plt.xlabel('Hour of the Day')
 
 plt.show()
 ```
+
+
+```{python}
+calendar_plot_data = total_data
+calendar_plot_data['month_day'] = calendar_plot_data['date_time'].dt.strftime('%m-%d')
+
+
+```
+
+```{python}
+date_of_year = calendar_plot_data.groupby('month_day').count()
+date_of_year['count'] = date_of_year['standard_attend']
+date_of_year = date_of_year['count'].sort_values().reset_index()
+print(date_of_year)
+date_of_year['total_date'] = '2024-' + date_of_year['month_day']
+date_of_year['total_date']= pd.to_datetime(date_of_year['total_date'], format = "%Y-%m-%d")
+events = pd.Series(date_of_year['count'].values.tolist(), index = date_of_year['total_date'].values.tolist())
+july.heatmap(dates = date_of_year['total_date'], data = date_of_year['count'],  date_label = True, cmap = 'RdYlBu', fontsize =10, weekday_label=False, year_label= False, title = '# of Games per day 2010-2019', colorbar= True, dpi =1200)
+plt.show()
+```
+
+```{python}
+attend_date = calendar_plot_data.groupby('month_day').mean()
+attend_date['count'] = attend_date['standard_attend']
+attend_date = attend_date['count'].sort_values().reset_index()
+attend_date['total_date'] = '2024-' + attend_date['month_day']
+
+attend_date['total_date'] = pd.to_datetime(attend_date['total_date'], format = "%Y-%m-%d")
+events = pd.Series(attend_date['count'].values.tolist(), index = attend_date['total_date'].values.tolist())
+july.heatmap(dates = attend_date['total_date'], data = attend_date['count'],  cmap='RdYlBu', date_label = True, fontsize =10, weekday_label=False, year_label= False, title = 'Avg Attendance per day Standardized 2010-2019', colorbar= True, dpi =1200)
+plt.show()
+
+```
+

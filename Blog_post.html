@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthew Wilcox">
-<meta name="dcterms.date" content="2023-04-17">
+<meta name="dcterms.date" content="2023-04-19">
 
 <title>Demand of Football in European Leagues</title>
 <style>
@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 17, 2023</p>
+      <p class="date">April 19, 2023</p>
     </div>
   </div>
   
@@ -151,7 +151,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, confusion_matrix, classification_report</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> metrics</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> july</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime <span class="im">as</span> dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-execution_count="2">
@@ -228,11 +230,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>df_grouped_median.sort_values(by <span class="op">=</span> <span class="st">'day_of_week'</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\matth\AppData\Local\Temp\ipykernel_22568\26337685.py:6: FutureWarning:
+<pre><code>C:\Users\matth\AppData\Local\Temp\ipykernel_18292\26337685.py:6: FutureWarning:
 
 Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
 
-C:\Users\matth\AppData\Local\Temp\ipykernel_22568\26337685.py:7: FutureWarning:
+C:\Users\matth\AppData\Local\Temp\ipykernel_18292\26337685.py:7: FutureWarning:
 
 Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
 </code></pre>
@@ -313,6 +315,54 @@ Indexing with multiple keys (implicitly converted to a tuple of keys) will be de
 </details>
 <div class="cell-output cell-output-display">
 <p><img src="Blog_post_files/figure-html/cell-8-output-1.png" width="610" height="442"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>calendar_plot_data <span class="op">=</span> total_data</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>calendar_plot_data[<span class="st">'month_day'</span>] <span class="op">=</span> calendar_plot_data[<span class="st">'date_time'</span>].dt.strftime(<span class="st">'%m-</span><span class="sc">%d</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>date_of_year <span class="op">=</span> calendar_plot_data.groupby(<span class="st">'month_day'</span>).count()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>date_of_year[<span class="st">'count'</span>] <span class="op">=</span> date_of_year[<span class="st">'standard_attend'</span>]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>date_of_year <span class="op">=</span> date_of_year[<span class="st">'count'</span>].sort_values().reset_index()</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(date_of_year)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>date_of_year[<span class="st">'total_date'</span>] <span class="op">=</span> <span class="st">'2024-'</span> <span class="op">+</span> date_of_year[<span class="st">'month_day'</span>]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>date_of_year[<span class="st">'total_date'</span>]<span class="op">=</span> pd.to_datetime(date_of_year[<span class="st">'total_date'</span>], <span class="bu">format</span> <span class="op">=</span> <span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> pd.Series(date_of_year[<span class="st">'count'</span>].values.tolist(), index <span class="op">=</span> date_of_year[<span class="st">'total_date'</span>].values.tolist())</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>july.heatmap(dates <span class="op">=</span> date_of_year[<span class="st">'total_date'</span>], data <span class="op">=</span> date_of_year[<span class="st">'count'</span>],  date_label <span class="op">=</span> <span class="va">True</span>, cmap <span class="op">=</span> <span class="st">'RdYlBu'</span>, fontsize <span class="op">=</span><span class="dv">10</span>, weekday_label<span class="op">=</span><span class="va">False</span>, year_label<span class="op">=</span> <span class="va">False</span>, title <span class="op">=</span> <span class="st">'# of Games per day 2010-2019'</span>, colorbar<span class="op">=</span> <span class="va">True</span>, dpi <span class="op">=</span><span class="dv">1200</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    month_day  count
+0       11-06      1
+1       07-18      1
+2       07-20      2
+3       07-23      2
+4       07-16      2
+..        ...    ...
+326     09-24    305
+327     09-21    310
+328     12-21    316
+329     09-22    331
+330     12-26    483
+
+[331 rows x 2 columns]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Blog_post_files/figure-html/cell-10-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>attend_date <span class="op">=</span> calendar_plot_data.groupby(<span class="st">'month_day'</span>).mean()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>attend_date[<span class="st">'count'</span>] <span class="op">=</span> attend_date[<span class="st">'standard_attend'</span>]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>attend_date <span class="op">=</span> attend_date[<span class="st">'count'</span>].sort_values().reset_index()</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>attend_date[<span class="st">'total_date'</span>] <span class="op">=</span> <span class="st">'2024-'</span> <span class="op">+</span> attend_date[<span class="st">'month_day'</span>]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>attend_date[<span class="st">'total_date'</span>] <span class="op">=</span> pd.to_datetime(attend_date[<span class="st">'total_date'</span>], <span class="bu">format</span> <span class="op">=</span> <span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">"</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> pd.Series(attend_date[<span class="st">'count'</span>].values.tolist(), index <span class="op">=</span> attend_date[<span class="st">'total_date'</span>].values.tolist())</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>july.heatmap(dates <span class="op">=</span> attend_date[<span class="st">'total_date'</span>], data <span class="op">=</span> attend_date[<span class="st">'count'</span>],  cmap<span class="op">=</span><span class="st">'RdYlBu'</span>, date_label <span class="op">=</span> <span class="va">True</span>, fontsize <span class="op">=</span><span class="dv">10</span>, weekday_label<span class="op">=</span><span class="va">False</span>, year_label<span class="op">=</span> <span class="va">False</span>, title <span class="op">=</span> <span class="st">'Avg Attendance per day Standardized 2010-2019'</span>, colorbar<span class="op">=</span> <span class="va">True</span>, dpi <span class="op">=</span><span class="dv">1200</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Blog_post_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 
