@@ -18,7 +18,11 @@ divisions_list =['D1', 'D2', 'E0', 'E1', 'E2', 'E3', 'SP1' ,'SP2', 'B1', 'F1', '
 
 away_team_impact = away_team_impact[['away_team', 'division', 'standard_attend']]
 print(away_team_impact)
+initial_graph_df = pd.DataFrame(columns = ['away_team', 'division', 'standard_attend'])
 
+for i in divisions_list:
+        temp_impact_df = away_team_impact[away_team_impact['division'] == i].sort_values('standard_attend',ascending = False).head(3)
+        initial_graph_df = pd.concat([initial_graph_df, temp_impact_df], axis = 0)
 
 from dash import Dash, dcc, html, Input, Output
 
@@ -29,11 +33,11 @@ import plotly.express as px
 app = Dash(__name__)
 app.layout = html.Div(id = 'parent', children = [
     html.H1(id = 'H1', children = 'Away Team Impact'),
-    dcc.Slider(0,20,1, value =3,id = 'number_of_teams'),
+    dcc.Slider(0,20,1, value =3,id = 'slider'),
     dcc.Dropdown(id = 'dropdown', 
                  options = [
                 {'label': 'Bundesliga', 'value':'D1'},
-                {'label': '2. Bundesliga', 'value':'D12'},
+                {'label': '2. Bundesliga', 'value':'D2'},
                 {'label': 'Premier League', 'value':'E0'},
                 {'label': 'Championship', 'value':'E1'},
                 {'label': 'League 1', 'value':'E2'},
@@ -51,20 +55,29 @@ app.layout = html.Div(id = 'parent', children = [
                 {'label': 'Liga 1', 'value':'P1'}
 
 
-                 ], value = 'E0',
+                 ], value = ['D1', 'D2', 'E0', 'E1', 'E2', 'E3', 'SP1' ,'SP2', 'B1', 'F1', 'F2', 'I1', 'I2', 'SC0', 'SC1', 'T1', 'P1'],
                  multi = True),
-    dcc.Graph(id = 'bar_plot', figure=px.bar(away_team_impact, y='away_team', x='standard_attend', color='division'))
+    dcc.Graph(id = 'bar_plot', figure=px.bar(initial_graph_df, x='away_team', y='standard_attend', color='division'))
 ])
 
 @app.callback(
     Output("bar_plot", "figure"), 
-    [Input("dropdown", "value")]
+    [Input("dropdown", "value"),
+     Input('slider', 'value')]
     )
-def update_graph(value):
+def update_graph(drop_value, slider_value):
     # print(value)
     df = away_team_impact
-    df = df[df['division'].isin(value)]
-    fig = px.bar(df,y= 'away_team', x= 'standard_attend', color = 'division')
+
+    
+
+    df = df[df['division'].isin(list(drop_value))]
+    graph_df = pd.DataFrame(columns = ['away_team', 'division', 'standard_attend'])
+    for i in drop_value:
+        temp_impact_df = df[df['division'] == i].sort_values('standard_attend',ascending = False).head(slider_value)
+        graph_df = pd.concat([graph_df, temp_impact_df], axis = 0)
+    graph_df = graph_df.reset_index().drop(columns = ['index'])
+    fig = px.bar(graph_df, x= 'away_team', y= 'standard_attend', color = 'division')
     return fig
 if __name__ == '__main__':
     app.run_server()

@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Matthew Wilcox">
+
+<title>Demand of Football in European Leagues</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Blog_post_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Blog_post_files/libs/quarto-html/quarto.js"></script>
+<script src="Blog_post_files/libs/quarto-html/popper.min.js"></script>
+<script src="Blog_post_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Blog_post_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Blog_post_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Blog_post_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Blog_post_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Blog_post_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Blog_post_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Demand of Football in European Leagues</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<p class="subtitle lead">DATA 450 Capstone</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Matthew Wilcox </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Library Packages</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, confusion_matrix, classification_report</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> metrics</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> july</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime <span class="im">as</span> dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Data Import</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>total_data <span class="op">=</span> pd.read_pickle(<span class="st">'../data/final_datasets/data_standardized.pkl'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total_data.head(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>           home_team                away_team  home_score  away_score  \
+0  tottenham_hotspur          manchester_city           0           0   
+1  tottenham_hotspur           wigan_athletic           0           1   
+2  tottenham_hotspur  wolverhampton_wanderers           3           1   
+3  tottenham_hotspur               everton_fc           1           1   
+4  tottenham_hotspur           sunderland_afc           1           1   
+5  tottenham_hotspur         blackburn_rovers           4           2   
+6  tottenham_hotspur             liverpool_fc           2           1   
+7  tottenham_hotspur               chelsea_fc           1           1   
+8  tottenham_hotspur         newcastle_united           2           0   
+9  tottenham_hotspur                fulham_fc           1           0   
+
+         date   time day_of_week  raw_attendance       stadium    city  ...  \
+0  2010-08-14  12:45    Saturday           35928  Stadium News  London  ...   
+1  2010-08-28  15:00    Saturday           35101  Stadium News  London  ...   
+2  2010-09-18  15:00    Saturday           35940  Stadium News  London  ...   
+3  2010-10-23  12:45    Saturday           35967  Stadium News  London  ...   
+4  2010-09-11  20:00     Tuesday           35843  Stadium News  London  ...   
+5  2010-11-13  15:00    Saturday           35700  Stadium News  London  ...   
+6  2010-11-28  16:00      Sunday           35962  Stadium News  London  ...   
+7  2010-12-12  16:00      Sunday           35787  Stadium News  London  ...   
+8  2010-12-28  15:00     Tuesday           35927  Stadium News  London  ...   
+9  2011-01-01  15:00    Saturday           35603  Stadium News  London  ...   
+
+  BbMx&gt;2.5  BbAv&gt;2.5 BbMx&lt;2.5 BbAv&lt;2.5  capacity_filled           date_time  \
+0     2.03      1.91     1.95     1.84         0.990189 2010-08-14 12:45:00   
+1     1.55      1.50     2.63     2.48         0.967396 2010-08-28 15:00:00   
+2     1.85      1.75     2.11     2.02         0.990519 2010-09-18 15:00:00   
+3     2.07      1.99     1.87     1.79         0.991263 2010-10-23 12:45:00   
+4     1.90      1.80     2.06     1.97         0.987846 2010-09-11 20:00:00   
+5     1.91      1.83     2.02     1.94         0.983905 2010-11-13 15:00:00   
+6     2.00      1.88     2.03     1.87         0.991126 2010-11-28 16:00:00   
+7     2.04      1.95     1.91     1.83         0.986303 2010-12-12 16:00:00   
+8     1.77      1.67     2.28     2.16         0.990161 2010-12-28 15:00:00   
+9     1.93      1.81     2.05     1.99         0.981231 2011-01-01 15:00:00   
+
+  season   mean_attend  std_attend standard_attend  
+0   2011  35892.894737  269.766338        0.130132  
+1   2011  35892.894737  269.766338       -2.935484  
+2   2011  35892.894737  269.766338        0.174615  
+3   2011  35892.894737  269.766338        0.274702  
+4   2011  35892.894737  269.766338       -0.184955  
+5   2011  35892.894737  269.766338       -0.715044  
+6   2011  35892.894737  269.766338        0.256167  
+7   2011  35892.894737  269.766338       -0.392542  
+8   2011  35892.894737  269.766338        0.126425  
+9   2011  35892.894737  269.766338       -1.074614  
+
+[10 rows x 42 columns]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Time Data Processing</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>time_df <span class="op">=</span> total_data[[</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'date'</span>, <span class="st">'time'</span>, <span class="st">'day_of_week'</span>, <span class="st">'date_time'</span>, <span class="st">'raw_attendance'</span>, <span class="st">'capacity_filled'</span>, <span class="st">'standard_attend'</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>]]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df_grouped_mean <span class="op">=</span> time_df.groupby(<span class="st">'day_of_week'</span>)[<span class="st">'raw_attendance'</span>, <span class="st">'capacity_filled'</span>, <span class="st">'standard_attend'</span>].mean().reset_index()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>df_grouped_median <span class="op">=</span> time_df.groupby(<span class="st">'day_of_week'</span>)[<span class="st">'raw_attendance'</span>, <span class="st">'capacity_filled'</span>, <span class="st">'standard_attend'</span>].median().reset_index()</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>day_categories <span class="op">=</span> [<span class="st">'Monday'</span>, <span class="st">'Tuesday'</span>, <span class="st">'Wednesday'</span>, <span class="st">'Thursday'</span>, <span class="st">'Friday'</span>, <span class="st">'Saturday'</span>, <span class="st">'Sunday'</span>]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>df_grouped_median[<span class="st">'day_of_week'</span>] <span class="op">=</span> pd.Categorical(df_grouped_median[<span class="st">'day_of_week'</span>], categories<span class="op">=</span> day_categories)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>df_grouped_median.sort_values(by <span class="op">=</span> <span class="st">'day_of_week'</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\matth\AppData\Local\Temp\ipykernel_10928\26337685.py:6: FutureWarning:
+
+Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+
+C:\Users\matth\AppData\Local\Temp\ipykernel_10928\26337685.py:7: FutureWarning:
+
+Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Day of the Week Standardized Median</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>df_grouped_median, x <span class="op">=</span> <span class="st">'day_of_week'</span>, y <span class="op">=</span> <span class="st">'raw_attendance'</span>).<span class="bu">set</span>(title <span class="op">=</span><span class="st">'Median  Attendance by Day of Week'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Day of the Week'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Median Attendance'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="Blog_post_files/figure-html/cell-5-output-1.png" width="610" height="506"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Day of the Week total Count</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>grouped_week_count <span class="op">=</span> time_df.groupby(<span class="st">'day_of_week'</span>).count().reset_index()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>grouped_week_count[<span class="st">'day_of_week'</span>] <span class="op">=</span> pd.Categorical(grouped_week_count[<span class="st">'day_of_week'</span>], categories<span class="op">=</span> day_categories)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>grouped_week_count.sort_values(by <span class="op">=</span> <span class="st">'day_of_week'</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> grouped_week_count, x <span class="op">=</span> <span class="st">'day_of_week'</span>, y <span class="op">=</span> <span class="st">'date'</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Day of the Week'</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of games per day of the Week'</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="Blog_post_files/figure-html/cell-6-output-1.png" width="610" height="442"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<details>
+<summary>Attendance Time of Day</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_grouped_mean_tod<span class="op">=</span> time_df.groupby(time_df[<span class="st">'date_time'</span>].dt.hour).mean()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df_grouped_median_tod<span class="op">=</span> time_df.groupby(time_df[<span class="st">'date_time'</span>].dt.hour).median()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> df_grouped_median_tod, x <span class="op">=</span> <span class="st">'date_time'</span>, y <span class="op">=</span> <span class="st">'raw_attendance'</span>, markers <span class="op">=</span> <span class="va">True</span>, marker <span class="op">=</span> <span class="st">"o"</span> )</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Attendance by Time of Day'</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Hour of the Day'</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Attendance'</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="Blog_post_files/figure-html/cell-7-output-1.png" width="610" height="442"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Number of Games Time of Day</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df_grouped_count <span class="op">=</span> time_df.groupby(time_df[<span class="st">'date_time'</span>].dt.hour).count()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df_grouped_count)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df_grouped_count <span class="op">=</span> df_grouped_count[<span class="st">'raw_attendance'</span>].reset_index()</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>df_grouped_count[<span class="st">'count'</span>] <span class="op">=</span> df_grouped_count[<span class="st">'raw_attendance'</span>]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>df_grouped_count <span class="op">=</span> df_grouped_count[[<span class="st">'date_time'</span>, <span class="st">'count'</span>]]</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># df_grouped_count= df_grouped_count.rename(columns = {'date':'count'})</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df_grouped_count)</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>df_count_atted <span class="op">=</span> pd.merge(df_grouped_count, df_grouped_median_tod, on <span class="op">=</span> <span class="st">'date_time'</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>df_count_atted <span class="op">=</span> df_count_atted.drop(columns<span class="op">=</span> [<span class="st">'capacity_filled'</span>])</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>df_count_atted.rename( columns <span class="op">=</span> {<span class="st">'raw_attendance'</span>: <span class="st">'Attendance'</span>, <span class="st">'count'</span>: <span class="st">"Number of Games"</span>}, inplace<span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df_count_atted)</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>melted_count_attend <span class="op">=</span> pd.melt(df_count_atted, value_vars<span class="op">=</span>[<span class="st">'Number of Games'</span>, <span class="st">'Attendance'</span>], id_vars<span class="op">=</span> <span class="st">'date_time'</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># print(melted_count_attend)</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> melted_count_attend, x <span class="op">=</span> <span class="st">'date_time'</span>, y <span class="op">=</span> <span class="st">'value'</span>, hue <span class="op">=</span> <span class="st">'variable'</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Attendance and Game Count by Time of Day'</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Hour of the Day'</span>)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="Blog_post_files/figure-html/cell-8-output-1.png" width="610" height="442"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>calendar_plot_data <span class="op">=</span> total_data</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>calendar_plot_data[<span class="st">'month_day'</span>] <span class="op">=</span> calendar_plot_data[<span class="st">'date_time'</span>].dt.strftime(<span class="st">'%m-</span><span class="sc">%d</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="9">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>date_of_year <span class="op">=</span> calendar_plot_data.groupby(<span class="st">'month_day'</span>).count()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>date_of_year[<span class="st">'count'</span>] <span class="op">=</span> date_of_year[<span class="st">'standard_attend'</span>]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>date_of_year <span class="op">=</span> date_of_year[<span class="st">'count'</span>].sort_values().reset_index()</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(date_of_year)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>date_of_year[<span class="st">'total_date'</span>] <span class="op">=</span> <span class="st">'2024-'</span> <span class="op">+</span> date_of_year[<span class="st">'month_day'</span>]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>date_of_year[<span class="st">'total_date'</span>]<span class="op">=</span> pd.to_datetime(date_of_year[<span class="st">'total_date'</span>], <span class="bu">format</span> <span class="op">=</span> <span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> pd.Series(date_of_year[<span class="st">'count'</span>].values.tolist(), index <span class="op">=</span> date_of_year[<span class="st">'total_date'</span>].values.tolist())</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>july.heatmap(dates <span class="op">=</span> date_of_year[<span class="st">'total_date'</span>], data <span class="op">=</span> date_of_year[<span class="st">'count'</span>],  date_label <span class="op">=</span> <span class="va">True</span>, cmap <span class="op">=</span> <span class="st">'RdYlBu'</span>, fontsize <span class="op">=</span><span class="dv">10</span>, weekday_label<span class="op">=</span><span class="va">False</span>, year_label<span class="op">=</span> <span class="va">False</span>, title <span class="op">=</span> <span class="st">'# of Games per day 2010-2019'</span>, colorbar<span class="op">=</span> <span class="va">True</span>, dpi <span class="op">=</span><span class="dv">1200</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    month_day  count
+0       11-06      1
+1       07-18      1
+2       07-20      2
+3       07-23      2
+4       07-16      2
+..        ...    ...
+326     09-24    305
+327     09-21    310
+328     12-21    316
+329     09-22    331
+330     12-26    483
+
+[331 rows x 2 columns]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Blog_post_files/figure-html/cell-10-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>attend_date <span class="op">=</span> calendar_plot_data.groupby(<span class="st">'month_day'</span>).mean()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>attend_date[<span class="st">'count'</span>] <span class="op">=</span> attend_date[<span class="st">'standard_attend'</span>]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>attend_date <span class="op">=</span> attend_date[<span class="st">'count'</span>].sort_values().reset_index()</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>attend_date[<span class="st">'total_date'</span>] <span class="op">=</span> <span class="st">'2024-'</span> <span class="op">+</span> attend_date[<span class="st">'month_day'</span>]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>attend_date[<span class="st">'total_date'</span>] <span class="op">=</span> pd.to_datetime(attend_date[<span class="st">'total_date'</span>], <span class="bu">format</span> <span class="op">=</span> <span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">"</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> pd.Series(attend_date[<span class="st">'count'</span>].values.tolist(), index <span class="op">=</span> attend_date[<span class="st">'total_date'</span>].values.tolist())</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>july.heatmap(dates <span class="op">=</span> attend_date[<span class="st">'total_date'</span>], data <span class="op">=</span> attend_date[<span class="st">'count'</span>],  cmap<span class="op">=</span><span class="st">'RdYlBu'</span>, date_label <span class="op">=</span> <span class="va">True</span>, fontsize <span class="op">=</span><span class="dv">10</span>, weekday_label<span class="op">=</span><span class="va">False</span>, year_label<span class="op">=</span> <span class="va">False</span>, title <span class="op">=</span> <span class="st">'Avg Attendance per day Standardized 2010-2019'</span>, colorbar<span class="op">=</span> <span class="va">True</span>, dpi <span class="op">=</span><span class="dv">1200</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="Blog_post_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>away_team_impact <span class="op">=</span> total_data.groupby([<span class="st">'away_team'</span>, <span class="st">'division'</span>])[<span class="st">'standard_attend'</span>].mean().reset_index()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># away_team_impact = away_team_impact[away_team_impact['division'].isin(['E3', 'E1', 'E2'])]</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>div_dict <span class="op">=</span> {<span class="st">'D1'</span>:<span class="st">'Bundesliga'</span>, <span class="st">'D2'</span>: <span class="st">'2. Bundesliga'</span>, <span class="st">'E0'</span>:<span class="st">'Premier League'</span>, <span class="st">'E1'</span>:<span class="st">'Championship'</span>, </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">'E2'</span>:<span class="st">'League 1'</span>, <span class="st">'E3'</span>:<span class="st">'Leauge 2'</span>,<span class="st">'SP1'</span>:<span class="st">'La Liga Primera'</span>, <span class="st">'SP2'</span>:<span class="st">'La Liga Segunda'</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>              <span class="st">'B1'</span>:<span class="st">'Jupiler League'</span>, <span class="st">'F1'</span>:<span class="st">'Ligue 1'</span>,<span class="st">'F2'</span>:<span class="st">'Ligue 2'</span>,<span class="st">'I1'</span>:<span class="st">'Serie A'</span>,<span class="st">'I2'</span>:<span class="st">'Seire B'</span>, </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">'SC0'</span>:<span class="st">'Scotish Premier League'</span>, <span class="st">'SC1'</span>:<span class="st">'Scotish Division 1'</span>, <span class="st">'T1'</span>:<span class="st">'Fubol Ligi 1'</span>, <span class="st">'P1'</span>: <span class="st">'Liga 1'</span>}</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>divisions_list <span class="op">=</span>[<span class="st">'D1'</span>, <span class="st">'D2'</span>, <span class="st">'E0'</span>, <span class="st">'E1'</span>, <span class="st">'E2'</span>, <span class="st">'E3'</span>, <span class="st">'SP1'</span> ,<span class="st">'SP2'</span>, <span class="st">'B1'</span>, <span class="st">'F1'</span>, <span class="st">'F2'</span>, <span class="st">'I1'</span>, <span class="st">'I2'</span>, <span class="st">'SC0'</span>, <span class="st">'SC1'</span>, <span class="st">'T1'</span>, <span class="st">'P1'</span>]</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>away_team_impact <span class="op">=</span> away_team_impact[[<span class="st">'away_team'</span>, <span class="st">'division'</span>, <span class="st">'standard_attend'</span>]]</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(away_team_impact)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>initial_graph_df <span class="op">=</span> pd.DataFrame(columns <span class="op">=</span> [<span class="st">'away_team'</span>, <span class="st">'division'</span>, <span class="st">'standard_attend'</span>])</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> divisions_list:</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        temp_impact_df <span class="op">=</span> away_team_impact[away_team_impact[<span class="st">'division'</span>] <span class="op">==</span> i].sort_values(<span class="st">'standard_attend'</span>,ascending <span class="op">=</span> <span class="va">False</span>).head(<span class="dv">3</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        initial_graph_df <span class="op">=</span> pd.concat([initial_graph_df, temp_impact_df], axis <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> jupyter_dash <span class="im">import</span> JupyterDash</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html, dcc, Input, Output</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co"># fig = go.Figure(px.bar(away_team_impact, y= 'away_team', x = 'standard_attend', color = 'division'))</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> JupyterDash(<span class="va">__name__</span>)</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div(<span class="bu">id</span> <span class="op">=</span> <span class="st">'parent'</span>, children <span class="op">=</span> [</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    html.H1(<span class="bu">id</span> <span class="op">=</span> <span class="st">'H1'</span>, children <span class="op">=</span> <span class="st">'Away Team Impact'</span>),</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    dcc.Slider(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">1</span>, value <span class="op">=</span><span class="dv">3</span>,<span class="bu">id</span> <span class="op">=</span> <span class="st">'slider'</span>),</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    dcc.Dropdown(<span class="bu">id</span> <span class="op">=</span> <span class="st">'dropdown'</span>, </span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>                 options <span class="op">=</span> [</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Bundesliga'</span>, <span class="st">'value'</span>:<span class="st">'D1'</span>},</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'2. Bundesliga'</span>, <span class="st">'value'</span>:<span class="st">'D2'</span>},</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Premier League'</span>, <span class="st">'value'</span>:<span class="st">'E0'</span>},</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Championship'</span>, <span class="st">'value'</span>:<span class="st">'E1'</span>},</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'League 1'</span>, <span class="st">'value'</span>:<span class="st">'E2'</span>},</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Leauge 2'</span>, <span class="st">'value'</span>:<span class="st">'E3'</span>},</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'La Liga Primera'</span>, <span class="st">'value'</span>:<span class="st">'SP1'</span>},</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'La Liga Segunda'</span>, <span class="st">'value'</span>:<span class="st">'SP2'</span>},</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Jupiler League'</span>, <span class="st">'value'</span>:<span class="st">'B1'</span>},</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Ligue 1'</span>, <span class="st">'value'</span>:<span class="st">'F1'</span>},</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Ligue 2'</span>, <span class="st">'value'</span>:<span class="st">'F2'</span>},</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Serie A'</span>, <span class="st">'value'</span>:<span class="st">'I1'</span>},</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Serie B'</span>, <span class="st">'value'</span>:<span class="st">'I2'</span>},</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Scotish Premier League'</span>, <span class="st">'value'</span>:<span class="st">'SC0'</span>},</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Scotish Division 1'</span>, <span class="st">'value'</span>:<span class="st">'SC1'</span>},</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Fubol Ligi 1'</span>, <span class="st">'value'</span>:<span class="st">'T1'</span>},</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Liga 1'</span>, <span class="st">'value'</span>:<span class="st">'P1'</span>}</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>                 ], value <span class="op">=</span> [<span class="st">'D1'</span>, <span class="st">'D2'</span>, <span class="st">'E0'</span>, <span class="st">'E1'</span>, <span class="st">'E2'</span>, <span class="st">'E3'</span>, <span class="st">'SP1'</span> ,<span class="st">'SP2'</span>, <span class="st">'B1'</span>, <span class="st">'F1'</span>, <span class="st">'F2'</span>, <span class="st">'I1'</span>, <span class="st">'I2'</span>, <span class="st">'SC0'</span>, <span class="st">'SC1'</span>, <span class="st">'T1'</span>, <span class="st">'P1'</span>],</span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>                 multi <span class="op">=</span> <span class="va">True</span>),</span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>    dcc.Graph(<span class="bu">id</span> <span class="op">=</span> <span class="st">'bar_plot'</span>, figure<span class="op">=</span>px.bar(initial_graph_df, x<span class="op">=</span><span class="st">'away_team'</span>, y<span class="op">=</span><span class="st">'standard_attend'</span>, color<span class="op">=</span><span class="st">'division'</span>))</span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">"bar_plot"</span>, <span class="st">"figure"</span>), </span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a>    [Input(<span class="st">"dropdown"</span>, <span class="st">"value"</span>),</span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>     Input(<span class="st">'slider'</span>, <span class="st">'value'</span>)]</span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_graph(drop_value, slider_value):</span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(value)</span></span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> away_team_impact</span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df[df[<span class="st">'division'</span>].isin(<span class="bu">list</span>(drop_value))]</span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a>    graph_df <span class="op">=</span> pd.DataFrame(columns <span class="op">=</span> [<span class="st">'away_team'</span>, <span class="st">'division'</span>, <span class="st">'standard_attend'</span>])</span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> drop_value:</span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a>        temp_impact_df <span class="op">=</span> df[df[<span class="st">'division'</span>] <span class="op">==</span> i].sort_values(<span class="st">'standard_attend'</span>,ascending <span class="op">=</span> <span class="va">False</span>).head(slider_value)</span>
+<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a>        graph_df <span class="op">=</span> pd.concat([graph_df, temp_impact_df], axis <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a>    graph_df <span class="op">=</span> graph_df.reset_index().drop(columns <span class="op">=</span> [<span class="st">'index'</span>])</span>
+<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> px.bar(graph_df, x<span class="op">=</span> <span class="st">'away_team'</span>, y<span class="op">=</span> <span class="st">'standard_attend'</span>, color <span class="op">=</span> <span class="st">'division'</span>)</span>
+<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fig</span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a>    app.run_server(mode<span class="op">=</span><span class="st">'inline'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 away_team division  standard_attend
+0    1._fc_heidenheim_1846       D2        -0.636552
+1     1._fc_kaiserslautern       D1        -0.086598
+2     1._fc_kaiserslautern       D2         0.384905
+3               1._fc_köln       D1         0.339450
+4               1._fc_köln       D2         1.126665
+..                     ...      ...              ...
+631            yeovil_town       E1        -0.247928
+632            yeovil_town       E2        -0.270252
+633            yeovil_town       E3        -0.208019
+634              york_city       E3         0.059258
+635        çaykur_rizespor       T1        -0.444962
+
+[636 rows x 3 columns]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dash is running on http://127.0.0.1:8050/
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+
+        <iframe width="100%" height="650" src="http://127.0.0.1:8050/" frameborder="0" allowfullscreen=""></iframe>
+        
+</div>
+</div>
+<!-- -->
+
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb17" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Demand of Football in European Leagues"</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "DATA 450 Capstone"</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Matthew Wilcox"</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="an">number-sections:</span><span class="co"> true</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: default</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">    rendering: embed-resources</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf: default</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Library Packages"</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, confusion_matrix, classification_report</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> metrics</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> july</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime <span class="im">as</span> dt</span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Data Import"</span></span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>total_data <span class="op">=</span> pd.read_pickle(<span class="st">'../data/final_datasets/data_standardized.pkl'</span>)</span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total_data.head(<span class="dv">10</span>))</span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Time Data Processing"</span></span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a>time_df <span class="op">=</span> total_data[[</span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a>    <span class="st">'date'</span>, <span class="st">'time'</span>, <span class="st">'day_of_week'</span>, <span class="st">'date_time'</span>, <span class="st">'raw_attendance'</span>, <span class="st">'capacity_filled'</span>, <span class="st">'standard_attend'</span></span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a>]]</span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a>df_grouped_mean <span class="op">=</span> time_df.groupby(<span class="st">'day_of_week'</span>)[<span class="st">'raw_attendance'</span>, <span class="st">'capacity_filled'</span>, <span class="st">'standard_attend'</span>].mean().reset_index()</span>
+<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a>df_grouped_median <span class="op">=</span> time_df.groupby(<span class="st">'day_of_week'</span>)[<span class="st">'raw_attendance'</span>, <span class="st">'capacity_filled'</span>, <span class="st">'standard_attend'</span>].median().reset_index()</span>
+<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a>day_categories <span class="op">=</span> [<span class="st">'Monday'</span>, <span class="st">'Tuesday'</span>, <span class="st">'Wednesday'</span>, <span class="st">'Thursday'</span>, <span class="st">'Friday'</span>, <span class="st">'Saturday'</span>, <span class="st">'Sunday'</span>]</span>
+<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a>df_grouped_median[<span class="st">'day_of_week'</span>] <span class="op">=</span> pd.Categorical(df_grouped_median[<span class="st">'day_of_week'</span>], categories<span class="op">=</span> day_categories)</span>
+<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a>df_grouped_median.sort_values(by <span class="op">=</span> <span class="st">'day_of_week'</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb17-71"><a href="#cb17-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-76"><a href="#cb17-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-77"><a href="#cb17-77" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb17-78"><a href="#cb17-78" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Day of the Week Standardized Median"</span></span>
+<span id="cb17-79"><a href="#cb17-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-80"><a href="#cb17-80" aria-hidden="true" tabindex="-1"></a>sns.barplot(data<span class="op">=</span>df_grouped_median, x <span class="op">=</span> <span class="st">'day_of_week'</span>, y <span class="op">=</span> <span class="st">'raw_attendance'</span>).<span class="bu">set</span>(title <span class="op">=</span><span class="st">'Median  Attendance by Day of Week'</span>)</span>
+<span id="cb17-81"><a href="#cb17-81" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb17-82"><a href="#cb17-82" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Day of the Week'</span>)</span>
+<span id="cb17-83"><a href="#cb17-83" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Median Attendance'</span>)</span>
+<span id="cb17-84"><a href="#cb17-84" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb17-85"><a href="#cb17-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-86"><a href="#cb17-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-87"><a href="#cb17-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-90"><a href="#cb17-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-91"><a href="#cb17-91" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb17-92"><a href="#cb17-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Day of the Week total Count"</span></span>
+<span id="cb17-93"><a href="#cb17-93" aria-hidden="true" tabindex="-1"></a>grouped_week_count <span class="op">=</span> time_df.groupby(<span class="st">'day_of_week'</span>).count().reset_index()</span>
+<span id="cb17-94"><a href="#cb17-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-95"><a href="#cb17-95" aria-hidden="true" tabindex="-1"></a>grouped_week_count[<span class="st">'day_of_week'</span>] <span class="op">=</span> pd.Categorical(grouped_week_count[<span class="st">'day_of_week'</span>], categories<span class="op">=</span> day_categories)</span>
+<span id="cb17-96"><a href="#cb17-96" aria-hidden="true" tabindex="-1"></a>grouped_week_count.sort_values(by <span class="op">=</span> <span class="st">'day_of_week'</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb17-97"><a href="#cb17-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-98"><a href="#cb17-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-99"><a href="#cb17-99" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> grouped_week_count, x <span class="op">=</span> <span class="st">'day_of_week'</span>, y <span class="op">=</span> <span class="st">'date'</span>)</span>
+<span id="cb17-100"><a href="#cb17-100" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Day of the Week'</span>)</span>
+<span id="cb17-101"><a href="#cb17-101" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb17-102"><a href="#cb17-102" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of games per day of the Week'</span>)</span>
+<span id="cb17-103"><a href="#cb17-103" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb17-104"><a href="#cb17-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-105"><a href="#cb17-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-108"><a href="#cb17-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-109"><a href="#cb17-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb17-110"><a href="#cb17-110" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Attendance Time of Day"</span></span>
+<span id="cb17-111"><a href="#cb17-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-112"><a href="#cb17-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-113"><a href="#cb17-113" aria-hidden="true" tabindex="-1"></a>df_grouped_mean_tod<span class="op">=</span> time_df.groupby(time_df[<span class="st">'date_time'</span>].dt.hour).mean()</span>
+<span id="cb17-114"><a href="#cb17-114" aria-hidden="true" tabindex="-1"></a>df_grouped_median_tod<span class="op">=</span> time_df.groupby(time_df[<span class="st">'date_time'</span>].dt.hour).median()</span>
+<span id="cb17-115"><a href="#cb17-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-116"><a href="#cb17-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-117"><a href="#cb17-117" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> df_grouped_median_tod, x <span class="op">=</span> <span class="st">'date_time'</span>, y <span class="op">=</span> <span class="st">'raw_attendance'</span>, markers <span class="op">=</span> <span class="va">True</span>, marker <span class="op">=</span> <span class="st">"o"</span> )</span>
+<span id="cb17-118"><a href="#cb17-118" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Attendance by Time of Day'</span>)</span>
+<span id="cb17-119"><a href="#cb17-119" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Hour of the Day'</span>)</span>
+<span id="cb17-120"><a href="#cb17-120" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Attendance'</span>)</span>
+<span id="cb17-121"><a href="#cb17-121" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb17-122"><a href="#cb17-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-123"><a href="#cb17-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-126"><a href="#cb17-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-127"><a href="#cb17-127" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb17-128"><a href="#cb17-128" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Number of Games Time of Day"</span></span>
+<span id="cb17-129"><a href="#cb17-129" aria-hidden="true" tabindex="-1"></a>df_grouped_count <span class="op">=</span> time_df.groupby(time_df[<span class="st">'date_time'</span>].dt.hour).count()</span>
+<span id="cb17-130"><a href="#cb17-130" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df_grouped_count)</span></span>
+<span id="cb17-131"><a href="#cb17-131" aria-hidden="true" tabindex="-1"></a>df_grouped_count <span class="op">=</span> df_grouped_count[<span class="st">'raw_attendance'</span>].reset_index()</span>
+<span id="cb17-132"><a href="#cb17-132" aria-hidden="true" tabindex="-1"></a>df_grouped_count[<span class="st">'count'</span>] <span class="op">=</span> df_grouped_count[<span class="st">'raw_attendance'</span>]</span>
+<span id="cb17-133"><a href="#cb17-133" aria-hidden="true" tabindex="-1"></a>df_grouped_count <span class="op">=</span> df_grouped_count[[<span class="st">'date_time'</span>, <span class="st">'count'</span>]]</span>
+<span id="cb17-134"><a href="#cb17-134" aria-hidden="true" tabindex="-1"></a><span class="co"># df_grouped_count= df_grouped_count.rename(columns = {'date':'count'})</span></span>
+<span id="cb17-135"><a href="#cb17-135" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df_grouped_count)</span></span>
+<span id="cb17-136"><a href="#cb17-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-137"><a href="#cb17-137" aria-hidden="true" tabindex="-1"></a>df_count_atted <span class="op">=</span> pd.merge(df_grouped_count, df_grouped_median_tod, on <span class="op">=</span> <span class="st">'date_time'</span>)</span>
+<span id="cb17-138"><a href="#cb17-138" aria-hidden="true" tabindex="-1"></a>df_count_atted <span class="op">=</span> df_count_atted.drop(columns<span class="op">=</span> [<span class="st">'capacity_filled'</span>])</span>
+<span id="cb17-139"><a href="#cb17-139" aria-hidden="true" tabindex="-1"></a>df_count_atted.rename( columns <span class="op">=</span> {<span class="st">'raw_attendance'</span>: <span class="st">'Attendance'</span>, <span class="st">'count'</span>: <span class="st">"Number of Games"</span>}, inplace<span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb17-140"><a href="#cb17-140" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df_count_atted)</span></span>
+<span id="cb17-141"><a href="#cb17-141" aria-hidden="true" tabindex="-1"></a>melted_count_attend <span class="op">=</span> pd.melt(df_count_atted, value_vars<span class="op">=</span>[<span class="st">'Number of Games'</span>, <span class="st">'Attendance'</span>], id_vars<span class="op">=</span> <span class="st">'date_time'</span>)</span>
+<span id="cb17-142"><a href="#cb17-142" aria-hidden="true" tabindex="-1"></a><span class="co"># print(melted_count_attend)</span></span>
+<span id="cb17-143"><a href="#cb17-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-144"><a href="#cb17-144" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data <span class="op">=</span> melted_count_attend, x <span class="op">=</span> <span class="st">'date_time'</span>, y <span class="op">=</span> <span class="st">'value'</span>, hue <span class="op">=</span> <span class="st">'variable'</span>)</span>
+<span id="cb17-145"><a href="#cb17-145" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Attendance and Game Count by Time of Day'</span>)</span>
+<span id="cb17-146"><a href="#cb17-146" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Hour of the Day'</span>)</span>
+<span id="cb17-147"><a href="#cb17-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-148"><a href="#cb17-148" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb17-149"><a href="#cb17-149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-150"><a href="#cb17-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-151"><a href="#cb17-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-154"><a href="#cb17-154" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-155"><a href="#cb17-155" aria-hidden="true" tabindex="-1"></a>calendar_plot_data <span class="op">=</span> total_data</span>
+<span id="cb17-156"><a href="#cb17-156" aria-hidden="true" tabindex="-1"></a>calendar_plot_data[<span class="st">'month_day'</span>] <span class="op">=</span> calendar_plot_data[<span class="st">'date_time'</span>].dt.strftime(<span class="st">'%m-</span><span class="sc">%d</span><span class="st">'</span>)</span>
+<span id="cb17-157"><a href="#cb17-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-158"><a href="#cb17-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-159"><a href="#cb17-159" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-160"><a href="#cb17-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-163"><a href="#cb17-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-164"><a href="#cb17-164" aria-hidden="true" tabindex="-1"></a>date_of_year <span class="op">=</span> calendar_plot_data.groupby(<span class="st">'month_day'</span>).count()</span>
+<span id="cb17-165"><a href="#cb17-165" aria-hidden="true" tabindex="-1"></a>date_of_year[<span class="st">'count'</span>] <span class="op">=</span> date_of_year[<span class="st">'standard_attend'</span>]</span>
+<span id="cb17-166"><a href="#cb17-166" aria-hidden="true" tabindex="-1"></a>date_of_year <span class="op">=</span> date_of_year[<span class="st">'count'</span>].sort_values().reset_index()</span>
+<span id="cb17-167"><a href="#cb17-167" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(date_of_year)</span>
+<span id="cb17-168"><a href="#cb17-168" aria-hidden="true" tabindex="-1"></a>date_of_year[<span class="st">'total_date'</span>] <span class="op">=</span> <span class="st">'2024-'</span> <span class="op">+</span> date_of_year[<span class="st">'month_day'</span>]</span>
+<span id="cb17-169"><a href="#cb17-169" aria-hidden="true" tabindex="-1"></a>date_of_year[<span class="st">'total_date'</span>]<span class="op">=</span> pd.to_datetime(date_of_year[<span class="st">'total_date'</span>], <span class="bu">format</span> <span class="op">=</span> <span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">"</span>)</span>
+<span id="cb17-170"><a href="#cb17-170" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> pd.Series(date_of_year[<span class="st">'count'</span>].values.tolist(), index <span class="op">=</span> date_of_year[<span class="st">'total_date'</span>].values.tolist())</span>
+<span id="cb17-171"><a href="#cb17-171" aria-hidden="true" tabindex="-1"></a>july.heatmap(dates <span class="op">=</span> date_of_year[<span class="st">'total_date'</span>], data <span class="op">=</span> date_of_year[<span class="st">'count'</span>],  date_label <span class="op">=</span> <span class="va">True</span>, cmap <span class="op">=</span> <span class="st">'RdYlBu'</span>, fontsize <span class="op">=</span><span class="dv">10</span>, weekday_label<span class="op">=</span><span class="va">False</span>, year_label<span class="op">=</span> <span class="va">False</span>, title <span class="op">=</span> <span class="st">'# of Games per day 2010-2019'</span>, colorbar<span class="op">=</span> <span class="va">True</span>, dpi <span class="op">=</span><span class="dv">1200</span>)</span>
+<span id="cb17-172"><a href="#cb17-172" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb17-173"><a href="#cb17-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-174"><a href="#cb17-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-177"><a href="#cb17-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-178"><a href="#cb17-178" aria-hidden="true" tabindex="-1"></a>attend_date <span class="op">=</span> calendar_plot_data.groupby(<span class="st">'month_day'</span>).mean()</span>
+<span id="cb17-179"><a href="#cb17-179" aria-hidden="true" tabindex="-1"></a>attend_date[<span class="st">'count'</span>] <span class="op">=</span> attend_date[<span class="st">'standard_attend'</span>]</span>
+<span id="cb17-180"><a href="#cb17-180" aria-hidden="true" tabindex="-1"></a>attend_date <span class="op">=</span> attend_date[<span class="st">'count'</span>].sort_values().reset_index()</span>
+<span id="cb17-181"><a href="#cb17-181" aria-hidden="true" tabindex="-1"></a>attend_date[<span class="st">'total_date'</span>] <span class="op">=</span> <span class="st">'2024-'</span> <span class="op">+</span> attend_date[<span class="st">'month_day'</span>]</span>
+<span id="cb17-182"><a href="#cb17-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-183"><a href="#cb17-183" aria-hidden="true" tabindex="-1"></a>attend_date[<span class="st">'total_date'</span>] <span class="op">=</span> pd.to_datetime(attend_date[<span class="st">'total_date'</span>], <span class="bu">format</span> <span class="op">=</span> <span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">"</span>)</span>
+<span id="cb17-184"><a href="#cb17-184" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> pd.Series(attend_date[<span class="st">'count'</span>].values.tolist(), index <span class="op">=</span> attend_date[<span class="st">'total_date'</span>].values.tolist())</span>
+<span id="cb17-185"><a href="#cb17-185" aria-hidden="true" tabindex="-1"></a>july.heatmap(dates <span class="op">=</span> attend_date[<span class="st">'total_date'</span>], data <span class="op">=</span> attend_date[<span class="st">'count'</span>],  cmap<span class="op">=</span><span class="st">'RdYlBu'</span>, date_label <span class="op">=</span> <span class="va">True</span>, fontsize <span class="op">=</span><span class="dv">10</span>, weekday_label<span class="op">=</span><span class="va">False</span>, year_label<span class="op">=</span> <span class="va">False</span>, title <span class="op">=</span> <span class="st">'Avg Attendance per day Standardized 2010-2019'</span>, colorbar<span class="op">=</span> <span class="va">True</span>, dpi <span class="op">=</span><span class="dv">1200</span>)</span>
+<span id="cb17-186"><a href="#cb17-186" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb17-187"><a href="#cb17-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-188"><a href="#cb17-188" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-189"><a href="#cb17-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-190"><a href="#cb17-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-191"><a href="#cb17-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-194"><a href="#cb17-194" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb17-195"><a href="#cb17-195" aria-hidden="true" tabindex="-1"></a>away_team_impact <span class="op">=</span> total_data.groupby([<span class="st">'away_team'</span>, <span class="st">'division'</span>])[<span class="st">'standard_attend'</span>].mean().reset_index()</span>
+<span id="cb17-196"><a href="#cb17-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-197"><a href="#cb17-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-198"><a href="#cb17-198" aria-hidden="true" tabindex="-1"></a><span class="co"># away_team_impact = away_team_impact[away_team_impact['division'].isin(['E3', 'E1', 'E2'])]</span></span>
+<span id="cb17-199"><a href="#cb17-199" aria-hidden="true" tabindex="-1"></a>div_dict <span class="op">=</span> {<span class="st">'D1'</span>:<span class="st">'Bundesliga'</span>, <span class="st">'D2'</span>: <span class="st">'2. Bundesliga'</span>, <span class="st">'E0'</span>:<span class="st">'Premier League'</span>, <span class="st">'E1'</span>:<span class="st">'Championship'</span>, </span>
+<span id="cb17-200"><a href="#cb17-200" aria-hidden="true" tabindex="-1"></a>            <span class="st">'E2'</span>:<span class="st">'League 1'</span>, <span class="st">'E3'</span>:<span class="st">'Leauge 2'</span>,<span class="st">'SP1'</span>:<span class="st">'La Liga Primera'</span>, <span class="st">'SP2'</span>:<span class="st">'La Liga Segunda'</span>,</span>
+<span id="cb17-201"><a href="#cb17-201" aria-hidden="true" tabindex="-1"></a>              <span class="st">'B1'</span>:<span class="st">'Jupiler League'</span>, <span class="st">'F1'</span>:<span class="st">'Ligue 1'</span>,<span class="st">'F2'</span>:<span class="st">'Ligue 2'</span>,<span class="st">'I1'</span>:<span class="st">'Serie A'</span>,<span class="st">'I2'</span>:<span class="st">'Seire B'</span>, </span>
+<span id="cb17-202"><a href="#cb17-202" aria-hidden="true" tabindex="-1"></a>              <span class="st">'SC0'</span>:<span class="st">'Scotish Premier League'</span>, <span class="st">'SC1'</span>:<span class="st">'Scotish Division 1'</span>, <span class="st">'T1'</span>:<span class="st">'Fubol Ligi 1'</span>, <span class="st">'P1'</span>: <span class="st">'Liga 1'</span>}</span>
+<span id="cb17-203"><a href="#cb17-203" aria-hidden="true" tabindex="-1"></a>divisions_list <span class="op">=</span>[<span class="st">'D1'</span>, <span class="st">'D2'</span>, <span class="st">'E0'</span>, <span class="st">'E1'</span>, <span class="st">'E2'</span>, <span class="st">'E3'</span>, <span class="st">'SP1'</span> ,<span class="st">'SP2'</span>, <span class="st">'B1'</span>, <span class="st">'F1'</span>, <span class="st">'F2'</span>, <span class="st">'I1'</span>, <span class="st">'I2'</span>, <span class="st">'SC0'</span>, <span class="st">'SC1'</span>, <span class="st">'T1'</span>, <span class="st">'P1'</span>]</span>
+<span id="cb17-204"><a href="#cb17-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-205"><a href="#cb17-205" aria-hidden="true" tabindex="-1"></a>away_team_impact <span class="op">=</span> away_team_impact[[<span class="st">'away_team'</span>, <span class="st">'division'</span>, <span class="st">'standard_attend'</span>]]</span>
+<span id="cb17-206"><a href="#cb17-206" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(away_team_impact)</span>
+<span id="cb17-207"><a href="#cb17-207" aria-hidden="true" tabindex="-1"></a>initial_graph_df <span class="op">=</span> pd.DataFrame(columns <span class="op">=</span> [<span class="st">'away_team'</span>, <span class="st">'division'</span>, <span class="st">'standard_attend'</span>])</span>
+<span id="cb17-208"><a href="#cb17-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-209"><a href="#cb17-209" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> divisions_list:</span>
+<span id="cb17-210"><a href="#cb17-210" aria-hidden="true" tabindex="-1"></a>        temp_impact_df <span class="op">=</span> away_team_impact[away_team_impact[<span class="st">'division'</span>] <span class="op">==</span> i].sort_values(<span class="st">'standard_attend'</span>,ascending <span class="op">=</span> <span class="va">False</span>).head(<span class="dv">3</span>)</span>
+<span id="cb17-211"><a href="#cb17-211" aria-hidden="true" tabindex="-1"></a>        initial_graph_df <span class="op">=</span> pd.concat([initial_graph_df, temp_impact_df], axis <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb17-212"><a href="#cb17-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-213"><a href="#cb17-213" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> jupyter_dash <span class="im">import</span> JupyterDash</span>
+<span id="cb17-214"><a href="#cb17-214" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html, dcc, Input, Output</span>
+<span id="cb17-215"><a href="#cb17-215" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb17-216"><a href="#cb17-216" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb17-217"><a href="#cb17-217" aria-hidden="true" tabindex="-1"></a><span class="co"># fig = go.Figure(px.bar(away_team_impact, y= 'away_team', x = 'standard_attend', color = 'division'))</span></span>
+<span id="cb17-218"><a href="#cb17-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-219"><a href="#cb17-219" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> JupyterDash(<span class="va">__name__</span>)</span>
+<span id="cb17-220"><a href="#cb17-220" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> html.Div(<span class="bu">id</span> <span class="op">=</span> <span class="st">'parent'</span>, children <span class="op">=</span> [</span>
+<span id="cb17-221"><a href="#cb17-221" aria-hidden="true" tabindex="-1"></a>    html.H1(<span class="bu">id</span> <span class="op">=</span> <span class="st">'H1'</span>, children <span class="op">=</span> <span class="st">'Away Team Impact'</span>),</span>
+<span id="cb17-222"><a href="#cb17-222" aria-hidden="true" tabindex="-1"></a>    dcc.Slider(<span class="dv">0</span>,<span class="dv">20</span>,<span class="dv">1</span>, value <span class="op">=</span><span class="dv">3</span>,<span class="bu">id</span> <span class="op">=</span> <span class="st">'slider'</span>),</span>
+<span id="cb17-223"><a href="#cb17-223" aria-hidden="true" tabindex="-1"></a>    dcc.Dropdown(<span class="bu">id</span> <span class="op">=</span> <span class="st">'dropdown'</span>, </span>
+<span id="cb17-224"><a href="#cb17-224" aria-hidden="true" tabindex="-1"></a>                 options <span class="op">=</span> [</span>
+<span id="cb17-225"><a href="#cb17-225" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Bundesliga'</span>, <span class="st">'value'</span>:<span class="st">'D1'</span>},</span>
+<span id="cb17-226"><a href="#cb17-226" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'2. Bundesliga'</span>, <span class="st">'value'</span>:<span class="st">'D2'</span>},</span>
+<span id="cb17-227"><a href="#cb17-227" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Premier League'</span>, <span class="st">'value'</span>:<span class="st">'E0'</span>},</span>
+<span id="cb17-228"><a href="#cb17-228" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Championship'</span>, <span class="st">'value'</span>:<span class="st">'E1'</span>},</span>
+<span id="cb17-229"><a href="#cb17-229" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'League 1'</span>, <span class="st">'value'</span>:<span class="st">'E2'</span>},</span>
+<span id="cb17-230"><a href="#cb17-230" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Leauge 2'</span>, <span class="st">'value'</span>:<span class="st">'E3'</span>},</span>
+<span id="cb17-231"><a href="#cb17-231" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'La Liga Primera'</span>, <span class="st">'value'</span>:<span class="st">'SP1'</span>},</span>
+<span id="cb17-232"><a href="#cb17-232" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'La Liga Segunda'</span>, <span class="st">'value'</span>:<span class="st">'SP2'</span>},</span>
+<span id="cb17-233"><a href="#cb17-233" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Jupiler League'</span>, <span class="st">'value'</span>:<span class="st">'B1'</span>},</span>
+<span id="cb17-234"><a href="#cb17-234" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Ligue 1'</span>, <span class="st">'value'</span>:<span class="st">'F1'</span>},</span>
+<span id="cb17-235"><a href="#cb17-235" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Ligue 2'</span>, <span class="st">'value'</span>:<span class="st">'F2'</span>},</span>
+<span id="cb17-236"><a href="#cb17-236" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Serie A'</span>, <span class="st">'value'</span>:<span class="st">'I1'</span>},</span>
+<span id="cb17-237"><a href="#cb17-237" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Serie B'</span>, <span class="st">'value'</span>:<span class="st">'I2'</span>},</span>
+<span id="cb17-238"><a href="#cb17-238" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Scotish Premier League'</span>, <span class="st">'value'</span>:<span class="st">'SC0'</span>},</span>
+<span id="cb17-239"><a href="#cb17-239" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Scotish Division 1'</span>, <span class="st">'value'</span>:<span class="st">'SC1'</span>},</span>
+<span id="cb17-240"><a href="#cb17-240" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Fubol Ligi 1'</span>, <span class="st">'value'</span>:<span class="st">'T1'</span>},</span>
+<span id="cb17-241"><a href="#cb17-241" aria-hidden="true" tabindex="-1"></a>                {<span class="st">'label'</span>: <span class="st">'Liga 1'</span>, <span class="st">'value'</span>:<span class="st">'P1'</span>}</span>
+<span id="cb17-242"><a href="#cb17-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-243"><a href="#cb17-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-244"><a href="#cb17-244" aria-hidden="true" tabindex="-1"></a>                 ], value <span class="op">=</span> [<span class="st">'D1'</span>, <span class="st">'D2'</span>, <span class="st">'E0'</span>, <span class="st">'E1'</span>, <span class="st">'E2'</span>, <span class="st">'E3'</span>, <span class="st">'SP1'</span> ,<span class="st">'SP2'</span>, <span class="st">'B1'</span>, <span class="st">'F1'</span>, <span class="st">'F2'</span>, <span class="st">'I1'</span>, <span class="st">'I2'</span>, <span class="st">'SC0'</span>, <span class="st">'SC1'</span>, <span class="st">'T1'</span>, <span class="st">'P1'</span>],</span>
+<span id="cb17-245"><a href="#cb17-245" aria-hidden="true" tabindex="-1"></a>                 multi <span class="op">=</span> <span class="va">True</span>),</span>
+<span id="cb17-246"><a href="#cb17-246" aria-hidden="true" tabindex="-1"></a>    dcc.Graph(<span class="bu">id</span> <span class="op">=</span> <span class="st">'bar_plot'</span>, figure<span class="op">=</span>px.bar(initial_graph_df, x<span class="op">=</span><span class="st">'away_team'</span>, y<span class="op">=</span><span class="st">'standard_attend'</span>, color<span class="op">=</span><span class="st">'division'</span>))</span>
+<span id="cb17-247"><a href="#cb17-247" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb17-248"><a href="#cb17-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-249"><a href="#cb17-249" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb17-250"><a href="#cb17-250" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">"bar_plot"</span>, <span class="st">"figure"</span>), </span>
+<span id="cb17-251"><a href="#cb17-251" aria-hidden="true" tabindex="-1"></a>    [Input(<span class="st">"dropdown"</span>, <span class="st">"value"</span>),</span>
+<span id="cb17-252"><a href="#cb17-252" aria-hidden="true" tabindex="-1"></a>     Input(<span class="st">'slider'</span>, <span class="st">'value'</span>)]</span>
+<span id="cb17-253"><a href="#cb17-253" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-254"><a href="#cb17-254" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_graph(drop_value, slider_value):</span>
+<span id="cb17-255"><a href="#cb17-255" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(value)</span></span>
+<span id="cb17-256"><a href="#cb17-256" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> away_team_impact</span>
+<span id="cb17-257"><a href="#cb17-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-258"><a href="#cb17-258" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-259"><a href="#cb17-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-260"><a href="#cb17-260" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df[df[<span class="st">'division'</span>].isin(<span class="bu">list</span>(drop_value))]</span>
+<span id="cb17-261"><a href="#cb17-261" aria-hidden="true" tabindex="-1"></a>    graph_df <span class="op">=</span> pd.DataFrame(columns <span class="op">=</span> [<span class="st">'away_team'</span>, <span class="st">'division'</span>, <span class="st">'standard_attend'</span>])</span>
+<span id="cb17-262"><a href="#cb17-262" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> drop_value:</span>
+<span id="cb17-263"><a href="#cb17-263" aria-hidden="true" tabindex="-1"></a>        temp_impact_df <span class="op">=</span> df[df[<span class="st">'division'</span>] <span class="op">==</span> i].sort_values(<span class="st">'standard_attend'</span>,ascending <span class="op">=</span> <span class="va">False</span>).head(slider_value)</span>
+<span id="cb17-264"><a href="#cb17-264" aria-hidden="true" tabindex="-1"></a>        graph_df <span class="op">=</span> pd.concat([graph_df, temp_impact_df], axis <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb17-265"><a href="#cb17-265" aria-hidden="true" tabindex="-1"></a>    graph_df <span class="op">=</span> graph_df.reset_index().drop(columns <span class="op">=</span> [<span class="st">'index'</span>])</span>
+<span id="cb17-266"><a href="#cb17-266" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> px.bar(graph_df, x<span class="op">=</span> <span class="st">'away_team'</span>, y<span class="op">=</span> <span class="st">'standard_attend'</span>, color <span class="op">=</span> <span class="st">'division'</span>)</span>
+<span id="cb17-267"><a href="#cb17-267" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fig</span>
+<span id="cb17-268"><a href="#cb17-268" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb17-269"><a href="#cb17-269" aria-hidden="true" tabindex="-1"></a>    app.run_server(mode<span class="op">=</span><span class="st">'inline'</span>)</span>
+<span id="cb17-270"><a href="#cb17-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,42 @@
+---
+title: "Week 9 Progress Report"
+subtitle: "DATA 450 Capstone"
+author: "[Your Name]"
+date: 2/13/23
+date-format: "[Week ending: ] M/D/YY"
+number-sections: false
+format:
+  pdf: default
+---
+
+# Time Log
+
+| Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
+|------|-------|----------|---------|--------|
+| Mon.  | 4-5:30 | 1.5 | Blogpost | [Link1]() |
+| Tue.  |  |  |  |  |
+| Wed.  |  6-8:30, 10-12 | 4.5 | Blogpost/awayteam | [Link2]() |
+| Thu.  |  |  |  |  |
+| Fri.  |  |  |  |  |
+| Sat.  |  |  |  |  |
+| Sun.  |  |  |  |  |
+
+: {tbl-colwidths="[10, 15, 12, 50, 13]"}
+
+**Total \# of hours worked this week: [6]**
+
+## What you accomplished (or attempted) this week:
+
+[Text here]
+
+## Any setbacks/roadblocks you experienced:
+
+[Text here]
+
+## What you plan to work on next:
+
+[Text here]
+
+## Are you on track? If not, how will you get back on track?
+
+[Text here]
