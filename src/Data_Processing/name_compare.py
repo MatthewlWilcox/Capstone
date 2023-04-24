@@ -71,7 +71,7 @@ def find_pair_in_list(list1, list2):
                 first_character = first_character +1
                 broken_str = broken_str + [temp_str]
             team_str_len = team_str_len - 1
-
+        print(broken_str)    
      
 
         temp_potential_matching_teams = []
@@ -133,15 +133,16 @@ def find_pair_in_list(list1, list2):
 
     return [key, not_in_both, list2]
 
-x = find_pair_in_list(betting_error_teams, match_error_teams)
+x = find_pair_in_list(temp_list1, temp_list2)
+print(x)
 # print(x[0])
 # print(x[1])
 # print(x[2])
-with open('src/Data_Processing/key2.pkl', 'wb') as pick:
-    pickle.dump(x[0],  pick)
-with open('src/Data_Processing/not_in_both2.pkl', 'wb') as pick:
-    pickle.dump(x[1], pick)
-with open('1src/Data_Processing/list_2_not_found2.pkl', 'wb') as pick:
-    pickle.dump(x[2], pick)
+# with open('src/Data_Processing/key2.pkl', 'wb') as pick:
+#     pickle.dump(x[0],  pick)
+# with open('src/Data_Processing/not_in_both2.pkl', 'wb') as pick:
+#     pickle.dump(x[1], pick)
+# with open('1src/Data_Processing/list_2_not_found2.pkl', 'wb') as pick:
+#     pickle.dump(x[2], pick)
 
 
