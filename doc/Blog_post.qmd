@@ -7,7 +7,7 @@ number-sections: true
 format:
   html:
     theme: default
-    rendering: embed-resources
+    rendering: default
     code-fold: true
     code-tools: true
   pdf: default
@@ -16,11 +16,13 @@ jupyter: python3
 
 # Introduction 
 
-Football (Soccer) is the most popular sport in the world. With an estimated 3.5 billion fans worldwide, it is the most viewed sport in the world [@sportforbusiness]. Football being such a popular sport, there is a large business and economy surrounding the sport. Football teams need to be profitable to succeed. These teams have five primary revenue sources. They are television money, prize money, player transfers, sponsorships, and matchday revenues[@football_stadiums]. Out of all of these, one of the most universal is matchday revenues. Television, prize money, player transfers, and sponsorships can vary based on the team's level. Matchday revenues are much more applicable at all levels of the game. Matchday revenues are the profits a team makes from people attending the game. This is from ticket, concessions, and merchandise sales from attending a game. For many teams, this is the lifeblood of the club and what allows the club to survive. 
+Football (Soccer) is the most popular sport in the world. With an estimated 3.5 billion fans worldwide, it is the most viewed sport in the world [@sportforbusiness]. Football being such a popular sport, there is a large business and economy surrounding the sport. Football teams need to be profitable to succeed. But how do these teams make money? Well mainly from 5 different sources being: television money, prize money, player transfers, sponsorships, and matchday revenues[@football_stadiums]. Out of all of these, one of the most universal is matchday revenues. Television, prize money, player transfers, and sponsorships can vary in significance for a club based on the team's level. Take a team in the England's League two such as AFC Wimbledon. The money they recieve for television drawfs what a team such as Manchester City would recive for television revenue in the English Premier League. Matchday revenues are much more applicable at all levels of the game. Matchday revenues are the profits a team makes from people attending the game. This is from ticket, concessions, and merchandise sales from attending a game. For many teams, this is the lifeblood of the club and what allows the club to survive. 
 
-The most important factor within match day revenues is attendance. The number of people attending a match will significantly affect the match day revenues. So understanding factors and predicting the attendance for a given match is so important. If a club could predict the number of people attending a match, they could be better prepared for an individual match. Additionally, if a predicted match was expected to have lower attendance than desired by the club, the club could market it differently or have special promotions to increase the attendance for that match. 
+The attendnace of a match significantly affect the match day revenues. So understanding factors and predicting the attendance for a given match is increasingly important. If a club could predict the number of people attending a match, they could be better prepared for an individual match such as if it is expected to have lower attendance than desired by the club, the club could market it differently or have special promotions to increase the attendance for that match. 
 
-What has been done here is an evaluation of factors that may impact the attendance for an individual match. These factors are the day/time of the match, betting odds for a match, and who the away team is for any given match. Additionally, in the end, a random forest model was produced to predict the attendance of matches based on these factors. 
+There are many factors that could impact the attendance of a match. However, the factors used and evaluated here are the day/time of the match, betting odds for a match, and who the away team is for any given match. Additionally, in the end, a random forest model was produced to predict the attendance of matches based on these factors. 
+
+# Python Packages Used
 
 ```{python}
 #| code-fold: true
@@ -48,13 +50,14 @@ import plotly.express as px
 
 # Data Collection
 
-The data used in this project was collected from two sources: worldfootball.net and Football-data.co.uk. The data that was collected from worldfootball.net was information on the match, such as the names of the teams, the time and date of the match, and most importantly, the attendance for an individual match. This data was not already tabulated, so it was scraped from the website. This scrape occurred on January 31st, 2023. The data that was collected from Football-data.co.uk was primarily betting information for each game. This data was already tabulated into CSV files. However, they were divided based on the year and league. All the files were downloaded on February 3rd, 2023.
+This project used datat that was collected from two sources: worldfootball.net and Football-data.co.uk. The data that was collected from worldfootball.net was information on the match, such as the names of the teams, the time and date of the match, and most importantly, the attendance for an individual match. This data was scraped from the website. This scrape occurred on January 31st, 2023. The data that was collected from Football-data.co.uk was primarily betting information for each game. This data was already tabulated into CSV files. However, they were divided based on the year and league. All the files were downloaded on February 3rd, 2023.
 
 The data that was collected was between 2010 and 2023. It consisted of leagues from 11 countries England, Scotland, Germany, Italy, Spain, France, Netherlands, Belgium, Portugal, Turkey, and Greece. From these Countries, 21 leagues of data were collected.
 
 # Data Processing
 
-All of the CSV files from Football-data.co.uk were combined together, resulting in two datasets. One with all of the betting data and the other with the attendance. These two datasets were to be combined on the home team name, away team name, and the date/time of the game. However, the two data sets had different naming structures for team names. For example, the team Manchester City in one dataset would be identified as "man_city" and in the other as "manchester_city". With these differentiating structures and spellings of team names, a list of team names was created for both datasets. These lists were then put through a script that took a team from one list and compared the characters to values in the other list. This was starting with one entire team and slowly decreasing its size and observing that through the other team list. 
+All of the CSV files from Football-data.co.uk were combined together, resulting in two datasets. One with all of the betting data and the other with the attendance. To create one final dataset, the two datasets were to be combined on the home team name, away team name, and the date/time of the game. However, issues arose as they had different naming structures for team names. For example, the team Manchester City in one dataset would be identified as "man_city" and in the other as "manchester_city". With these differentiating structures and spellings of team names, a list of team names was created for both datasets. These lists were then put through a python script that took a team from one list and compared the characters to values in the other list. This was starting with one entire team name and slowly decreasing its size and observing that through the other team list. 
+
 |Itteration| Results|
 |----|-----|
 |1| man_city|
@@ -63,7 +66,7 @@ All of the CSV files from Football-data.co.uk were combined together, resulting 
 |4| man_c, an_ci, n_cit, _city|
 
 
-This is an example of how it would divide the name of one list up. It would do this until the team list was broken up into single characters. Then It would start with the largest length of a team name and look through the other list for any results; It would then proceed through the remaining potential names. What resulted is a list of potential matching teams with the team with the most similar name at the top. Then I would determine from the suggestion what was the matching team name. Now that the two data sets had a matching naming of home and away teams, the data sets were able to combine. The resulting data set had 79673 rows and 172 columns, where each row was an individual match. 
+This is an example of how it would split up one team name into a list of smaller strings. It would do this until the team list was broken up into single characters. Then it would start with the largest length of a team name, looking through the other list for any matching character combinations. What resulted is a list of potential matching teams with the team with the most similar name at the top. Then I would determine from the suggestion what was the matching team name. Now that the two data sets had a matching naming of home and away teams, the data sets were able to combine. The resulting data set had 79673 rows and 172 columns, where each row was an individual match. 
 
 However, more processing was needed. Although the initial dataset collected data all the way to 2023, the range of the data was filtered to only 2010 to 2019. This was attributed to the COVID-19 pandemic. During the pandemic, attendance basically ceased to occur for matches. Additionally, some leagues canceled the remaining matches for the season. For those reasons, the dataset is focused up until that time. 
 
@@ -142,7 +145,7 @@ df_grouped_median.sort_values(by = 'day_of_week', inplace = True)
 
 ## Day of Week
 
-First, in @fig-day_median_attend, the average attendance for matches is viewed by the day of the week. What is significant here is that it appears that Wednesday and Sunday have the highest average attendance while Tuesday has the lowest. Wednesday having the highest average attendance is striking. Most would expect games on the weekday matches may have the struggle to have high attendance. 
+First, in @fig-day_median_attend, the average attendance for matches is viewed by the day of the week. What is significant here is that it appears that Wednesday and Sunday have the highest average attendance while Tuesday has the lowest. Wednesday having the highest average attendance is striking. Most would expect matches on the weekdaywould struggle to have high attendance. 
 
 
 ```{python}
@@ -194,9 +197,21 @@ grouped_week_count_division =  time_df.groupby(['day_of_week', 'division']).coun
 
 grouped_week_count_division['day_of_week'] = pd.Categorical(grouped_week_count_division['day_of_week'], categories= day_categories)
 grouped_week_count_division.sort_values(by = 'day_of_week', inplace = True)
+grouped_week_count_division = grouped_week_count_division['day_of_week', 'division', 'date']
 
-fig = px.bar(grouped_week_count_division, y = 'day_of_week', x = 'date', color = 'division', barmode = 'group')
+print(grouped_week_count_division)
+total_div_number = grouped_week_count_division.groupby('day_of_week').sum().reset_index()
+print(total_div_number)
+
+total_div_number = grouped_week_count_division.groupby('day_of_week').sum().reset_index()
+# print(total_div_number)
+rose_df = pd.merge(grouped_week_count_division, total_div_number, on= 'day_of_week')
+rose_df['pct'] = rose_df['date_x']/rose_df['date_y']
+# print(rose_df)
+
+fig = px.bar_polar(rose_df, theta = 'day_of_week', r = 'pct', color = 'division')
 fig.show()
+
 
 ```
 
@@ -264,7 +279,7 @@ calendar_plot_data['month_day'] = calendar_plot_data['date_time'].dt.strftime('%
 
 ## Trends in Quanity of Matches
 
-First, before looking at the attendance, it's important to look at and view trends in when matches actually occur. In @fig-cal_count, there is a significantly low amount of games played from mid-June to the end of July. This can most likely be attributed to European leagues predominantly being on break during these months in relation to FIFA international break. On this break, players typically return to their national teams to play in international competitions and, every four years, the world cup. Another significant period of time for a number of games is the Christmas holiday. Christmas has one of the lowest total number of games occurring. However, December 26th, or Boxing Day, had the most amount of games played for any day. 
+Before looking at the attendance, it's important to look at and view trends in when matches actually occur. In @fig-cal_count, there is a significantly low amount of games played from mid-June to the end of July. This can most likely be attributed to European leagues predominantly being on break during these months in relation to FIFA international break. On this break, players typically return to their national teams to play in international competitions and, every four years, the world cup. Another significant period of time for a number of games is the Christmas holiday. Christmas has one of the lowest total number of games occurring. However, December 26th, or Boxing Day, had the most amount of games played for any day. 
 
 
 ```{python}
@@ -480,8 +495,10 @@ bet_dataset['VC_Result'] = np.select(vc_conditions,vc_vals)
 
 ```{python}
 #| label: fig-betting_comp
+#| fig-cap: Betting Predicting Results of Matches
+#| warning: False
 
-def betting_accuracy_vis(name):
+def betting_accuracy_vis(name, axis):
     b365_data = bet_dataset[[name, 'FTR']].dropna()
     # print(b365_data[name].value_counts())
     b365_data = b365_data[b365_data[name]!= '0']
@@ -498,16 +515,21 @@ def betting_accuracy_vis(name):
     b365_data = b365_data.pivot(index = 'FTR', columns = name, values = 'pct')
     # print(b365_data)
 
-    fig = sns.heatmap(data = b365_data, annot= True)
-    plt.title(name + ' Accuracy in predicting Actual Result')
+    fig = sns.heatmap(data = b365_data, annot= True, ax = axis)
+    # plt.title(name + ' Accuracy in predicting Actual Result')
     
-    plt.show()
+    return fig
 
 result_name_list = ['B365_Result', 'BW_Result', 'WH_Result', 'VC_Result']
-for i in result_name_list:
-    betting_accuracy_vis(i)
+# for i in result_name_list:
+#     betting_accuracy_vis(i)
+figure, ax = plt.subplots(2,2)
 
-
+betting_accuracy_vis('B365_Result', ax[0,0])
+betting_accuracy_vis('BW_Result', ax[0,1])
+betting_accuracy_vis('WH_Result', ax[1,0])
+betting_accuracy_vis('VC_Result', ax[1,1])
+plt.show()
 ```
 
 
