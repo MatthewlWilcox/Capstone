@@ -10,6 +10,7 @@ format:
     rendering: default
     code-fold: true
     code-tools: true
+    warning: false
   pdf: default
 jupyter: python3
 ---
@@ -44,7 +45,7 @@ from jupyter_dash import JupyterDash
 from dash import html, dcc, Input, Output
 import plotly.graph_objects as go
 import plotly.express as px
-
+import pickle
 ```
 
 
@@ -133,7 +134,11 @@ The first factor that will be evaluated is the date and time of individual match
 time_df = total_data[[
     'date', 'time', 'day_of_week', 'date_time', 'raw_attendance', 'capacity_filled', 'standard_attend', 'division'
 ]]
-
+div_dict = {'D1':'Bundesliga', 'D2': '2. Bundesliga', 'E0':'Premier League', 'E1':'Championship', 
+            'E2':'League 1', 'E3':'Leauge 2','SP1':'La Liga Primera', 'SP2':'La Liga Segunda',
+              'B1':'Jupiler League', 'F1':'Ligue 1','F2':'Ligue 2','I1':'Serie A','I2':'Seire B', 
+              'SC0':'Scotish Premier League', 'SC1':'Scotish Division 1', 'T1':'Fubol Ligi 1', 'P1': 'Liga 1'}
+divisions_list =['D1', 'D2', 'E0', 'E1', 'E2', 'E3', 'SP1' ,'SP2', 'B1', 'F1', 'F2', 'I1', 'I2', 'SC0', 'SC1', 'T1', 'P1']
 
 df_grouped_mean = time_df.groupby('day_of_week')['raw_attendance', 'capacity_filled', 'standard_attend'].mean().reset_index()
 df_grouped_median = time_df.groupby('day_of_week')['raw_attendance', 'capacity_filled', 'standard_attend'].median().reset_index()
@@ -197,19 +202,18 @@ grouped_week_count_division =  time_df.groupby(['day_of_week', 'division']).coun
 
 grouped_week_count_division['day_of_week'] = pd.Categorical(grouped_week_count_division['day_of_week'], categories= day_categories)
 grouped_week_count_division.sort_values(by = 'day_of_week', inplace = True)
-grouped_week_count_division = grouped_week_count_division['day_of_week', 'division', 'date']
+grouped_week_count_division = grouped_week_count_division[['day_of_week', 'division', 'date']]
 
-print(grouped_week_count_division)
-total_div_number = grouped_week_count_division.groupby('day_of_week').sum().reset_index()
-print(total_div_number)
 
 total_div_number = grouped_week_count_division.groupby('day_of_week').sum().reset_index()
 # print(total_div_number)
 rose_df = pd.merge(grouped_week_count_division, total_div_number, on= 'day_of_week')
 rose_df['pct'] = rose_df['date_x']/rose_df['date_y']
 # print(rose_df)
-
-fig = px.bar_polar(rose_df, theta = 'day_of_week', r = 'pct', color = 'division')
+rose_df['League'] = rose_df['division']
+rose_df = rose_df.replace({'League':div_dict})
+rose_df
+fig = px.bar_polar(rose_df, theta = 'day_of_week', r = 'pct', color = 'League')
 fig.show()
 
 
@@ -685,11 +689,15 @@ x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = .2, random_
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------
 # Random Forest
-# ------------------------------------------------------------------------------------------------------------------------------------------------
+# The Random Forest Model was Performed outside the file and will be imported into the document. 
+#  ------------------------------------------------------------------------------------------------------------------------------------------------
 
 # random_forest_model = RandomForestRegressor(n_estimators = 1000, random_state= 23)
 
 # random_forest_model.fit(x_train, y_train)
+#  ------------------------------------------------------------------------------------------------------------------------------------------------
+
+load_random_forest_model = pickle.load(open('../src/Modeling/Random_forest_model.sav', 'rb'))
 
 
 
@@ -697,8 +705,8 @@ x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = .2, random_
 
 
 ```{python}
-# y_predict = random_forest_model.predict(x_test)
+y_predict = load_random_forest_model.predict(x_test)
 
-# mae = metrics.mean_absolute_error(y_test, y_predict)
-# mae
+mae = metrics.mean_absolute_error(y_test, y_predict)
+mae
 ```

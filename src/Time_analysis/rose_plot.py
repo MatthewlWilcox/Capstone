@@ -16,10 +16,10 @@ grouped_week_count_division = grouped_week_count_division[['day_of_week', 'divis
 
 print(grouped_week_count_division)
 total_div_number = grouped_week_count_division.groupby('day_of_week').sum().reset_index()
-print(total_div_number)
+# print(total_div_number)
 rose_df = pd.merge(grouped_week_count_division, total_div_number, on= 'day_of_week')
 rose_df['pct'] = rose_df['date_x']/rose_df['date_y']
-print(rose_df)
+# print(rose_df)
 
 fig = px.bar_polar(rose_df, theta = 'day_of_week', r = 'pct', color = 'division')
 fig.show()

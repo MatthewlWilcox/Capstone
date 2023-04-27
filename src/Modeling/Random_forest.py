@@ -8,6 +8,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from sklearn import metrics
 from sklearn.linear_model import LinearRegression
+import pickle
 data = pd.read_pickle('data/final_datasets/data_standardized.pkl')
 
 # data = data[data['division'].isin(['E0', 'D1','I1', 'SP1', 'F1'])]
@@ -61,6 +62,9 @@ print(lin_regressor.score(x_test,y_test))
 random_forest_model = RandomForestRegressor(n_estimators = 1000, random_state= 23)
 
 random_forest_model.fit(x_train, y_train)
+
+pickle.dump(random_forest_model, open('Random_forest_model.sav', 'wb'))
+
 
 y_predict = random_forest_model.predict(x_test)
 
