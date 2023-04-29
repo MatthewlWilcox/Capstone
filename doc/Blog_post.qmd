@@ -273,34 +273,7 @@ The other variables were the mean and standard deviation of the home team for th
 
 ## Final Dataset
 
-The resulting dataset that was used consisted of 53,224 rows and 29 columns. Here is a list of the variables used, as well as their description:
-
-|Variable|Description|
-|-|-|
-|home_team|Name of Home team for na individual match|
-|away_team| Name of Away team for an individual match|
-|raw_attendance| Total number of people who attended an individual match|
-|division| The league the match took place in|
-|B365H| Bet365 home team win odds|
-|B365D| Bet 365 draw odds|
-|B365A| Bet365 away team win odds|
-|BWH| Bet&Win home team win odds|
-|BWD| Bet&Win draw odds|
-|BWA| Bet&Win away team odds|
-|WHH| William Hilll Home win Odds|
-|WHD| William Hill Draw odds|
-|WHA| William Hill Away win odds|
-|VCH| VC Bet Home team win odds|
-|VCD| VC bet draw odds|
-|VCA| VC Bet away win odds|
-|BbAv>2.5| Bet Brain Average over 2.5 goals|
-|BbAV<2.5| Bet Brain Average under 2.5 goals|
-|date_time| Date and time of when a match occured|
-|season| The season a match occured|
-|mean_attend| Average home team attednace for that season|
-|std_attend| Standard deviation of the home team attendance that season|
-|Standard_attendance| The z-score of attendance for a match in relation to the home team attednacne that season|
-
+The resulting dataset that was used consisted of 53,224 rows and 29 columns. Descriptions of variables can be viewed in the [data dictionary](https://matthewlwilcox.github.io/Capstone/doc/data_dictionary.html).
 
 
 
@@ -316,7 +289,7 @@ total_data = total_data[['home_team', 'away_team',  'date', 'time',
        'BbMx<2.5', 'BbAv<2.5', 'date_time', 'season', 'mean_attend',
        'std_attend', 'standard_attend']]
 total_data.head()
-total_data.columns
+# total_data.columns
 # total_data = pd.read_pickle('../data/final_datasets/data_standardized.pkl')
 ```
 
@@ -733,6 +706,7 @@ betting_accuracy_vis('B365_Result', ax[0,0])
 betting_accuracy_vis('BW_Result', ax[0,1])
 betting_accuracy_vis('WH_Result', ax[1,0])
 betting_accuracy_vis('VC_Result', ax[1,1])
+plt.title('Betting Data Compared to Actual Match Result')
 plt.show()
 ```
 
@@ -915,14 +889,10 @@ mae = metrics.mean_absolute_error(y_test, y_predict)
 mse = metrics.mean_squared_error(y_test, y_predict)
 mape = metrics.mean_absolute_percentage_error(y_test, y_predict)
 r2 = metrics.r2_score(y_test, y_predict)
-
+result_df = pd.DataFrame(np.array([['Mean Absolute Error', mae], ['Mean Squared Error', mse],
+    ['Mean Absolute Percentage Error', mape], ['r\u00b2', r2]]), columns = ['Metric', 'Score'])
 ```
 
-
-
-|Metric|Score|
-|--|--|
-|Mean Absolue Error |`python mae`|
-|Mean Squared Error| ${mse}$|
-|Mean Absolute Percentage Error| ${mape}$|
-|r^2 score| ${r2}$|
+```{python}
+result_df
+```
