@@ -13,12 +13,17 @@ def yes_or_no(question):
         return yes_or_no("Uhhhh... please enter ")
 
 
+bet_teams_df = pd.read_csv('d:/Python Projects/Capstone/data/RAWDATA/Raw_betting_data.csv')
+match_teams_df = pd.read_csv('d:/Python Projects/Capstone/data/RAWDATA/Raw_match_data.csv')
+# print(bet_teams_df.columns)
+# print(match_teams_df.columns)
+bet_teams = list(bet_teams_df['HomeTeam'])
+match_teams = list(match_teams_df['home_team'])
 
-
-with open('src/Data_Processing/not_in_both.pkl', 'rb') as pick:
-    betting_error_teams = pickle.load(pick)
-with open('src/Data_Processing/match_error_teams.pkl', 'rb') as pick:
-    match_error_teams = pickle.load(pick)
+# with open('src/Data_Processing/not_in_both.pkl', 'rb') as pick:
+#     betting_error_teams = pickle.load(pick)
+# with open('src/Data_Processing/match_error_teams.pkl', 'rb') as pick:
+#     match_error_teams = pickle.load(pick)
 
 
 temp_list1 = ['man_city', 'man_u', 'norwhich', 'test3']
@@ -71,7 +76,7 @@ def find_pair_in_list(list1, list2):
                 first_character = first_character +1
                 broken_str = broken_str + [temp_str]
             team_str_len = team_str_len - 1
-        print(broken_str)    
+        # print(broken_str)    
      
 
         temp_potential_matching_teams = []
@@ -132,8 +137,8 @@ def find_pair_in_list(list1, list2):
                         break
 
     return [key, not_in_both, list2]
-
-x = find_pair_in_list(temp_list1, temp_list2)
+print(input())
+x = find_pair_in_list(bet_teams, match_teams)
 print(x)
 # print(x[0])
 # print(x[1])

@@ -9,6 +9,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 from sklearn import metrics
 from sklearn.linear_model import LinearRegression
 import pickle
+from sklearn.model_selection import RandomizedSearchCV
 data = pd.read_pickle('data/final_datasets/data_standardized.pkl')
 
 # data = data[data['division'].isin(['E0', 'D1','I1', 'SP1', 'F1'])]
@@ -40,6 +41,32 @@ y = data['raw_attendance']
 
 x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = .2, random_state = 11)
 
+n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
+max_features = ['sqrt', 'log2']
+max_depth = [int(x) for x in np.linspace(10,110, num = 11)]
+max_depth.append(None)
+min_sample_split = [2,5,10]
+min_sample_leaf = [1,2,4]
+boostrap = [True, False]
+
+random_grid = {'n_estimators': n_estimators,
+               'max_features': max_features,
+               'max_depth': max_depth,
+               'min_samples_split': min_sample_split,
+               'min_samples_leaf': min_sample_leaf,
+               'bootstrap': boostrap}
+
+ran_forest = RandomForestRegressor(random_state= 23)
+rf_random = RandomizedSearchCV(estimator = ran_forest, param_distributions = random_grid, n_iter = 100, cv = 3, verbose=2, random_state=23, n_jobs = -1)
+
+rf_random.fit(x_train, y_train)
+
+from pprint import pprint
+pprint(rf_random.best_params_)
+
+
+
+
 def evaluate(model, test_features, test_labels):
     predictions = model.predict(test_features)
     errors = abs(predictions - test_labels)
@@ -50,5 +77,13 @@ def evaluate(model, test_features, test_labels):
     print('Accuracy = {:0.2f}%.'.format(accuracy))
     
     return accuracy
-load_model = pickle.load(open('src/Modeling/Random_forest_model.sav', 'rb'))
-evaluate(load_model, x_test, y_test)
+random_forest_model = RandomForestRegressor(n_estimators = 1000, random_state= 23)
+
+random_forest_model.fit(x_train, y_train)
+base_model_accuracy = evaluate(random_forest_model, x_test, y_test)
+best_random = rf_random.best_estimator_
+random_accuracy = evaluate(best_random, x_test, y_test)
+print(base_model_accuracy)
+print(random_accuracy)
+
+print('Improvement of {:0.2f}%.'.format( 100 * (random_accuracy - base_model_accuracy) / base_model_accuracy))

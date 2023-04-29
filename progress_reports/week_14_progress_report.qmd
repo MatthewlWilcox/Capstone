@@ -1,8 +1,8 @@
 ---
 title: "Week 9 Progress Report"
 subtitle: "DATA 450 Capstone"
-author: "[Your Name]"
-date: 2/13/23
+author: "Matthew Wilcox"
+date: 4/23/23
 date-format: "[Week ending: ] M/D/YY"
 number-sections: false
 format:
@@ -13,30 +13,30 @@ format:
 
 | Day  | Time  | \# Hours | Task(s) | GH Commit(s) |
 |------|-------|----------|---------|--------|
-| Mon.  | 4-5:30 | 1.5 | Blogpost | [Link1]() |
+| Mon.  | 4-5:30 | 1.5 | Blogpost | [Link1]('https://github.com/MatthewlWilcox/Capstone/commit/26e14c609e85707961e959822b16c11c3c5e1828') |
 | Tue.  |  |  |  |  |
-| Wed.  |  6-8:30, 10-12 | 4.5 | Blogpost/awayteam | [Link2]() |
-| Thu.  |  |  |  |  |
+| Wed.  |  6-8:30, 10-12 | 4.5 | Blogpost/awayteam | [Link2]('https://github.com/MatthewlWilcox/Capstone/commit/f8ec62ce1c95ddabf98bea0991397319ec3a1d0f') |
+| Thu.  | 6-7 | 1 | blogpost | [link3]('https://github.com/MatthewlWilcox/Capstone/commit/3cb2ea820ff33af5f6da292ff72928b30b67f4e1') |
 | Fri.  |  |  |  |  |
-| Sat.  |  |  |  |  |
-| Sun.  |  |  |  |  |
+| Sat.  | 12-2:30| 2.5 | blogpost |  |
+| Sun.  | 1-5, 9-12 | 6 | blogpost | [Link4]('https://github.com/MatthewlWilcox/Capstone/commit/87c91e9fb82249a0cb91b972f34abad5eb9d09af') |
 
 : {tbl-colwidths="[10, 15, 12, 50, 13]"}
 
-**Total \# of hours worked this week: [6]**
+**Total \# of hours worked this week: [14.5]**
 
 ## What you accomplished (or attempted) this week:
 
-[Text here]
+Predominantly what was acomplished was the blog post and adding sliders and a dropdown for the away team impact. 
 
 ## Any setbacks/roadblocks you experienced:
 
-[Text here]
+Having to learn Dash package
 
 ## What you plan to work on next:
 
-[Text here]
+Finish up revisiions and add a section writing up about modeling
 
 ## Are you on track? If not, how will you get back on track?
 
-[Text here]
+Im on track.

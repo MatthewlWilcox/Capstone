@@ -1,0 +1,42 @@
+---
+title: "Data Dictionary"
+number-sections: false
+format:
+  html:
+    theme: default
+    toc: true
+    rendering: default
+    code-fold: true
+    code-tools: true
+    warning: false
+  pdf: default
+jupyter: python3
+---
+
+|Variable|Description|
+|-|-|
+|home_team|Name of Home team for na individual match|
+|away_team| Name of Away team for an individual match|
+|raw_attendance| Total number of people who attended an individual match|
+|division| The league the match took place in|
+|B365H| Bet365 home team win odds|
+|B365D| Bet 365 draw odds|
+|B365A| Bet365 away team win odds|
+|BWH| Bet&Win home team win odds|
+|BWD| Bet&Win draw odds|
+|BWA| Bet&Win away team odds|
+|WHH| William Hilll Home win Odds|
+|WHD| William Hill Draw odds|
+|WHA| William Hill Away win odds|
+|VCH| VC Bet Home team win odds|
+|VCD| VC bet draw odds|
+|VCA| VC Bet away win odds|
+|BbAv>2.5| Bet Brain Average over 2.5 goals|
+|BbAV<2.5| Bet Brain Average under 2.5 goals|
+|date_time| Date and time of when a match occured|
+|season| The season a match occured|
+|mean_attend| Average home team attednace for that season|
+|std_attend| Standard deviation of the home team attendance that season|
+|Standard_attendance| The z-score of attendance for a match in relation to the home team attednacne that season|
+
+
