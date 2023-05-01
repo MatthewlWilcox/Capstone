@@ -836,6 +836,8 @@ plt.show()
 
 # Modeling
 
+All of this analysis and looking at different factors that would impact attendance leads to predicting the attendance of a game. With the complexity of the data a random forest regression model was implemented. Random Forest Regression is a supervised machine learning model. It uses multiple decsision trees to make the best model for the data. 
+
 ```{python}
 model_dataset = total_data
 model_dataset = model_dataset.dropna(subset = ['B365A', 'BWH', 'WHH', 'VCD','BbMx>2.5',
@@ -895,4 +897,16 @@ result_df = pd.DataFrame(np.array([['Mean Absolute Error', mae], ['Mean Squared 
 
 ```{python}
 result_df
+```
+
+
+The Random Forest model used 1000 decsion trees to build it. The results of the model can be seen in the table above. 
+
+
+```{python}
+model_result = total_data[['raw_attendance']]
+model_result['predicted_attend'] = y_predict
+
+model_result.head()
+
 ```
