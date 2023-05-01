@@ -246,6 +246,12 @@ total_data = pd.merge(data, data_std, on= ['home_team', 'season'])
 total_data['standard_attend'] = (total_data['raw_attendance']-total_data['mean_attend'])/ total_data['std_attend']
 # data.to_pickle('data/final_datasets/data_standardized.pkl')
 # data.to_csv('data/final_datasets/data_standardized.csv')
+
+div_dict = {'D1':'Bundesliga', 'D2': '2. Bundesliga', 'E0':'Premier League', 'E1':'Championship', 
+            'E2':'League 1', 'E3':'Leauge 2','SP1':'La Liga Primera', 'SP2':'La Liga Segunda',
+              'B1':'Jupiler League', 'F1':'Ligue 1','F2':'Ligue 2','I1':'Serie A','I2':'Seire B', 
+              'SC0':'Scotish Premier League', 'SC1':'Scotish Division 1', 'T1':'Fubol Ligi 1', 'P1': 'Liga 1'}
+divisions_list =['D1', 'D2', 'E0', 'E1', 'E2', 'E3', 'SP1' ,'SP2', 'B1', 'F1', 'F2', 'I1', 'I2', 'SC0', 'SC1', 'T1', 'P1']
 ```
 
 All of the CSV files from Football-data.co.uk were combined together, resulting in two datasets. One with all of the betting data and the other with the attendance. To create one final dataset, the two datasets were to be combined on the home team name, away team name, and the date/time of the game. However, issues arose as they had different naming structures for team names. For example, the team Manchester City in one dataset would be identified as "man_city" and in the other as "manchester_city". With these differentiating structures and spellings of team names, a list of team names was created for both datasets. These lists were then put through a python script that took a team from one list and compared the characters to values in the other list. This was starting with one entire team name and slowly decreasing its size and observing that through the other team list. 
@@ -279,9 +285,10 @@ The resulting dataset that was used consisted of 53,224 rows and 29 columns. Des
 
 
 ```{python}
-#| code-fold: true
+#| code-fold: false
 #| code-summary: "Data Import"
 # total_data = data
+#| echo: true
 total_data = total_data[['home_team', 'away_team',  'date', 'time',
        'day_of_week', 'raw_attendance', 'division',  'FTR',
        'B365H', 'B365D', 'B365A', 'BWH', 'BWD', 'BWA',
@@ -289,8 +296,7 @@ total_data = total_data[['home_team', 'away_team',  'date', 'time',
        'BbMx<2.5', 'BbAv<2.5', 'date_time', 'season', 'mean_attend',
        'std_attend', 'standard_attend']]
 total_data.head()
-# total_data.columns
-# total_data = pd.read_pickle('../data/final_datasets/data_standardized.pkl')
+
 ```
 
 # Date & Time
@@ -299,19 +305,18 @@ The first factor that will be evaluated is the date and time of individual match
 
 
 ```{python}
-#| code-fold: true
+#| code-fold: false
 #| code-summary: "Time Data Processing"
 #| warning: false
+#| echo: true
 
 time_df = total_data[[
     'date', 'time', 'day_of_week', 'date_time', 'raw_attendance', 'standard_attend', 'division'
 ]]
-div_dict = {'D1':'Bundesliga', 'D2': '2. Bundesliga', 'E0':'Premier League', 'E1':'Championship', 
-            'E2':'League 1', 'E3':'Leauge 2','SP1':'La Liga Primera', 'SP2':'La Liga Segunda',
-              'B1':'Jupiler League', 'F1':'Ligue 1','F2':'Ligue 2','I1':'Serie A','I2':'Seire B', 
-              'SC0':'Scotish Premier League', 'SC1':'Scotish Division 1', 'T1':'Fubol Ligi 1', 'P1': 'Liga 1'}
-divisions_list =['D1', 'D2', 'E0', 'E1', 'E2', 'E3', 'SP1' ,'SP2', 'B1', 'F1', 'F2', 'I1', 'I2', 'SC0', 'SC1', 'T1', 'P1']
+```
 
+## Day of Week
+```{python}
 df_grouped_mean = time_df.groupby('day_of_week')['raw_attendance',  'standard_attend'].mean().reset_index()
 df_grouped_median = time_df.groupby('day_of_week')['raw_attendance',  'standard_attend'].median().reset_index()
 
@@ -319,8 +324,6 @@ day_categories = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satur
 df_grouped_median['day_of_week'] = pd.Categorical(df_grouped_median['day_of_week'], categories= day_categories)
 df_grouped_median.sort_values(by = 'day_of_week', inplace = True)
 ```
-
-## Day of Week
 
 First, in @fig-day_median_attend, the average attendance for matches is viewed by the day of the week. What is significant here is that it appears that Wednesday and Sunday have the highest average attendance while Tuesday has the lowest. Wednesday having the highest average attendance is striking. Most would expect matches on the weekdaywould struggle to have high attendance. 
 
