@@ -388,7 +388,9 @@ rose_df['pct'] = rose_df['date_x']/rose_df['date_y']
 rose_df['League'] = rose_df['division']
 rose_df = rose_df.replace({'League':div_dict})
 rose_df
-fig = px.bar_polar(rose_df, theta = 'day_of_week', r = 'pct', color = 'League')
+colors = px.colors.qualitative.Alphabet + px.colors.qualitative.Light24
+
+fig = px.bar_polar(rose_df, theta = 'day_of_week', r = 'pct', color = 'League', color_discrete_sequence= colors)
 fig.show()
 
 
@@ -675,7 +677,7 @@ bet_dataset['VC_Result'] = np.select(vc_conditions,vc_vals)
 
 ```{python}
 #| label: fig-betting_comp
-#| fig-cap: Betting Predicting Results of Matches
+#| fig-cap: Betting Data Compared to Actual Match Result
 #| warning: False
 
 def betting_accuracy_vis(name, axis):
@@ -709,7 +711,6 @@ betting_accuracy_vis('B365_Result', ax[0,0])
 betting_accuracy_vis('BW_Result', ax[0,1])
 betting_accuracy_vis('WH_Result', ax[1,0])
 betting_accuracy_vis('VC_Result', ax[1,1])
-plt.title('Betting Data Compared to Actual Match Result')
 plt.show()
 ```
 
@@ -820,15 +821,15 @@ for index, rows in df.iterrows():
 df['count_pct'] = count_pct
 # total_count = df['count'].sum()
 # df['pct'] = df['count']*100/total_count
-df = df.rename(columns = {'higher_goals':'Odds of Goals over 2.5 is greater', 'increase_attend': 'Increased Attendance'})
-df2 = df.pivot(index = 'Odds of Goals over 2.5 is greater', columns = 'Increased Attendance', values = 'count_pct')
+df = df.rename(columns = {'higher_goals':'Odds of Goals over 2.5 is favored', 'increase_attend': 'Increased Attendance'})
+df2 = df.pivot(index = 'Odds of Goals over 2.5 is favored', columns = 'Increased Attendance', values = 'count_pct')
 # print(df)
 # sns.heatmap(goal_data = df2, annot= True)
 # plt.gca().invert_xaxis()
 # plt.gca().invert_yaxis()
 # plt.title('Predicted Goals in relation to Attendance')
 # plt.show()
-sns.barplot(data =df, x = 'Odds of Goals over 2.5 is greater', y = 'count_pct', hue = 'Increased Attendance')
+sns.barplot(data =df, x = 'Odds of Goals over 2.5 is favored', y = 'count_pct', hue = 'Increased Attendance')
 plt.gca().invert_xaxis()
 plt.ylabel('Percent')
 plt.title('Predicted Goals in relation to Attendance')
@@ -881,12 +882,12 @@ x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = .2, random_
 # The Random Forest Model was Performed outside the file and will be imported into the document. 
 #  ------------------------------------------------------------------------------------------------------------------------------------------------
 
-random_forest_model = RandomForestRegressor(n_estimators = 1000, random_state= 11)
+# random_forest_model = RandomForestRegressor(n_estimators = 1000, random_state= 11)
 
-random_forest_model.fit(x_train, y_train)
+# random_forest_model.fit(x_train, y_train)
 #  ------------------------------------------------------------------------------------------------------------------------------------------------
 
-# random_forest_model = pickle.load(open('../src/Modeling/Random_forest_model.sav', 'rb'))
+random_forest_model = pickle.load(open('../src/Modeling/Random_forest_model.sav', 'rb'))
 
 
 
@@ -913,7 +914,9 @@ result_df
 ```
 
 
-The Random Forest model used 1000 decsion trees to build it. The results of the model can be seen in the table above. 
+The Random Forest model used 1000 decsion trees to build it. The results of the model can be seen in the table above. It resulted in a fairly high r^2^ score of over .93. Additonally wiht the Mean abosulte error score of approximately 2300 showing that the model's prediction is on average off by 2300 people. 
+
+Below is a way to
 
 
 
