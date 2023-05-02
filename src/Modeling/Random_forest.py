@@ -9,36 +9,40 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 from sklearn import metrics
 from sklearn.linear_model import LinearRegression
 import pickle
-data = pd.read_pickle('data/final_datasets/data_standardized.pkl')
-
-# data = data[data['division'].isin(['E0', 'D1','I1', 'SP1', 'F1'])]
-data = data.dropna(subset = ['B365A', 'BWH', 'WHH', 'VCD','BbMx>2.5',
+model_dataset = pd.read_pickle('data/final_datasets/data_standardized.pkl')
+ 
+model_dataset = model_dataset.dropna(subset = ['B365A', 'BWH', 'WHH', 'VCD','BbMx>2.5',
                              'BbAv>2.5', 'BbMx<2.5', 'BbAv<2.5', 'std_attend', 'standard_attend'])
-data = data.drop(['url', 'date_time'], axis =1)
-obj_data = data.select_dtypes(include=['object']).copy()
+model_dataset = model_dataset.drop(['date_time'], axis =1)
+obj_data = model_dataset.select_dtypes(include=['object']).copy()
 column_obj_name = obj_data.columns.values.tolist()
-print(column_obj_name)
-print(data.dtypes)
+before_encode = model_dataset[['division', 'home_team', 'away_team']]
 
 label_encoder = LabelEncoder()
+post_encode = model_dataset[['division', 'home_team', 'away_team']]
+
+encode_compare = pd.concat([before_encode, post_encode], axis = 1, ignore_index=True)
+encode_compare.columns = ['division', 'home_team', 'away_team', 'division_encode', 'home_encode', 'away_encode']
+# print(encode_compare)
+
+div_key = pd.Series(encode_compare.division.values, index = encode_compare.division_encode).to_dict()
+home_key = pd.Series(encode_compare.home_team.values, index = encode_compare.home_encode).to_dict()
+away_key = pd.Series(encode_compare.away_team.values, index = encode_compare.away_encode).to_dict()
 
 
 for obj in column_obj_name:
-    data[obj] = label_encoder.fit_transform(data[obj])
-data = data.astype(float)
-data = data.dropna()
-print(data.dtypes)
-
-print(data.isna().sum())
-print(data)
+    model_dataset[obj] = label_encoder.fit_transform(model_dataset[obj])
+model_dataset = model_dataset.astype(float)
+model_dataset = model_dataset.dropna()
 
 
-x = data.drop(['raw_attendance', 'standard_attend', 'capacity_filled'], axis = 1)
+x = model_dataset.drop(['raw_attendance', 'standard_attend'], axis = 1)
 x = x[['home_team', 'away_team', 'division', 'date', 'time', 'day_of_week','B365H', 'B365D',
        'B365A']]
-y = data['raw_attendance']
+y = model_dataset['raw_attendance']
 
 x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = .2, random_state = 11)
+
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------
 # Linear Regression
@@ -58,8 +62,7 @@ print(lin_regressor.score(x_test,y_test))
 # ------------------------------------------------------------------------------------------------------------------------------------------------
 # Random Forest
 # ------------------------------------------------------------------------------------------------------------------------------------------------
-
-random_forest_model = RandomForestRegressor(n_estimators = 1000, random_state= 23)
+random_forest_model = RandomForestRegressor(n_estimators = 1000, random_state= 11)
 
 random_forest_model.fit(x_train, y_train)
 
