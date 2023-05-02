@@ -16,13 +16,13 @@ format:
 jupyter: python3
 ---
 
-![](Header Image/victoria-prymak-CCe_Xt5sEDA-unsplash.jpg)
+![](Header Image/victoria-prymak-CCe_Xt5sEDA-unsplash.jpg){fig-alt =[@unsplash_2020]}
 
 
 
 # Why Attendance Matters 
 
-Football (Soccer), with an estimated 3.5 billion fans worldwide, is the most popular sport in the world [@sportforbusiness]. In turn a large economy and business surrounds the sport. Football teams need to be profitable to succeed. But how do these teams make money? Well mainly from 5 different revenue sources being: television money, prize money, player transfers, sponsorships, and matchday revenues[@football_stadiums]. Out of all of these, one of the most universal is matchday revenues. For many teams, the match day revnue is the lifeblood of the club. 
+Football (Soccer), with an estimated 3.5 billion fans worldwide, is the most popular sport in the world [@sportforbusinessWorldsMost]. In turn a large economy and business surrounds the sport. Football teams need to be profitable to succeed. But how do these teams make money? Well mainly from 5 different revenue sources being: television money, prize money, player transfers, sponsorships, and matchday revenues[@footballstadiumsFootballClubs]. Out of all of these, one of the most universal is matchday revenues. For many teams, the match day revnue is the lifeblood of the club. 
 
 The attendnace of a match can significantly affect a team's match day revenues. So understanding factors and predicting the attendance is increasingly important. If a club could predict the number of people attending a match, they could be better prepared for it. Such as, if it is expected to have lower attendance than desired, the club could market it differently or have special promotions to increase the attendance for that match. 
 
@@ -841,12 +841,12 @@ x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = .2, random_
 # The Random Forest Model was Performed outside the file and will be imported into the document. 
 #  ------------------------------------------------------------------------------------------------------------------------------------------------
 
-# random_forest_model = RandomForestRegressor(n_estimators = 1000, random_state= 11)
+random_forest_model = RandomForestRegressor(n_estimators = 1000, random_state= 11)
 
-# random_forest_model.fit(x_train, y_train)
+random_forest_model.fit(x_train, y_train)
 #  ------------------------------------------------------------------------------------------------------------------------------------------------
 
-random_forest_model = pickle.load(open('../src/Modeling/Random_forest_model.sav', 'rb'))
+# random_forest_model = pickle.load(open('../src/Modeling/Random_forest_model.sav', 'rb'))
 
 y_predict = random_forest_model.predict(x_test)
 
