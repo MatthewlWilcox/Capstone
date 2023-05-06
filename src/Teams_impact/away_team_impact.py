@@ -11,7 +11,7 @@ away_team_impact = data.groupby(['away_team', 'division'])['standard_attend'].me
 
 # away_team_impact = away_team_impact[away_team_impact['division'].isin(['E3', 'E1', 'E2'])]
 div_dict = {'D1':'Bundesliga', 'D2': '2. Bundesliga', 'E0':'Premier League', 'E1':'Championship', 
-            'E2':'League 1', 'E3':'Leauge 2','SP1':'La Liga Primera', 'SP2':'La Liga Segunda',
+            'E2':'League 1', 'E3':'League 2','SP1':'La Liga Primera', 'SP2':'La Liga Segunda',
               'B1':'Jupiler League', 'F1':'Ligue 1','F2':'Ligue 2','I1':'Serie A','I2':'Seire B', 
               'SC0':'Scotish Premier League', 'SC1':'Scotish Division 1', 'T1':'Fubol Ligi 1', 'P1': 'Liga 1'}
 divisions_list =['D1', 'D2', 'E0', 'E1', 'E2', 'E3', 'SP1' ,'SP2', 'B1', 'F1', 'F2', 'I1', 'I2', 'SC0', 'SC1', 'T1', 'P1']
@@ -19,6 +19,15 @@ divisions_list =['D1', 'D2', 'E0', 'E1', 'E2', 'E3', 'SP1' ,'SP2', 'B1', 'F1', '
 away_team_impact = away_team_impact[['away_team', 'division', 'standard_attend']]
 print(away_team_impact)
 initial_graph_df = pd.DataFrame(columns = ['away_team', 'division', 'standard_attend'])
+away_team_impact = away_team_impact.replace({'division':div_dict})
+away_team_impact['away_team'] = away_team_impact[ 'away_team'].str.replace('_', ' ')
+print(away_team_impact)
+
+away_team_impact['away_team'] = away_team_impact[ 'away_team'].apply(lambda x: x.title())
+print(away_team_impact)
+
+away_team_impact['away_team'] = away_team_impact[ 'away_team'].str.replace('_', ' ')
+print(away_team_impact)
 
 for i in divisions_list:
         temp_impact_df = away_team_impact[away_team_impact['division'] == i].sort_values('standard_attend',ascending = False).head(3)
@@ -36,26 +45,29 @@ app.layout = html.Div(id = 'parent', children = [
     dcc.Slider(0,20,1, value =3,id = 'slider'),
     dcc.Dropdown(id = 'dropdown', 
                  options = [
-                {'label': 'Bundesliga', 'value':'D1'},
-                {'label': '2. Bundesliga', 'value':'D2'},
-                {'label': 'Premier League', 'value':'E0'},
-                {'label': 'Championship', 'value':'E1'},
-                {'label': 'League 1', 'value':'E2'},
-                {'label': 'Leauge 2', 'value':'E3'},
-                {'label': 'La Liga Primera', 'value':'SP1'},
-                {'label': 'La Liga Segunda', 'value':'SP2'},
-                {'label': 'Jupiler League', 'value':'B1'},
-                {'label': 'Ligue 1', 'value':'F1'},
-                {'label': 'Ligue 2', 'value':'F2'},
-                {'label': 'Serie A', 'value':'I1'},
-                {'label': 'Serie B', 'value':'I2'},
-                {'label': 'Scotish Premier League', 'value':'SC0'},
-                {'label': 'Scotish Division 1', 'value':'SC1'},
-                {'label': 'Fubol Ligi 1', 'value':'T1'},
-                {'label': 'Liga 1', 'value':'P1'}
+                {'label': 'Bundesliga', 'value':'Bundesliga'},
+                {'label': '2. Bundesliga', 'value':'2. Bundesliga'},
+                {'label': 'Premier League', 'value':'Premier League'},
+                {'label': 'Championship', 'value':'Championship'},
+                {'label': 'League 1', 'value':'League 1'},
+                {'label': 'League 2', 'value':'League 2'},
+                {'label': 'La Liga Primera', 'value':'La Liga Primera'},
+                {'label': 'La Liga Segunda', 'value':'La Liga Segunda'},
+                {'label': 'Jupiler League', 'value':'Jupiler League'},
+                {'label': 'Ligue 1', 'value':'Ligue 1'},
+                {'label': 'Ligue 2', 'value':'Ligue 2'},
+                {'label': 'Serie A', 'value':'Serie A'},
+                {'label': 'Serie B', 'value':'Serie B'},
+                {'label': 'Scotish Premier League', 'value':'Scotish Premier League'},
+                {'label': 'Scotish Division 1', 'value':'Scotish Division 1'},
+                {'label': 'Fubol Ligi 1', 'value':'Fubol Ligi 1'},
+                {'label': 'Liga 1', 'value':'Liga 1'}
 
 
-                 ], value = ['D1', 'D2', 'E0', 'E1', 'E2', 'E3', 'SP1' ,'SP2', 'B1', 'F1', 'F2', 'I1', 'I2', 'SC0', 'SC1', 'T1', 'P1'],
+                 ], value = ['Bundesliga', '2. Bundesliga', 'Premier League', 'Championship', 'League 1',
+                              'League 2', 'La Liga Primera' ,'La Liga Segunda', 'Jupiler League',
+                                'Ligue 1', 'Ligue 2', 'Serie A', 'Serie B', 'Scotish Premier League',
+                                  'Scotish Division 1', 'Fubol Ligi 1', 'Liga 1'],
                  multi = True),
     dcc.Graph(id = 'bar_plot', figure=px.bar(initial_graph_df, x='away_team', y='standard_attend', color='division'))
 ])

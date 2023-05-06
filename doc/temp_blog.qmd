@@ -44,15 +44,37 @@ For a demonstration of a line plot on a polar axis, see @fig-polar.
 #| fig-cap: "A line plot on a polar axis"
 import numpy as np
 import matplotlib.pyplot as plt
-r = np.arange(0, 2, 0.01)
-theta = 2 * np.pi * r
-fig, ax = plt.subplots(
-  subplot_kw = {'projection': 'polar'} 
-)
-ax.plot(theta, r)
-ax.set_rticks([0.5, 1, 1.5, 2])
-ax.grid(True)
-plt.show()
+import plotly.graph_objects as go
+y=np.arange(100)     
+fig=go.Figure(go.Scatter(y=y[:1], mode='lines', name='Testing Points'))
+fig.update_layout(title='Animation Test',
+                  title_x=0.5,
+                  width=600, height=600, 
+                  xaxis_title='Time', 
+                  yaxis_title='Test Points',
+                  yaxis_range=(0,99),
+                  xaxis_range=(0,99), #you generate y-values for i =0, ...99, 
+                                      #that are assigned, by default, to x-values 0, 1, ..., 99
+                  
+                  updatemenus=[dict(buttons = [dict(
+                                               args = [None, {"frame": {"duration": 50, 
+                                                                        "redraw": False},
+                                                              "fromcurrent": True, 
+                                                              "transition": {"duration": 0}}],
+                                               label = "Play",
+                                               method = "animate")],
+                                type='buttons',
+                                showactive=False,
+                                y=1,
+                                x=1.12,
+                                xanchor='right',
+                                yanchor='top')])
+                                          
+                    
+frames= [go.Frame(data=[go.Scatter(y=y[:i])]) for i in range(1, 100)]
+fig.update(frames=frames)
+
+fig.show()
 ```
 
 Here's an example of citing a source [see @phil99, pp. 33-35]. Be sure the source information is entered in "BibTeX" form in the `references.bib` file.
