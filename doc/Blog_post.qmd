@@ -22,11 +22,11 @@ jupyter: python3
 
 # Why Attendance Matters 
 
-Football (Soccer), with an estimated 3.5 billion fans worldwide, is the most popular sport in the world [@sportforbusinessWorldsMost]. In turn a large economy and business surrounds the sport. Football teams need to be profitable to succeed. But how do these teams make money? Well mainly from 5 different revenue sources: television money, prize money, player transfers, sponsorships, and matchday revenues [@footballstadiumsFootballClubs]. Out of all of these, one of the most universal is match day revenues. For many teams, the match day revenue is the lifeblood of the club as it is the sales from ticket sales, concessions, club store purchases, etc. 
+Football (Soccer), with an estimated 3.5 billion fans worldwide, is the most popular sport in the world [@sportforbusinessWorldsMost]. In turn, a large economy and business surrounds the sport. Football teams need to be profitable to succeed. But how do these teams make money? Mainly from 5 different revenue sources: television money, prize money, player transfers, sponsorships, and matchday revenues [@footballstadiumsFootballClubs]. Out of all of these, one of the most universal is match day revenues. For many teams, the match day revenue is the lifeblood of the club as it is the sales from ticket sales, concessions, club store purchases, etc. 
 
 The attendance of a match can significantly affect a team's match day revenue. So understanding factors affecting attendance and predicting the attendance is important. If a club could predict the number of people attending a match, they could be better prepared for it. Such as, if the match is expected to have lower attendance than desired, the club could market it differently or have special promotions to increase the attendance for that match. 
 
-There are many factors that could impact the attendance of a match. However, the factors used here are the day &time of the match, betting odds for a match, and who the away team is for any given match. Later we will also produce a random forest model to predict the attendance of matches based on these factors. 
+There are many factors that could impact the attendance of a match. However, the factors used here are the day and time of the match, betting odds for a match, and who the away team is for any given match. Later we will also produce a random forest model to predict the attendance of matches based on these factors. 
 
 # Python Packages Used
 
@@ -166,8 +166,8 @@ total_data = total_data[total_data['division'] != 'SC2']
 
 div_dict = {'D1':'Bundesliga', 'D2': '2. Bundesliga', 'E0':'Premier League', 'E1':'Championship', 
             'E2':'League 1', 'E3':'League 2','SP1':'La Liga Primera', 'SP2':'La Liga Segunda',
-              'B1':'Jupiler League', 'F1':'Ligue 1','F2':'Ligue 2','I1':'Serie A','I2':'Seire B', 
-              'SC0':'Scotish Premier League', 'SC1':'Scotish Division 1', 'T1':'Fubol Ligi 1', 'P1': 'Liga 1'}
+              'B1':'Jupiler League', 'F1':'Ligue 1','F2':'Ligue 2','I1':'Serie A','I2':'Serie B', 
+              'SC0':'Scottish Premier League', 'SC1':'Scottish Division 1', 'T1':'Fubol Ligi 1', 'P1': 'Liga 1'}
 divisions_list =['D1', 'D2', 'E0', 'E1', 'E2', 'E3', 'SP1' ,'SP2', 'B1', 'F1', 'F2', 'I1', 'I2', 'SC0', 'SC1', 'T1', 'P1']
 
 total_data['home_team'] = total_data['home_team'].str.replace('_', ' ').apply(lambda x: x.title())
@@ -175,7 +175,7 @@ total_data['away_team'] = total_data['away_team'].str.replace('_', ' ').apply(la
 
 ```
 
-All of the CSV files from Football-data.co.uk were combined together, resulting in two datasets, one with all of the betting data and the other with the attendance. The two datasets were to be combined on the home team name, away team name, and the date/time of the game to create one final dataset. However, issues arose as they had different naming structures for team names. For example, the team Manchester City in one dataset would be identified as "man_city" and in the other as "manchester_city". With these different naming structures and spellings, a list of team names was created from both datasets. These lists were put through a python script that took a team from one list and compared the characters to team names in the other list. I stated with one entire team name and slowly decreasing its size, searching the other list for matches. The table below demonstrates how team names would be split up into a list of smaller strings. This would be repeated until the team list was broken up into single characters.
+All of the CSV files from Football-data.co.uk were combined together, resulting in two datasets, one with all of the betting data and the other with the attendance. The two datasets were to be combined on the home team name, away team name, and the date and time of the game to create one final dataset. However, issues arose as they had different naming structures for team names. For example, the team Manchester City in one dataset would be identified as "man_city" and in the other as "manchester_city". With these different naming structures and spellings, a list of team names was created from both datasets. These lists were put through a python script that took a team from one list and compared the characters to team names in the other list. I stated with one entire team name and slowly decreasing its size, searching the other list for matches. The table below demonstrates how team names would be split up into a list of smaller strings. This would be repeated until the team list was broken up into single characters.
 
 |Itteration| Results|
 |----|-----|
@@ -198,7 +198,7 @@ Certain leagues were removed from the dataset. The Scottish Division 2 and Divis
 
 Lastly, a few new variables were added. The first variable added was the season during which the match occurred. Although leagues end on different dates in different years, the date selected for the seasons to change was July 14th. Most leagues conclude at the beginning of June and resume  at the beginning of August. July is predominantly used for international games. Although there were a couple of matches that occurred in July from 2010-2019, July 14th was the only date with zero matches played. So it was used as the cutoff point. 
 
-The other variables created were the mean and standard deviation of the home team for that season and the z-score of that individual match. The mean and standard deviation were based upon the home team's attendance for that season. The z-score is the standardization of the match's attendance (number of standardeviations above or below the mean) in relation to the home team's average attendance for that particular season. 
+The other variables created were the mean and standard deviation of the home team for that season and the z-score of that individual match. The mean and standard deviation were based upon the home team's attendance for that season. The z-score is the standardization of the match's attendance (number of standard deviations above or below the mean) in relation to the home team's average attendance for that particular season. 
 
 
 ## Final Dataset
@@ -223,7 +223,7 @@ total_data.head()
 
 # Date & Time
 
-Now that the data has been processed, we can begin to look how a variety of factors impact attendance for football matches. The first factor that will be evaluated is the date/time of individual matches. We will examine the impact of the day of the week, time of the match, and the calendar date.
+Now that the data has been processed, we can begin to look at how a variety of factors impact attendance for football matches. The first factor that will be evaluated is the date and time of individual matches. We will examine the impact of the day of the week, time of the match, and the calendar date.
 
 
 ```{python}
@@ -237,7 +237,7 @@ time_df = total_data[[
 ]]
 ```
 
-## Day of Week
+## Day of the Week
 ```{python}
 #| code-summary: Group Attendance by day of the week
 #| code-fold: false
@@ -264,7 +264,7 @@ sns.barplot(
     x = 'day_of_week', 
     y = 'raw_attendance',
     color = '#0047AB'
-    ).set(title ='Median Attendance by Day of Week')
+    ).set(title ='Median Attendance by Day of the Week')
 plt.xticks(rotation=90)
 plt.xlabel('Day of the Week')
 plt.ylabel('Median Attendance')
@@ -319,8 +319,8 @@ rose_df['League'] = rose_df['division']
 
 div_dict2 = {'D1':'Bundesliga (1st Div)', 'D2': '2. Bundesliga (2nd Div)', 'E0':'Premier League (1st Div)', 'E1':'Championship (2nd Div)', 
             'E2':'League 1 (3rd Div)', 'E3':'League 2 (4th Div)','SP1':'La Liga Primera (1st Div)', 'SP2':'La Liga Segunda (2nd Div)',
-              'B1':'Jupiler League (1st Div)', 'F1':'Ligue 1 (1st Div)','F2':'Ligue 2 (2nd Div)','I1':'Serie A (1st Div)','I2':'Seire B (2nd Div)', 
-              'SC0':'Scotish Premier League (1st Div)', 'SC1':'Scotish Division 1 (2nd Div)', 'T1':'Fubol Ligi 1 (1st Div)', 'P1': 'Liga 1 (1st Div)'}
+              'B1':'Jupiler League (1st Div)', 'F1':'Ligue 1 (1st Div)','F2':'Ligue 2 (2nd Div)','I1':'Serie A (1st Div)','I2':'Serie B (2nd Div)', 
+              'SC0':'Scottish Premier League (1st Div)', 'SC1':'Scottish Division 1 (2nd Div)', 'T1':'Fubol Ligi 1 (1st Div)', 'P1': 'Liga 1 (1st Div)'}
 
 rose_df = rose_df.replace({'League':div_dict2})
 rose_df
@@ -333,7 +333,7 @@ fig.show()
 ```
  
  
- @fig-count_day explainst the suprising results that Wednesday had the highest average attendance instead of Saturday. Saturday had by far the highest number of games in comparison to any day of the week while Wednesday had significnatly fewer games. This results in Saturday having more games from lower leagues, which tend to have lower attendance, decreasing the average attendance while Wedneday had more games played by top leagues increasing its average attendance. This is confirmed in @fig-day_median_attend_div. Looking at the proportion of games on Saturday, lower leagues had a much higher proportion of games. Wednesday's games on the other hand were  predominantly composed of the top leagues in England, France, and Italy. The top leagues tend to have more highly attended games; hence Wednesday has the highest average attendance. 
+ @fig-count_day explains the suprising results that Wednesday had the highest average attendance instead of Saturday. Saturday had by far the highest number of games in comparison to any day of the week while Wednesday had significantly fewer games. This results in Saturday having more games from lower leagues, which tend to have lower attendance, decreasing the average attendance, while Wedneday had more games played by top leagues increasing its average attendance. This is confirmed in @fig-day_median_attend_div. Looking at the proportion of games on Saturday, lower leagues had a much higher proportion of games. Wednesday's games on the other hand were  predominantly composed of the top leagues in England, France, and Italy. The top leagues tend to have more highly attended games; hence Wednesday has the highest average attendance. 
 
 
 
@@ -395,7 +395,7 @@ calendar_plot_data = total_data
 calendar_plot_data['month_day'] = calendar_plot_data['date_time'].dt.strftime('%m-%d')
 ```
 
-The last aspect of the time & day factor is the calendar date of a match. This is evaluated using the calendar plots below.
+The last aspect of the day & time factor is the calendar date of a match. This is evaluated using the calendar plots below.
 
 ### Trends in Quantity of Matches
 
@@ -424,7 +424,7 @@ july.heatmap(
 plt.show()
 ```
 
-Before looking at the attendance, it's important to view trends in when matches actually occur. In @fig-cal_count, there very few games played from mid-June to the end of July. This is most likely attributed to European leagues predominantly being on break during these months due to FIFA international breaks. During this break, players typically return to their national teams to play in international competitions and, every four years, the World Cup. Another significant period of time is the Christmas holiday. Christmas has one of the lowest total number of games occurring. However, December 26th, or Boxing Day, had the highest number of games played out of any date. 
+Before looking at the attendance, it's important to view trends in when matches actually occur. In @fig-cal_count, there are very few games played from mid-June to the end of July. This is most likely attributed to European leagues predominantly being on break during these months due to FIFA international breaks. During this break, players typically return to their national teams to play in international competitions and, every four years, the World Cup. Another significant period of time is the Christmas holiday. Christmas has one of the lowest total number of games occurring. However, December 26th, or Boxing Day, had the highest number of games played out of any date. 
 
 
 ### Trends in Attendance of Matches
@@ -466,7 +466,7 @@ Now looking at the attendance for these matches based on their calendar date, so
 away_team_impact = total_data.groupby(['away_team', 'division'])['standard_attend'].mean().reset_index()
 ```
 
-The next factor viewed is the impact of the away team on attendance. We are looking at how who the away team is impacts the attendance for the home team. For this, the standardized attendance was grouped the away teams and then averaged. The results can be seen below. You can select what leagues you would like to view and the top number of teams from that league. 
+The next factor viewed is the impact of the away team on attendance. We are looking at how who the away team is impacts the attendance for the home team. For this, the standardized attendance was grouped by the away teams and then averaged. The results can be seen below. You can select what leagues you would like to view and the top number of teams from that league. 
 
 ```{python}
 #| eval: false
@@ -479,8 +479,8 @@ The next factor viewed is the impact of the away team on attendance. We are look
 # away_team_impact = away_team_impact[away_team_impact['division'].isin(['E3', 'E1', 'E2'])]
 div_dict = {'D1':'Bundesliga', 'D2': '2. Bundesliga', 'E0':'Premier League', 'E1':'Championship', 
             'E2':'League 1', 'E3':'League 2','SP1':'La Liga Primera', 'SP2':'La Liga Segunda',
-              'B1':'Jupiler League', 'F1':'Ligue 1','F2':'Ligue 2','I1':'Serie A','I2':'Seire B', 
-              'SC0':'Scotish Premier League', 'SC1':'Scotish Division 1', 'T1':'Fubol Ligi 1', 'P1': 'Liga 1'}
+              'B1':'Jupiler League', 'F1':'Ligue 1','F2':'Ligue 2','I1':'Serie A','I2':'Serie B', 
+              'SC0':'Scottish Premier League', 'SC1':'Scottish Division 1', 'T1':'Fubol Ligi 1', 'P1': 'Liga 1'}
 divisions_list =[
     'D1', 'D2', 'E0', 'E1', 'E2', 'E3', 'SP1' ,'SP2', 'B1', 'F1', 'F2', 'I1',
      'I2', 'SC0', 'SC1', 'T1', 'P1'
@@ -554,7 +554,7 @@ if __name__ == '__main__':
 ```
 
 ```{=html}
-<iframe width="650" height="500" src="http://127.0.0.1:8050" title="Quarto Documentation"></iframe>
+<iframe width="650" height="500" src="http://127.0.0.1:8050"></iframe>
 
 ```
 ## Top Teams in the Biggest Leagues
@@ -600,7 +600,7 @@ plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
 plt.show()
 ```
 
-Looking at teams in lower leagues, similar trends appear. @fig-england_away shows the lower leagues in England. All of the teams shown here have had historical success. For some of the teams, such as Leeds United and Coventry City, the success was in the past. Coventry City was in the top division of English Football from 1967 to 2001, winning the FA Cup in 1968. Leeds United is an even better example of historic success, winning the first division in the 1968-69, 1973-74, and 1991-92 seasons. Both of these teams have had historical success in their past, however their performances have declined in the modern era, forcing them to drop leagues. Other teams here, such as Newcastle, West Ham United, and Sunderland, were at the top level of football during this time period, however, got relegated by one or two leagues during that time. With that, they still have an impact, increasing attendance for the home teams. So, teams that have had historical success or recently got relegated from higher leagues are seen to have an impact on the home team's attendance. 
+Looking at teams in lower leagues, similar trends appear. @fig-england_away shows the lower leagues in England. All of the teams shown here have had historical success. For some of the teams, such as Leeds United and Coventry City, the success was in the past. Coventry City was in the top division of English Football from 1967 to 2001, winning the FA Cup in 1968. Leeds United is an even better example of historic success, winning the first division in the 1968-69, 1973-74, and 1991-92 seasons. Both of these teams have had historical success in their past, however their performances have declined in the modern era, forcing them to drop leagues. Other teams here, such as Newcastle, West Ham United, and Sunderland, were at the top level of football during this time period, however, were relegated by one or two leagues during that time. With that, they still have an impact, increasing attendance for the home teams. So, teams that have had historical success or recently were relegated from higher leagues are seen to have an impact on the home team's attendance. 
 
 
 # Betting Odds
@@ -698,10 +698,10 @@ plt.show()
 For the Results H = Home team Wins, A = Away team Wins, D = Draw.
 :::
 :::{.callout-tip title="Explanation of How to read the graphs percentages"}
-The number within each cell is the percentage of predicted results occur. For instance, when B365 predicted the away team to win, 27% of the time the home team won, 27% of the time the teams drew, and 47% of the time the away team won. 
+The number within each cell is the percentage of predicted results occuring. For instance, when B365 predicted the away team to win, 27% of the time the home team won, 27% of the time the teams drew, and 47% of the time the away team won. 
 :::
 
-The heatmaps seen in @fig-betting_comp, show the distribution of what the betting company favored as the result and what  the actual result of a match was. The difference in the individual betting companies was slim to non-existant. Due to this, we assume that all the betting data are comparable. For the remainder of the project, Bet 365 is used because it had one of the fewest numbers of missing values. 
+The heatmaps seen in @fig-betting_comp, show the distribution of what the betting company favored as the result and what  the actual result of a match was. The difference in the individual betting companies was slim to non-existant. Due to this, we assume that all the betting data is comparable. For the remainder of the project, Bet 365 is used because it had one of the fewest numbers of missing values. 
 
 ## Betting Odds
 ```{python}
@@ -728,7 +728,7 @@ bet_bool = bet_increase_bool[['home_fav', 'attend_increase','raw_attendance']]
 bet_bool = bet_bool.groupby(['home_fav', 'attend_increase']).count().reset_index().rename(columns = {'home_fav':'Home Team Favorited', 'attend_increase':'Increase In Attendance'})
 ```
 
-For analyzing the effect of betting odds in the data set, two boolean variables were created. The first variable reflected whether or not there was an increase in attendance. If the z-score for the match was positive or 0, it was determined to have an increased attendance and if it was negative, it decreased attendance. The second was to determine if the home team was favored. If the betting odds of the home team winning was a smaller number than the betting odds for the away team winning,  it was determined that the home team was favored. And if the home team betting odds were greater then the away team betting odds, then it was deterimined as not favored.
+For analyzing the effect of betting odds in the data set, two boolean variables were created. The first variable reflected whether or not there was an increase in attendance. If the z-score for the match was positive or 0, it was determined to have an increased attendance and if it was negative, it decreased attendance. The second was to determine if the home team was favored. If the betting odds of the home team winning was a smaller number than the betting odds for the away team winning,  it was determined that the home team was favored. And if the home team betting odds were greater than the away team betting odds, then it was deterimined as not favored.
 
 ```{python}
 #| label: fig-home_fav
@@ -794,7 +794,7 @@ count_pct = []
 df_grouped_higher_goal_sum = df.groupby('higher_goals')['count'].sum().reset_index()
 ```
 
-One of the betting variables that is looked at is the betting odds on the total number of goals scored in a game. The betting odds are for if the game will have more than 2.5 or less than 2.5 goals. With this vairrable, another boolean variable was created. If the betting odds for goals being greater 2.5 was a smaller number than goals being less than 2.5, it was determined that there  was expected to have more than 2.5 goals scored. If the betting odds stated that goals being less than 2.5 had a smaller number than goals being greater than 2.5, it was stated that their was expected to be less than 2.5 goals scored.
+One of the betting variables that is looked at is the betting odds on the total number of goals scored in a game. The betting odds are  if the game will have more than 2.5 or less than 2.5 goals. With this vairable, another boolean variable was created. If the betting odds for goals being greater than 2.5 was a smaller number than goals being less than 2.5, it was determined that there  was expected to have more than 2.5 goals scored. If the betting odds stated that goals being less than 2.5 had a smaller number than goals being greater than 2.5, it was stated that their was expected to be less than 2.5 goals scored.
 
 ```{python}
 #| label: fig-goals
@@ -818,23 +818,23 @@ df2 = df.pivot(index = 'Odds of Goals over 2.5 is favored', columns = 'Increased
 # sns.heatmap(goal_data = df2, annot= True)
 # plt.gca().invert_xaxis()
 # plt.gca().invert_yaxis()
-# plt.title('Predicted Goals in relation to Attendance')
+# plt.title('Predicted Goals in Relation to Attendance')
 # plt.show()
 sns.barplot(data =df, x = 'Odds of Goals over 2.5 is favored', y = 'count_pct', hue = 'Increased Attendance')
 plt.gca().invert_xaxis()
 plt.ylabel('Percent')
 plt.xticks([0,1], ['Less than 2.5 Goals','More than 2.5 Goals'])
 plt.xlabel('Predicted amount of goals scored')
-plt.title('Predicted Goals in Telation to Attendance')
+plt.title('Predicted Goals in Relation to Attendance')
 plt.show()
 ```
 
-@fig-goals shows how attendance changes with different predicted number of goals. When the match is expected to be a higher scoring match, the attendance basically equally likely to increase or decrease. However, when the match is not predicted to have over 2.5 goals scored, the attendance is more likely to be negatively impacted in relation to the season average. 
+@fig-goals shows how attendance changes with different predicted number of goals. When the match is expected to be a higher scoring match, the attendance is almost equally likely to increase or decrease. However, when the match is not predicted to have over 2.5 goals scored, the attendance is more likely to be negatively impacted in relation to the season average. 
 
 
 # Modeling
 
-All of this analysis and looking at different factors that would impact attendance have led to predicting the attendance of a game. Given the complexity of the data, a random forest regression model was implemented. Random Forest Regression is a supervised machine learning model. It uses multiple decision trees to make the best model for the data. All of the factors stated before except the amount of goals predicted to be scored were used within the model to predict the attendance of a given match. 
+All of this analysis and looking at different factors that would impact attendance have led to predicting the attendance of a game. Given the complexity of the data, a random forest regression model was implemented. Random Forest Regression is a supervised machine learning model. It uses multiple decision trees to make the best model for the data. All of the factors stated before, except the amount of goals predicted to be scored, were used within the model to predict the attendance of a given match. 
 
 ```{python}
 #|eval: false
@@ -896,9 +896,9 @@ result_df = pd.DataFrame(np.array([['Mean Absolute Error', mae], ['Mean Squared 
 result_df
 ```
 
-The Random Forest model used 1000 decision trees to build the model. The results of the model can be seen in the table above. It resulted in a fairly high r^2^ score of over 0.93. Which means approximently 93% of the variability in attendance is accounted for by our variables. Additonally, the mean absolute error score of approximately 2300 showing that the model's prediction is on average off by 2300 people. 
+The Random Forest model used 1000 decision trees to build the model. The results of the model can be seen in the table above. It resulted in a fairly high r^2^ score of over 0.93. Which means approximately 93% of the variability in attendance is accounted for by our variables. Additionally, the mean absolute error score of approximately 2300 showing that the model's prediction is on average off by 2300 people. 
 
-Below is another way to visualize the accuracy of the model. You can select the deviation from the actual attendance to see the percentage of the predcitions that were accurate within that range. 
+Below is another way to visualize the accuracy of the model. You can select the deviation from the actual attendance to see the percentage of the predictions that were accurate within that range. 
 
 
 
