@@ -473,7 +473,7 @@ The next factor viewed is the impact of the away team on attendance. We are look
 
 
 ```{=html}
-<iframe width="700" height="700" src="http://173.54.32.218:6969/"></iframe>
+<iframe width="700" height="700" src="https://173.54.32.218:6969/"></iframe>
 
 ```
 
@@ -826,7 +826,7 @@ The Random Forest model used 1000 decision trees to build the model. The results
 
 ```{=html}
 
-<iframe width="700" height="500" src="http://173.54.32.218:4200"></iframe>
+<iframe width="700" height="500" src="https://173.54.32.218:4200"></iframe>
 
 ```
 
