@@ -554,7 +554,7 @@ if __name__ == '__main__':
 ```
 
 ```{=html}
-<iframe width="650" height="500" src="http://127.0.0.1:8050"></iframe>
+<iframe width="650" height="500" src="http://173.54.32.218:6969"></iframe>
 
 ```
 ## Top Teams in the Biggest Leagues
@@ -900,7 +900,7 @@ The Random Forest model used 1000 decision trees to build the model. The results
 
 ```{=html}
 
-<iframe width="700" height="500" src="http://127.0.0.1:4200"></iframe>
+<iframe width="700" height="500" src="http://173.54.32.218:4200"></iframe>
 
 ```
 
