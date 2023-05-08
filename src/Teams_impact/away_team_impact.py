@@ -4,7 +4,7 @@ import seaborn as sns
 import plotly.graph_objects as go
 
 
-data = pd.read_pickle('data/final_datasets/data_standardized.pkl')
+data = pd.read_pickle('d:/Python Projects/Capstone/data/final_datasets/data_standardized.pkl')
 
 away_team_impact = data.groupby(['away_team', 'division'])['standard_attend'].mean().reset_index()
 
@@ -17,17 +17,17 @@ div_dict = {'D1':'Bundesliga', 'D2': '2. Bundesliga', 'E0':'Premier League', 'E1
 divisions_list =['D1', 'D2', 'E0', 'E1', 'E2', 'E3', 'SP1' ,'SP2', 'B1', 'F1', 'F2', 'I1', 'I2', 'SC0', 'SC1', 'T1', 'P1']
 
 away_team_impact = away_team_impact[['away_team', 'division', 'standard_attend']]
-print(away_team_impact)
+# print(away_team_impact)
 initial_graph_df = pd.DataFrame(columns = ['away_team', 'division', 'standard_attend'])
 away_team_impact = away_team_impact.replace({'division':div_dict})
 away_team_impact['away_team'] = away_team_impact[ 'away_team'].str.replace('_', ' ')
-print(away_team_impact)
+# print(away_team_impact)
 
 away_team_impact['away_team'] = away_team_impact[ 'away_team'].apply(lambda x: x.title())
-print(away_team_impact)
+# print(away_team_impact)
 
 away_team_impact['away_team'] = away_team_impact[ 'away_team'].str.replace('_', ' ')
-print(away_team_impact)
+# print(away_team_impact)
 
 for i in divisions_list:
         temp_impact_df = away_team_impact[away_team_impact['division'] == i].sort_values('standard_attend',ascending = False).head(3)
@@ -92,7 +92,7 @@ def update_graph(drop_value, slider_value):
     fig = px.bar(graph_df, x= 'away_team', y= 'standard_attend', color = 'division')
     return fig
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug = True, host = '127.0.0.1', port =8050)
 
 # for i in divisions_list:
 #     temp_impact_df = away_team_impact[away_team_impact['division'] == i].sort_values('standard_attend',ascending = False).head(3)

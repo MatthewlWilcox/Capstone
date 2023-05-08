@@ -896,7 +896,15 @@ result_df = pd.DataFrame(np.array([['Mean Absolute Error', mae], ['Mean Squared 
 result_df
 ```
 
-The Random Forest model used 1000 decision trees to build the model. The results of the model can be seen in the table above. It resulted in a fairly high r^2^ score of over 0.93. Which means approximately 93% of the variability in attendance is accounted for by our variables. Additionally, the mean absolute error score of approximately 2300 showing that the model's prediction is on average off by 2300 people. 
+The Random Forest model used 1000 decision trees to build the model. The results of the model can be seen in the table above. It resulted in a fairly high r^2^ score of over 0.93. Which means approximately 93% of the variability in attendance is accounted for by our variables. Additionally, the mean absolute error score of approximately 2300 showing that the model's prediction is on average off by 2300 people. The table below shows examples from the test set of matches with their predicted and actual attendance. 
+
+```{=html}
+
+<iframe width="700" height="500" src="http://127.0.0.1:4200"></iframe>
+
+```
+
+
 
 Below is another way to visualize the accuracy of the model. You can select the deviation from the actual attendance to see the percentage of the predictions that were accurate within that range. 
 

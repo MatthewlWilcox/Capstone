@@ -20,7 +20,7 @@ before_encode = model_dataset[['division', 'home_team', 'away_team', 'date', 'ti
 
 label_encoder = LabelEncoder()
 
-pickle.dump(label_encoder, open('src/Modeling/label_encoder.sav', 'wb'))
+pickle.dump(label_encoder, open('src/Modeling/label_encoder_no_bet.sav', 'wb'))
 
 
 for obj in column_obj_name:
@@ -45,8 +45,7 @@ time_key = pd.Series(encode_compare.time.values, index = encode_compare.time_enc
 
 
 x = model_dataset.drop(['raw_attendance', 'standard_attend'], axis = 1)
-x = x[['home_team', 'away_team', 'division', 'date', 'time', 'day_of_week','B365H', 'B365D',
-       'B365A']]
+x = x[['home_team', 'away_team', 'division', 'date', 'time', 'day_of_week']]
 y = model_dataset['raw_attendance']
 
 x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = .2, random_state = 11)
@@ -70,12 +69,12 @@ x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = .2, random_
 # ------------------------------------------------------------------------------------------------------------------------------------------------
 # Random Forest
 # ------------------------------------------------------------------------------------------------------------------------------------------------
-# random_forest_model = RandomForestRegressor(n_estimators = 1000, random_state= 11)
+random_forest_model = RandomForestRegressor(n_estimators = 1000, random_state= 11)
 
-# random_forest_model.fit(x_train, y_train)
+random_forest_model.fit(x_train, y_train)
 
-# pickle.dump(random_forest_model, open('Random_forest_model.sav', 'wb'))
-random_forest_model = pickle.load(open('src/Modeling/Random_forest_model.sav', 'rb'))
+pickle.dump(random_forest_model, open('Random_forest_model.sav', 'wb'))
+# random_forest_model = pickle.load(open('src/Modeling/Random_forest_model_no_bet.sav', 'rb'))
 
 
 y_predict = random_forest_model.predict(x_test)
@@ -97,4 +96,4 @@ model_result['division'] = model_result['division'].astype(int)
 model_result['home_team'] = model_result['home_team'].astype(int)
 model_result['away_team'] = model_result['away_team'].astype(int)
 model_result = model_result.replace({'division':div_key, 'home_team': home_key, 'away_team':away_key, 'date':date_key, 'time':time_key})
-model_result.to_pickle('src/Modeling/predicted_result_df.pkl')
+model_result.to_pickle('src/Modeling/predicted_result_df_no_bet.pkl')
