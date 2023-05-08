@@ -826,7 +826,7 @@ The Random Forest model used 1000 decision trees to build the model. The results
 
 ```{=html}
 
-<iframe width="700" height="500" src="https://173.54.32.218:4200"></iframe>
+<iframe width="700" height="500" src="https://173.54.32.218:4200/"></iframe>
 
 ```
 
@@ -840,6 +840,7 @@ Below is another way to visualize the accuracy of the model. You can select the 
 
 ```{python}
 #|code-summary: Percentage perdicted data within a range
+
 
 model_result = x_test
 model_result['raw_attendance'] = y_test
