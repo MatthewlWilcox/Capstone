@@ -469,7 +469,7 @@ Now looking at the attendance for these matches based on their calendar date, so
 away_team_impact = total_data.groupby(['away_team', 'division'])['standard_attend'].mean().reset_index()
 ```
 
-The next factor viewed is the impact of the away team on attendance. We are looking at how who the away team is impacts the attendance for the home team. For this, the standardized attendance was grouped by the away teams and then averaged. The results can be seen below. You can select what leagues you would like to view and the top number of teams from that league. 
+The next factor viewed is the impact of the away team on attendance. We are looking at how who the away team is impacts the attendance for the home team. For this, the standardized attendance was grouped by the away teams and then averaged. The results can be seen below. You can select what leagues you would like to view and the top number of teams from that league. If it is not loading click [here](https://173.54.32.218:6969/).
 
 
 ```{=html}
@@ -822,7 +822,7 @@ result_df = pd.DataFrame(np.array([['Mean Absolute Error', mae], ['Mean Squared 
 result_df
 ```
 
-The Random Forest model used 1000 decision trees to build the model. The results of the model can be seen in the table above. It resulted in a fairly high r^2^ score of over 0.93. Which means approximately 93% of the variability in attendance is accounted for by our variables. Additionally, the mean absolute error score of approximately 2300 showing that the model's prediction is on average off by 2300 people. The table below shows examples from the test set of matches with their predicted and actual attendance. 
+The Random Forest model used 1000 decision trees to build the model. The results of the model can be seen in the table above. It resulted in a fairly high r^2^ score of over 0.93. Which means approximately 93% of the variability in attendance is accounted for by our variables. Additionally, the mean absolute error score of approximately 2300 showing that the model's prediction is on average off by 2300 people. The table below shows examples from the test set of matches with their predicted and actual attendance.  If it is failing to load click [here](https://173.54.32.218:4200/).
 
 ```{=html}
 
