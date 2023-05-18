@@ -844,7 +844,7 @@ The Random Forest model used 1000 decision trees to build the model. The results
 
 ```{=html}
 
-<iframe width="700" height="500" src="https://houseofsin.ddns.net:4200/"></iframe>
+<iframe width="700" height="500" src="http://54.163.156.114/"></iframe>
 
 ```
 
@@ -987,3 +987,5 @@ fig.update_layout(title_text="Prediction within 50")
 fig.show()
 
 ```
+
+

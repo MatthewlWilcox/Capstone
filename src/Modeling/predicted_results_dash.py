@@ -16,7 +16,7 @@ div_dict = {'D1':'Bundesliga', 'D2': '2. Bundesliga', 'E0':'Premier League', 'E1
             'E2':'League 1', 'E3':'League 2','SP1':'La Liga Primera', 'SP2':'La Liga Segunda',
               'B1':'Jupiler League', 'F1':'Ligue 1','F2':'Ligue 2','I1':'Serie A','I2':'Serie B', 
               'SC0':'Scottish Premier League', 'SC1':'Scottish Division 1', 'T1':'Fubol Ligi 1', 'P1': 'Liga 1'}
-predicted_data = pd.read_pickle('d:/Python Projects/Capstone/src/Modeling/predicted_result_df.pkl')
+predicted_data = pd.read_pickle('predicted_result_df.pkl')
 predicted_data = predicted_data.replace({'division':div_dict})
 predicted_data['home_team'] = predicted_data['home_team'].str.replace('_', ' ').apply(lambda x: x.title())
 predicted_data['away_team'] = predicted_data['away_team'].str.replace('_', ' ').apply(lambda x: x.title())
