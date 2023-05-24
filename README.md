@@ -4,7 +4,7 @@ Football is one of the most popular sport in the world. In this project, factors
 
 The results of this project can be viewed [here](https://matthewlwilcox.github.io/Capstone/doc/Blog_post.html).
 
-The sturcutre of the repository is as follows:
+The structure of the repository is as follows:
 
 [data](https://github.com/MatthewlWilcox/Capstone/tree/main/data) - Here is the data for the project. It is divided up into final_datasets, RAWDATA, and Data_to_change. The final_dataset is the datasets that are used within the analysis. RAWDATA is the raw data that was scraped. Finally, Data_to_change is many of the intermediate steps to go from RAWDATA to the final datasets.
 
