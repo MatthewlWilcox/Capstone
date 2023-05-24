@@ -502,7 +502,7 @@ The next factor viewed is the impact of the away team on attendance. We are look
 
 
 ```{=html}
-<iframe width="700" height="700" src="https://houseofsin.ddns.net:6969/"></iframe>
+<iframe width="700" height="700" src="https://awsa.wilcoxclan.com/"></iframe>
 ```
 
 ## Top Teams in the Biggest Leagues
